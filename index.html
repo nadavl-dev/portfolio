@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+ <title>Nadav Levy — Product · AI · Design</title>
+ <meta name="description" content="Nadav Levy — Customer Success Manager at Bites building at the intersection of Product, AI, and Design. A PM/AI/Design generalist who ships." />
+ <meta name="author" content="Nadav Levy" />
+ <meta name="theme-color" content="#ffffff" />
+
+ <!-- Open Graph -->
+ <meta property="og:type" content="website" />
+ <meta property="og:title" content="Nadav Levy — Product · AI · Design" />
+ <meta property="og:description" content="Customer Success Manager at Bites, building at the intersection of Product, AI, and Design." />
+ <meta property="og:locale" content="en_US" />
+ <meta property="og:image" content="og-image.jpg" />
+ <meta property="og:image:width" content="1200" />
+ <meta property="og:image:height" content="630" />
+ <meta property="og:image:alt" content="Nadav Levy" />
+
+ <!-- Twitter -->
+ <meta name="twitter:card" content="summary_large_image" />
+ <meta name="twitter:title" content="Nadav Levy — Product · AI · Design" />
+ <meta name="twitter:description" content="Customer Success Manager at Bites, building at the intersection of Product, AI, and Design." />
+ <meta name="twitter:image" content="og-image.jpg" />
+
+ <!-- Favicon: inline SVG"NL_" mark -->
+ <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23ffffff'/%3E%3Ctext x='5' y='22' font-family='monospace' font-size='15' font-weight='700' fill='%231a1a1a'%3ENL%3C/text%3E%3Crect x='24' y='9' width='3' height='13' fill='%235b4cf5'/%3E%3C/svg%3E" />
+
+ <!-- Fonts -->
+ <link rel="preconnect" href="https://fonts.googleapis.com" />
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+ <link rel="stylesheet" href="style.css?v=20" />
+</head>
+<body>
+
+ <!-- ============ BOTTOM DOCK NAV ============ -->
+ <nav class="dock" id="nav" aria-label="Primary">
+ <a href="#hero" class="dock__item nav__link is-active" data-nav="hero">
+ <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5L12 3l9 7.5M5.5 9v10.5h13V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+ <span>Home</span>
+ </a>
+ <a href="#about" class="dock__item nav__link" data-nav="about">
+ <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M5 20c.8-3.5 3.6-5.5 7-5.5s6.2 2 7 5.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+ <span>About</span>
+ </a>
+ <a href="#projects" class="dock__item nav__link" data-nav="projects">
+ <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5.5" width="7" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="13.5" y="5.5" width="7" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="3.5" y="15.5" width="7" height="5" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="13.5" y="15.5" width="7" height="5" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+ <span>Projects</span>
+ </a>
+ <a href="#experience" class="dock__item nav__link" data-nav="experience">
+ <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="7.5" width="17" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M9 7.5V6a2 2 0 012-2h2a2 2 0 012 2v1.5M3.5 12.5h17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+ <span>Work</span>
+ </a>
+ <a href="#contact" class="dock__item nav__link" data-nav="contact">
+ <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4.5 7l7.5 6 7.5-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+ <span>Contact</span>
+ </a>
+ </nav>
+
+ <main>
+ <!-- ============ HERO ============ -->
+ <section class="hero" id="hero">
+ <div class="container hero__inner">
+ <div class="hero__content">
+ <p class="hero__pre reveal-on-load" style="--d:.05s">// I am</p>
+ <h1 class="hero__name reveal-on-load" style="--d:.18s">Nadav Levy</h1>
+ <p class="hero__tagline reveal-on-load" style="--d:.32s">
+ Customer Success Manager at <img class="inline-logo" src="bites-logo.png" alt="Bites"> — building at the intersection of
+ <span class="hl">Product</span>, <span class="hl">AI</span>, and <span class="hl">Design</span>.
+ </p>
+
+ <div class="hero__ctas reveal-on-load" style="--d:.5s">
+ <a href="#contact" class="btn btn--accent">Contact</a>
+ <a href="/resume.pdf" class="btn btn--ghost" download>
+ <svg viewBox="0 0 24 24" aria-hidden="true" class="ic"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+ Download Resume
+ </a>
+ </div>
+
+ <div class="terminal-bar reveal-on-load" style="--d:.66s" aria-hidden="true">
+ <span class="terminal-bar__prompt">visitor@nadavlevy</span><span class="terminal-bar__path">:~/home$</span>
+ <span class="terminal-bar__cmd"> whoami</span><span class="cursor cursor--block">▋</span>
+ </div>
+ </div>
+
+ <div class="hero__photo reveal-on-load" style="--d:.3s">
+ <img src="profile.jpg" alt="Nadav Levy" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22%3E%3Crect width=%22200%22 height=%22200%22 fill=%22%23f2f2f2%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22monospace%22 font-size=%2248%22 fill=%22%235c5c5c%22%3ENL%3C/text%3E%3C/svg%3E'">
+ </div>
+ </div>
+ </section>
+
+ <!-- ============ IMPACT STRIP ============ -->
+ <section class="impact" aria-label="Impact at a glance">
+ <div class="container impact__grid">
+ <div class="impact__stat reveal">
+ <span class="impact__num">3</span>
+ <span class="impact__label">products &amp; tools shipped</span>
+ </div>
+ <div class="impact__stat reveal" style="--d:.16s">
+ <span class="impact__num">1 yr</span>
+ <span class="impact__label">owning customer success</span>
+ </div>
+ <div class="impact__stat reveal" style="--d:.24s">
+ <span class="impact__num">20+</span>
+ <span class="impact__label">clients managed</span>
+ </div>
+ </div>
+ </section>
+
+ <!-- ============ ABOUT ============ -->
+ <section class="section section--alt" id="about">
+ <div class="container">
+ <header class="section__head reveal">
+ <span class="section__index">01 / about</span>
+ <h2 class="section__title">Who am I?</h2>
+ </header>
+
+ <div class="about">
+ <div class="about__bio reveal">
+ <p>I'm a Customer Success Manager at <img class="inline-logo" src="bites-logo.png" alt="Bites">, but I don't stay in one lane. I think like a product manager, obsess over user experience, and use AI to move fast — turning rough ideas into real, working things.</p>
+ <p>What drives me is the intersection of <strong>product thinking and AI</strong>. I'm fascinated by what a single person can now build and ship with the right tools — and I spend a lot of my time exploring exactly that. From prototyping new ideas to finding smarter ways to solve real problems, I'm always building something.</p>
+ <p>My goal is to grow into <strong>product management</strong> — the kind of PM who can research it, design it, and prototype it, not just write the spec. Customer success gave me the user empathy; building with AI gave me the range to act on it.</p>
+ </div>
+ <div class="about__img reveal">
+ <img src="1777905097013.jpeg" alt="Nadav at the Bites booth" onerror="this.onerror=null;this.parentElement.style.display='none'">
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- ============ PROJECTS ============ -->
+ <section class="section" id="projects">
+ <div class="container">
+ <header class="section__head reveal">
+ <span class="section__index">02 / projects</span>
+ <h2 class="section__title">Projects</h2>
+ <p class="section__lead">Real things I've built at <img class="inline-logo inline-logo--sm" src="bites-logo.png" alt="Bites"> and beyond — where product, AI, and design meet measurable impact.</p>
+ </header>
+
+ <div class="filters reveal" role="tablist" aria-label="Filter projects">
+ <button class="filter is-active" data-filter="all" type="button">All</button>
+ <button class="filter" data-filter="product" type="button">Product</button>
+ <button class="filter" data-filter="ai" type="button">AI</button>
+ <button class="filter" data-filter="design" type="button">Design</button>
+ </div>
+
+ <div class="projects-grid" id="projectsGrid">
+ <article class="card project project--featured reveal" data-tags="product ai">
+ <span class="project__icon">
+ <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#25D366" d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.163 5.335 5.5.001 12.057.001c3.181 0 6.167 1.24 8.413 3.488a11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+ </span>
+ <div class="project__body">
+ <h3 class="project__title">WhatsApp Messaging at Scale</h3>
+ <div class="case">
+ <div class="case__row">
+ <span class="case__label">Problem</span>
+ <p>Customers weren't reliably receiving content over WhatsApp — delivery failures hurt reach while messaging costs kept climbing.</p>
+ </div>
+ <div class="case__row">
+ <span class="case__label">Action</span>
+ <p>Designed reusable message templates and a smarter fallback logic that reroutes around failed deliveries instead of paying to resend blindly.</p>
+ </div>
+ <div class="case__row">
+ <span class="case__label">Result</span>
+ <p>A <strong>higher message-receiving rate</strong> and <strong>lower messaging costs</strong> — better reach, less waste.</p>
+ </div>
+ </div>
+ </div>
+ </article>
+
+ <article class="card project reveal" data-tags="product design">
+ <span class="project__icon">
+ <img src="bites-logo.png" alt="Bites">
+ </span>
+ <div class="project__body">
+ <h3 class="project__title">Bites Forms</h3>
+ <p class="project__desc">A hybrid of <strong>Google Forms and DocuSign</strong> in one flow — clients collect structured responses and capture legally-binding signatures in a single tool, cutting out the back-and-forth between two platforms.</p>
+ </div>
+ </article>
+
+ <article class="card project reveal" data-tags="ai design">
+ <span class="project__icon">
+ <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6l-5 6 5 6M16 6l5 6-5 6"/></svg>
+ </span>
+ <div class="project__body">
+ <h3 class="project__title">This Website</h3>
+ <p class="project__desc">The site you're on — vibe-coded end-to-end with AI, no framework. Liquid-glass nav, a live GitHub feed, and an AI assistant. Proof of the thesis: one person, the right tools, a shipped product.</p>
+ </div>
+ </article>
+
+ <article class="card project project--media reveal" data-tags="design">
+ <div class="project__body">
+ <span class="project__icon">
+ <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M18.5 15.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></svg>
+ </span>
+ <h3 class="project__title">Art &amp; Vision</h3>
+ <p class="project__desc">Visual work designed with AI tools — turning ideas and information into clean, engaging layouts. From concept to a polished, shareable visual, fast.</p>
+ </div>
+ <a class="project__media" href="sushi-infographic.png" target="_blank" rel="noopener" aria-label="Open full sushi infographic">
+ <img src="sushi-infographic.png" alt="Infographic designed by Nadav" loading="lazy">
+ </a>
+ </article>
+ </div>
+
+ <p class="projects-empty" id="projectsEmpty" hidden>Nothing here yet for that filter.</p>
+ </div>
+ </section>
+
+ <!-- ============ SKILLS ============ -->
+ <section class="section" id="skills">
+ <div class="container">
+ <header class="section__head reveal">
+ <span class="section__index">03 / skills</span>
+ <h2 class="section__title">What I Work With</h2>
+ <p class="section__lead">Four areas I move between — the proof is in the projects below.</p>
+ </header>
+
+ <div class="skills-strip">
+ <div class="skill-chip reveal">
+ <h3 class="skill-chip__title">Product</h3>
+ <p class="skill-chip__keys">Discovery · Roadmapping · Customer success · Feedback loops</p>
+ </div>
+ <div class="skill-chip reveal">
+ <h3 class="skill-chip__title">AI</h3>
+ <p class="skill-chip__keys">Claude · ChatGPT · Prompt engineering · AI-assisted workflows</p>
+ </div>
+ <div class="skill-chip reveal">
+ <h3 class="skill-chip__title">Design</h3>
+ <p class="skill-chip__keys">Figma · Midjourney · UI/UX flows · Rapid prototyping</p>
+ </div>
+ <div class="skill-chip reveal">
+ <h3 class="skill-chip__title">Code</h3>
+ <p class="skill-chip__keys">Vibe coding · HTML/CSS/JS · React basics · Claude Code</p>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- ============ GITHUB ACTIVITY ============ -->
+ <section class="section" id="github">
+ <div class="container">
+ <header class="section__head reveal">
+ <span class="section__index">04 / github</span>
+ <h2 class="section__title section__title--logo">
+ <svg class="title-logo" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.014 2.898-.014 3.293 0 .322.216.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" fill="currentColor"/></svg>
+ GitHub Activity
+ </h2>
+ <p class="section__lead">A snapshot of my coding activity over the year.</p>
+ </header>
+
+ <div class="gh reveal">
+ <div class="gh__years" id="ghYears" role="tablist" aria-label="Select year">
+ <button class="gh__year is-active" data-year="2026" type="button">2026</button>
+ <button class="gh__year" data-year="2025" type="button">2025</button>
+ <button class="gh__year" data-year="2024" type="button">2024</button>
+ </div>
+
+ <div class="card gh__total">
+ <span class="gh__total-label">Total Contributions (<span id="ghYearLabel">2026</span>)</span>
+ <span class="gh__total-num" id="ghTotal">—</span>
+ </div>
+
+ <div class="card gh__panel">
+ <div class="gh__panel-head">
+ <span class="gh__panel-title">Contribution graph — <span id="ghYearLabel2">2026</span></span>
+ <a class="gh__handle" id="ghHandle" target="_blank" rel="noopener">github.com/—</a>
+ </div>
+
+ <div class="gh__graph-wrap">
+ <div class="gh__months" id="ghMonths" aria-hidden="true"></div>
+ <div class="gh__graph" id="ghGraph" role="img" aria-label="GitHub contribution heatmap"></div>
+ </div>
+
+ <div class="gh__foot">
+ <div class="gh__langs-wrap">
+ <span class="gh__langs-label">Top Languages:</span>
+ <div class="gh__langs" id="ghLangs"></div>
+ </div>
+ <div class="gh__legend" aria-hidden="true">
+ <span>Less</span>
+ <span class="gh__cell" data-l="0"></span>
+ <span class="gh__cell" data-l="1"></span>
+ <span class="gh__cell" data-l="2"></span>
+ <span class="gh__cell" data-l="3"></span>
+ <span class="gh__cell" data-l="4"></span>
+ <span>More</span>
+ </div>
+ </div>
+
+ <p class="gh__msg" id="ghMsg" role="status" hidden></p>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- ============ EXPERIENCE ============ -->
+ <section class="section section--alt" id="experience">
+ <div class="container">
+ <header class="section__head reveal">
+ <span class="section__index">05 / experience</span>
+ <h2 class="section__title">Experience</h2>
+ </header>
+
+ <div class="timeline">
+ <article class="card timeline__item reveal">
+ <div class="timeline__marker" aria-hidden="true"></div>
+ <div class="timeline__meta">
+ <span class="timeline__date">2022 — Present</span>
+ <span class="timeline__where"><img class="inline-logo inline-logo--sm" src="bites-logo.png" alt="Bites"></span>
+ </div>
+ <h3 class="timeline__role">Customer Success Manager</h3>
+ <ul class="skill-list">
+ <li>Own the customer relationship from onboarding through renewal and growth.</li>
+ <li>Translate customer needs into product feedback and feature priorities.</li>
+ <li>Use AI tools daily to move faster — research, comms, prototypes, and analysis.</li>
+ </ul>
+ </article>
+ </div>
+ </div>
+ </section>
+
+ <!-- ============ EDUCATION ============ -->
+ <section class="section" id="education">
+ <div class="container">
+ <header class="section__head reveal">
+ <span class="section__index">06 / education &amp; service</span>
+ <h2 class="section__title">Education &amp; Service</h2>
+ </header>
+
+ <div class="timeline">
+ <article class="card timeline__item reveal">
+ <div class="timeline__marker" aria-hidden="true"></div>
+ <div class="timeline__meta">
+ <span class="timeline__date">Oct 2023 — Aug 2026</span>
+ <span class="timeline__where">Reichman University</span>
+ </div>
+ <div class="timeline__org">
+ <img class="org__logo" src="reichman.png" alt="Reichman University"
+ onerror="this.onerror=null;this.style.display='none';this.nextElementSibling.style.display='flex'">
+ <span class="org__badge org__badge--blue" style="display:none">RU</span>
+ <div class="timeline__org-info">
+ <strong>Bachelor of Arts — Communication &amp; Marketing</strong>
+ <span>Reichman University, Herzliya</span>
+ </div>
+ </div>
+ <ul class="skill-list">
+ <li>Specializing in Communication with a track in Marketing.</li>
+ <li>Building skills in strategic communication, branding, and consumer behavior.</li>
+ <li>Merging academic theory with hands-on product and CS work at <img class="inline-logo inline-logo--sm" src="bites-logo.png" alt="Bites">.</li>
+ </ul>
+ </article>
+
+ <article class="card timeline__item reveal">
+ <div class="timeline__marker" aria-hidden="true"></div>
+ <div class="timeline__meta">
+ <span class="timeline__date">Apr 2019 — Dec 2021</span>
+ <span class="timeline__where">Israel Defense Forces</span>
+ </div>
+ <div class="timeline__org">
+ <img class="org__logo" src="idf.png" alt="IDF"
+ onerror="this.onerror=null;this.style.display='none';this.nextElementSibling.style.display='flex'">
+ <span class="org__badge org__badge--olive" style="display:none">IDF</span>
+ <div class="timeline__org-info">
+ <strong>Sergeant Major — Artillery Corps</strong>
+ <span>Israel Defense Forces · 2 yrs 9 mos</span>
+ </div>
+ </div>
+ <ul class="skill-list">
+ <li>Combat commander in the Artillery force — led soldiers in high-pressure operational environments.</li>
+ <li>Head of the medical staff in my unit; responsible for all medical equipment and personnel readiness.</li>
+ <li>Developed strong leadership, crisis management, and team coordination under real constraints.</li>
+ </ul>
+ </article>
+
+ <article class="card timeline__item reveal">
+ <div class="timeline__marker" aria-hidden="true"></div>
+ <div class="timeline__meta">
+ <span class="timeline__date">Jan 2015 — Jul 2018</span>
+ <span class="timeline__where">Hebrew Scouts Movement</span>
+ </div>
+ <div class="timeline__org">
+ <img class="org__logo" src="havatzelet.png" alt="Hebrew Scouts"
+ onerror="this.onerror=null;this.style.display='none';this.nextElementSibling.style.display='flex'">
+ <span class="org__badge org__badge--green" style="display:none">HS</span>
+ <div class="timeline__org-info">
+ <strong>Associate — Head Instructor</strong>
+ <span>Hebrew Scouts Movement in Israel · 3 yrs 7 mos</span>
+ </div>
+ </div>
+ <ul class="skill-list">
+ <li>Head instructor for 2 years — designed and led educational programs for youth groups.</li>
+ <li>Built leadership, communication, and mentorship skills from an early age.</li>
+ <li>Managed groups of 20–30 youth, planning activities, handling conflicts, and creating a safe learning environment.</li>
+ </ul>
+ </article>
+ </div>
+ </div>
+ </section>
+
+ <!-- ============ CONTACT ============ -->
+ <section class="section" id="contact">
+ <div class="container">
+ <header class="section__head reveal">
+ <span class="section__index">07 / contact</span>
+ <h2 class="section__title">Let's Talk</h2>
+ <p class="section__lead">Building something, hiring, or just want to compare AI workflows? Drop me a line.</p>
+ </header>
+
+ <div class="contact">
+ <form class="card contact__form reveal" id="contactForm" action="https://formspree.io/f/xnjygkya" method="POST" novalidate>
+ <div class="field">
+ <label for="cf-name">Name</label>
+ <input id="cf-name" name="name" type="text" autocomplete="name" required placeholder="Your name" />
+ </div>
+ <div class="field">
+ <label for="cf-email">Email</label>
+ <input id="cf-email" name="email" type="email" autocomplete="email" required placeholder="you@example.com" />
+ </div>
+ <div class="field">
+ <label for="cf-message">Message</label>
+ <textarea id="cf-message" name="message" rows="4" required placeholder="What's on your mind?"></textarea>
+ </div>
+ <button class="btn btn--accent btn--full" type="submit">Send message</button>
+ <p class="contact__note" id="contactNote" role="status" aria-live="polite" hidden></p>
+ </form>
+
+ <aside class="contact__side reveal">
+ <p class="contact__sidelabel">// reach me directly</p>
+ <a class="contact__social" href="mailto:nadavile415@gmail.com">
+ <svg viewBox="0 0 24 24" aria-hidden="true" class="ic"><path d="M4 6h16v12H4z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+ <span><span class="contact__social-k">email</span>nadavile415@gmail.com</span>
+ </a>
+ <a class="contact__social" href="https://www.linkedin.com/in/nadav-levy-26a010273/" target="_blank" rel="noopener" data-linkedin>
+ <svg viewBox="0 0 24 24" aria-hidden="true" class="ic"><path d="M6.94 8.5V19H3.7V8.5h3.24zM5.32 3.5a1.88 1.88 0 110 3.76 1.88 1.88 0 010-3.76zM20.3 19h-3.24v-5.6c0-1.34-.48-2.25-1.68-2.25-.92 0-1.46.62-1.7 1.22-.09.21-.11.5-.11.8V19H10.3s.04-9.5 0-10.5h3.24v1.49c.43-.66 1.2-1.6 2.92-1.6 2.13 0 3.74 1.39 3.74 4.39V19z" fill="currentColor"/></svg>
+ <span><span class="contact__social-k">linkedin</span>Nadav Levy</span>
+ </a>
+ <a class="contact__social" href="https://github.com/nadavl-dev" target="_blank" rel="noopener">
+ <svg viewBox="0 0 24 24" aria-hidden="true" class="ic"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.014 2.898-.014 3.293 0 .322.216.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" fill="currentColor"/></svg>
+ <span><span class="contact__social-k">github</span>@nadavl-dev</span>
+ </a>
+ <a class="contact__social" href="/resume.pdf" download>
+ <svg viewBox="0 0 24 24" aria-hidden="true" class="ic"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+ <span><span class="contact__social-k">resume</span>download PDF</span>
+ </a>
+ </aside>
+ </div>
+ </div>
+ </section>
+ </main>
+
+ <!-- ============ FOOTER ============ -->
+ <footer class="footer">
+ <div class="container footer__inner">
+ <span class="footer__prompt">visitor@nadavlevy:~$ <span class="footer__cmd">echo"thanks for visiting"</span></span>
+ <div class="footer__social">
+ <a href="https://www.linkedin.com/in/nadav-levy-26a010273/" target="_blank" rel="noopener" aria-label="LinkedIn">
+ <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.94 8.5V19H3.7V8.5h3.24zM5.32 3.5a1.88 1.88 0 110 3.76 1.88 1.88 0 010-3.76zM20.3 19h-3.24v-5.6c0-1.34-.48-2.25-1.68-2.25-.92 0-1.46.62-1.7 1.22-.09.21-.11.5-.11.8V19H10.3s.04-9.5 0-10.5h3.24v1.49c.43-.66 1.2-1.6 2.92-1.6 2.13 0 3.74 1.39 3.74 4.39V19z" fill="currentColor"/></svg>
+ </a>
+ <a href="mailto:nadavile415@gmail.com" aria-label="Email">
+ <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+ </a>
+ </div>
+ </div>
+ </footer>
+
+ <!-- ============ AI CHAT WIDGET ============ -->
+ <button class="fab" id="chatFab" type="button" aria-label="Chat with AI" aria-expanded="false">
+ <img class="fab__icon fab__icon--chat fab__avatar" src="bot-avatar.png" alt="" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 40 40%27%3E%3Crect width=%2740%27 height=%2740%27 fill=%27%23eeeeee%27/%3E%3Ccircle cx=%2720%27 cy=%2716%27 r=%276.5%27 fill=%27%23999999%27/%3E%3Cpath d=%27M7 37c1-7 6-11 13-11s12 4 13 11z%27 fill=%27%23999999%27/%3E%3C/svg%3E'">
+ <svg class="fab__icon fab__icon--close" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+ </button>
+
+ <div class="chat" id="chatPanel" role="dialog" aria-label="Chat with Nadav's AI" aria-hidden="true">
+ <div class="chat__head">
+ <div class="chat__head-id">
+ <img class="chat__avatar" src="bot-avatar.png" alt="Nadav's AI bot" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 40 40%27%3E%3Crect width=%2740%27 height=%2740%27 fill=%27%23eeeeee%27/%3E%3Ccircle cx=%2720%27 cy=%2716%27 r=%276.5%27 fill=%27%23999999%27/%3E%3Cpath d=%27M7 37c1-7 6-11 13-11s12 4 13 11z%27 fill=%27%23999999%27/%3E%3C/svg%3E'">
+ <div>
+ <strong>Ask about Nadav</strong>
+ <span class="chat__head-sub">AI assistant · keyword demo</span>
+ </div>
+ </div>
+ <button class="chat__close" id="chatClose" type="button" aria-label="Close chat"></button>
+ </div>
+
+ <div class="chat__log" id="chatLog" aria-live="polite"></div>
+
+ <div class="chat__suggest" id="chatSuggest">
+ <button type="button" data-q="What are your skills?">Skills</button>
+ <button type="button" data-q="Tell me about your projects">Projects</button>
+ <button type="button" data-q="How can I contact you?">Contact</button>
+ </div>
+
+ <form class="chat__form" id="chatForm">
+ <input id="chatInput" type="text" autocomplete="off" placeholder="Type a message…" aria-label="Message" />
+ <button class="btn btn--accent btn--sm" type="submit" aria-label="Send">→</button>
+ </form>
+ </div>
+
+ <script src="script.js?v=17"></script>
+</body>
+</html>
