@@ -824,6 +824,19 @@ button { font-family: inherit; cursor: pointer; }
   padding-top: 18px;
   border-top: 1px solid var(--border);
 }
+.project__shot {
+  margin-top: 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--bg);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+}
+.project__shot img {
+  width: 100%;
+  display: block;
+  vertical-align: top;
+}
 .proof-ui {
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
@@ -919,6 +932,26 @@ button { font-family: inherit; cursor: pointer; }
   margin-bottom: 10px;
 }
 .skill-chip__title::before { content: "// "; color: var(--dim); }
+.skill-logos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 12px;
+  padding: 0;
+  list-style: none;
+}
+.skill-logos li { display: flex; }
+.skill-logos img {
+  width: 28px;
+  height: 28px;
+  display: block;
+  opacity: 0.82;
+  transition: opacity 0.2s var(--ease), transform 0.2s var(--ease);
+}
+.skill-chip:hover .skill-logos img {
+  opacity: 1;
+  transform: translateY(-1px);
+}
 .skill-chip__keys {
   font-size: 0.86rem;
   line-height: 1.55;

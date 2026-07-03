@@ -34,7 +34,7 @@
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
- <link rel="stylesheet" href="style.css?v=27" />
+ <link rel="stylesheet" href="style.css?v=28" />
  <link rel="preload" href="loader-bike.mp4" as="video" type="video/mp4" />
 </head>
 <body class="is-loading">
@@ -110,10 +110,6 @@
   <div class="terminal-bar terminal-bar--out">
    <span class="terminal-bar__arrow">&gt;</span>
    <span class="terminal-bar__out">role: customer success @ bites</span>
-  </div>
-  <div class="terminal-bar terminal-bar--out">
-   <span class="terminal-bar__arrow">&gt;</span>
-   <span class="terminal-bar__out">stack: claude · figma · vibe code</span>
   </div>
   <div class="terminal-bar terminal-bar--load">
    <span class="terminal-bar__arrow">&gt;</span>
@@ -204,15 +200,15 @@
  <div class="case">
  <div class="case__row">
  <span class="case__label">Problem</span>
- <p>Customers weren't reliably receiving content over WhatsApp — delivery failures hurt reach while messaging costs kept climbing.</p>
+ <p>WhatsApp is how Bites delivers training to frontline workers — but failed sends meant content never reached people while we still paid per message. Reach dropped and messaging spend kept climbing.</p>
  </div>
  <div class="case__row">
  <span class="case__label">Action</span>
- <p>Designed reusable message templates and a smarter fallback logic that reroutes around failed deliveries instead of paying to resend blindly.</p>
+ <p>Built approved WhatsApp Business templates and a fallback flow: when a delivery fails, the system reroutes automatically instead of blind retries that double the cost.</p>
  </div>
  <div class="case__row">
  <span class="case__label">Result</span>
- <p>A <strong>higher message-receiving rate</strong> and <strong>lower messaging costs</strong> — better reach, less waste.</p>
+ <p>A <strong>higher message-receiving rate</strong> across customer comms and <strong>thousands saved annually</strong> in messaging spend — better reach, less waste.</p>
  </div>
  </div>
  </div>
@@ -229,14 +225,9 @@
  </div>
  <h3 class="project__title">Bites Forms</h3>
  <p class="project__desc">Clients were bouncing between a form tool and a signing tool — so I designed and shipped a single flow: collect structured responses <em>and</em> capture legally-binding signatures in one place.</p>
- <div class="project__proof" aria-label="Bites Forms flow preview">
- <div class="proof-ui">
- <span class="proof-ui__bar"><i></i><i></i><i></i></span>
- <div class="proof-ui__row proof-ui__row--field"><span></span><span></span></div>
- <div class="proof-ui__row proof-ui__row--field"><span></span><span></span></div>
- <div class="proof-ui__row proof-ui__row--sign"><span>Signature</span><svg viewBox="0 0 80 24" aria-hidden="true"><path d="M4 18 C20 4, 30 22, 44 10 S 70 6, 76 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
- </div>
- </div>
+ <figure class="project__shot">
+ <img src="bites-forms-dashboard.png" alt="Bites Forms dashboard — template picker and recent forms" loading="lazy">
+ </figure>
  </div>
  </article>
 
@@ -265,24 +256,45 @@
  <header class="section__head reveal">
  <span class="section__index">03 / skills</span>
  <h2 class="section__title">What I Work With</h2>
- <p class="section__lead">Four areas I move between — the proof is in the projects below.</p>
+ <p class="section__lead">Four areas I move between — tools I reach for daily.</p>
  </header>
 
  <div class="skills-strip">
  <div class="skill-chip reveal">
  <h3 class="skill-chip__title">Product</h3>
+ <ul class="skill-logos" aria-label="Product tools">
+ <li><img src="https://cdn.simpleicons.org/notion/000000" alt="Notion" width="28" height="28" loading="lazy"></li>
+ <li><img src="https://cdn.simpleicons.org/linear/5E6AD2" alt="Linear" width="28" height="28" loading="lazy"></li>
+ <li><img src="https://cdn.simpleicons.org/slack/4A154B" alt="Slack" width="28" height="28" loading="lazy"></li>
+ </ul>
  <p class="skill-chip__keys">Discovery · Roadmapping · Customer success · Feedback loops</p>
  </div>
  <div class="skill-chip reveal">
  <h3 class="skill-chip__title">AI</h3>
+ <ul class="skill-logos" aria-label="AI tools">
+ <li><img src="https://cdn.simpleicons.org/anthropic/191919" alt="Claude" width="28" height="28" loading="lazy"></li>
+ <li><img src="https://cdn.simpleicons.org/openai/412991" alt="ChatGPT" width="28" height="28" loading="lazy"></li>
+ <li><img src="https://cdn.simpleicons.org/cursor/000000" alt="Cursor" width="28" height="28" loading="lazy"></li>
+ </ul>
  <p class="skill-chip__keys">Claude · ChatGPT · Prompt engineering · AI-assisted workflows</p>
  </div>
  <div class="skill-chip reveal">
  <h3 class="skill-chip__title">Design</h3>
+ <ul class="skill-logos" aria-label="Design tools">
+ <li><img src="https://cdn.simpleicons.org/figma/F24E1E" alt="Figma" width="28" height="28" loading="lazy"></li>
+ <li><img src="https://cdn.simpleicons.org/canva/00C4CC" alt="Canva" width="28" height="28" loading="lazy"></li>
+ <li><img src="https://cdn.simpleicons.org/adobecreativecloud/DA1F26" alt="Adobe Creative Cloud" width="28" height="28" loading="lazy"></li>
+ </ul>
  <p class="skill-chip__keys">Figma · Midjourney · UI/UX flows · Rapid prototyping</p>
  </div>
  <div class="skill-chip reveal">
  <h3 class="skill-chip__title">Code</h3>
+ <ul class="skill-logos" aria-label="Code tools">
+ <li><img src="https://cdn.simpleicons.org/html5/E34F26" alt="HTML5" width="28" height="28" loading="lazy"></li>
+ <li><img src="https://cdn.simpleicons.org/css3/1572B6" alt="CSS3" width="28" height="28" loading="lazy"></li>
+ <li><img src="https://cdn.simpleicons.org/javascript/F7DF1E" alt="JavaScript" width="28" height="28" loading="lazy"></li>
+ <li><img src="https://cdn.simpleicons.org/react/61DAFB" alt="React" width="28" height="28" loading="lazy"></li>
+ </ul>
  <p class="skill-chip__keys">Vibe coding · HTML/CSS/JS · React basics · Claude Code</p>
  </div>
  </div>
@@ -548,6 +560,6 @@
  </form>
  </div>
 
- <script src="script.js?v=23"></script>
+ <script src="script.js?v=24"></script>
 </body>
 </html>
