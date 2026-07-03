@@ -8,6 +8,48 @@
  const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+ /* ---------- intro loading screen ---------- */
+ const LOADER_MIN_MS = 3200;
+ const LOADER_MAX_MS = 5200;
+
+ const finishIntro = () => {
+ document.body.classList.remove("is-loading");
+ document.body.classList.add("is-ready");
+ const loader = $("#loader");
+ if (loader) loader.classList.add("is-hidden");
+ };
+
+ const skipIntro = () => finishIntro();
+
+ if (prefersReducedMotion) {
+ skipIntro();
+ } else {
+ const loaderVideo = $("#loaderVideo");
+ const startedAt = performance.now();
+ let finished = false;
+
+ const maybeFinish = () => {
+ if (finished) return;
+ if (performance.now() - startedAt < LOADER_MIN_MS) return;
+ finished = true;
+ finishIntro();
+ };
+
+ if (!loaderVideo) {
+ skipIntro();
+ } else {
+ loaderVideo.addEventListener("ended", maybeFinish);
+ loaderVideo.addEventListener("error", skipIntro);
+
+ const playPromise = loaderVideo.play();
+ if (playPromise && typeof playPromise.catch === "function") {
+ playPromise.catch(skipIntro);
+ }
+
+ setTimeout(maybeFinish, LOADER_MAX_MS);
+ }
+ }
+
  /* ---------- current year in footer ---------- */
  const yearEl = $("#year");
  if (yearEl) yearEl.textContent = new Date().getFullYear();
