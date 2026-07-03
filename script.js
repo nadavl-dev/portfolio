@@ -50,6 +50,23 @@
  }
  }
 
+ /* ---------- impact bar infinite scroll ---------- */
+ const impactTrack = $("#impactTrack");
+ const impactSet = $("#impactSet");
+ const impactSection = $(".impact");
+ if (impactTrack && impactSet && impactSection) {
+ if (prefersReducedMotion) {
+ impactSection.classList.add("impact--static");
+ } else {
+ const clone = impactSet.cloneNode(true);
+ clone.setAttribute("aria-hidden", "true");
+ impactTrack.appendChild(clone);
+ impactTrack.classList.add("is-animated");
+ const statCount = impactSet.querySelectorAll(".impact__stat").length;
+ impactTrack.style.setProperty("--impact-speed", `${Math.max(18, statCount * 7)}s`);
+ }
+ }
+
  /* ---------- current year in footer ---------- */
  const yearEl = $("#year");
  if (yearEl) yearEl.textContent = new Date().getFullYear();

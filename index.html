@@ -34,7 +34,7 @@
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
- <link rel="stylesheet" href="style.css?v=24" />
+ <link rel="stylesheet" href="style.css?v=25" />
  <link rel="preload" href="loader-bike.mp4" as="video" type="video/mp4" />
 </head>
 <body class="is-loading">
@@ -131,18 +131,23 @@
 
  <!-- ============ IMPACT STRIP ============ -->
  <section class="impact" aria-label="Impact at a glance">
- <div class="container impact__grid">
- <div class="impact__stat reveal">
+ <div class="impact__viewport">
+ <div class="impact__track" id="impactTrack">
+ <div class="impact__set" id="impactSet">
+ <div class="impact__stat">
  <span class="impact__num">3</span>
  <span class="impact__label">products &amp; tools shipped</span>
  </div>
- <div class="impact__stat reveal" style="--d:.16s">
+ <div class="impact__stat">
  <span class="impact__num">1 yr</span>
  <span class="impact__label">owning customer success</span>
  </div>
- <div class="impact__stat reveal" style="--d:.24s">
+ <div class="impact__stat">
  <span class="impact__num">20+</span>
  <span class="impact__label">clients managed</span>
+ </div>
+ <!-- add more .impact__stat blocks here — they will scroll automatically -->
+ </div>
  </div>
  </div>
  </section>
@@ -557,6 +562,6 @@
  </form>
  </div>
 
- <script src="script.js?v=19"></script>
+ <script src="script.js?v=20"></script>
 </body>
 </html>
