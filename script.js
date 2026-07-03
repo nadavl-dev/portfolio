@@ -211,6 +211,13 @@
  /* --- knowledge base: each intent has weighted keys, a reply, and a deeper"more" --- */
  const KB = [
  {
+ id:"whypm",
+ label:"why PM",
+ keys: { strong: ["why pm","why product","cs to pm","csm to pm","why product manager","moving to pm"], weak: ["pm role","product role","career goal","aspiring"] },
+ reply:"Nadav wants to move from CS to **PM** because he already does the loop — user research from daily customer calls, prototyping with AI, shipping tools like WhatsApp fallbacks and Bites Forms. CS taught him empathy; building taught him execution. He wants a role where that's the job, not a side project.",
+ more:"His pitch to recruiters: he's not escaping CS — he's graduating from it. Few PM candidates have shipped production tools from a customer-facing seat while managing enterprise accounts like Unilever and Amazon.",
+ },
+ {
  id:"skills",
  label:"skills",
  keys: { strong: ["skill","stack","tooling","tech stack","good at","capabilities"], weak: ["tool","tech","work with","expert","know"] },
@@ -228,7 +235,7 @@
  id:"whatsapp",
  label:"the WhatsApp project",
  keys: { strong: ["whatsapp","messaging","fallback","thousands","save money","saved money","cost saving","delivery rate","receiving rate"], weak: ["message","template","templates","scale","cost","costs"] },
- reply:"Nadav built a **WhatsApp messaging system at Bites** — reusable message templates plus a smarter fallback logic that routes around delivery failures. The impact: it saves the company **thousands of dollars a year** in messaging costs *and* boosted the **message-receiving rate** through better reach and reliability.",
+ reply:"Nadav built a **WhatsApp messaging system at Bites** — reusable templates plus smart fallback logic that routes around delivery failures. Impact: **thousands of dollars saved per year** in messaging costs and a **higher message-receiving rate** through better reach and reliability.",
  more:"It's a great example of how he works — spotting an expensive, overlooked operational problem and engineering a smarter system that's both cheaper and more effective. Real business impact from a Customer Success seat.",
  },
  {
@@ -333,7 +340,7 @@
  id:"greeting",
  label:"hello",
  keys: { strong: ["hello","hi","hey","shalom","howdy"], weak: ["yo","sup","morning","evening"] },
- reply:"Hey! I'm Nadav's AI assistant. Ask me anything — his skills, experience at Bites, army service, education, projects, or how to reach him.",
+ reply:"Hey! I'm Nadav's AI assistant. Ask about his **WhatsApp savings**, **why he's moving to PM**, projects, leadership (army & scouts), or how to reach him.",
  more:"Try things like: *\"what did he do in the army?\"*, *\"what does he do at Bites?\"*, or *\"how do I contact him?\"*",
  },
  {
@@ -479,7 +486,7 @@
  fab.setAttribute("aria-expanded","true");
  if (!greeted) {
  greeted = true;
- setTimeout(() => addMsg("Hi! I'm Nadav's AI assistant. Ask me about his skills, projects, experience, or how to get in touch.","bot"), 250);
+ setTimeout(() => addMsg("Hi! Ask me about Nadav's **WhatsApp impact**, **why CS → PM**, his projects, or his leadership background.","bot"), 250);
  }
  setTimeout(() => chatInput.focus(), 300);
  };
@@ -663,9 +670,51 @@
  ghMsg.hidden = true;
  };
 
+ const loadLive = async (year) => {
+ const y = String(year);
+ ghMsg.hidden = true;
+ ghHandle.textContent = `github.com/${GH_USER}`;
+ ghHandle.href = `https://github.com/${GH_USER}`;
+
+ try {
+ const [contribRes, reposRes] = await Promise.all([
+ fetch(`https://github-contributions-api.jogruber.de/v4/${GH_USER}?y=${y}`),
+ fetch(`https://api.github.com/users/${GH_USER}/repos?sort=updated&per_page=100`)
+ ]);
+ if (!contribRes.ok) throw new Error("contrib-failed");
+ const contrib = await contribRes.json();
+ const days = (contrib.contributions || []).map((d) => ({
+ date: d.date,
+ count: d.count,
+ level: d.level
+ }));
+ renderGraph(days);
+ const total = contrib.total?.[y] ?? days.reduce((s, d) => s + d.count, 0);
+ ghTotal.textContent = Number(total).toLocaleString();
+
+ if (reposRes.ok) {
+ const repos = await reposRes.json();
+ const langCounts = {};
+ repos.forEach((repo) => {
+ if (!repo.language || repo.fork) return;
+ langCounts[repo.language] = (langCounts[repo.language] || 0) + 1;
+ });
+ const langs = Object.entries(langCounts).sort((a, b) => b[1] - a[1]).slice(0, 5);
+ renderLangs(langs.length ? langs : [["CSS", 1]]);
+ } else {
+ renderLangs([["CSS", 1], ["JavaScript", 1]]);
+ }
+ } catch (err) {
+ ghMsg.hidden = false;
+ ghMsg.textContent = "Couldn't load live GitHub data — showing cached snapshot.";
+ loadFake(year);
+ }
+ };
+
  const load = (year) => {
  setLabels(year);
- loadFake(year);
+ if (isPlaceholder) loadFake(year);
+ else loadLive(year);
  };
 
  ghYears.addEventListener("click", (e) => {
