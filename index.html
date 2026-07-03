@@ -34,7 +34,7 @@
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
- <link rel="stylesheet" href="style.css?v=23" />
+ <link rel="stylesheet" href="style.css?v=24" />
  <link rel="preload" href="loader-bike.mp4" as="video" type="video/mp4" />
 </head>
 <body class="is-loading">
@@ -83,19 +83,12 @@
  <section class="hero" id="hero">
  <div class="container hero__inner">
  <div class="hero__content">
- <p class="hero__pre reveal-on-load" style="--d:.05s">// I build product from the customer seat</p>
+ <p class="hero__pre reveal-on-load" style="--d:.05s">// I am</p>
  <h1 class="hero__name reveal-on-load" style="--d:.18s">Nadav Levy</h1>
  <p class="hero__tagline reveal-on-load" style="--d:.32s">
- Customer Success Manager at <img class="inline-logo" src="bites-logo.png" alt="Bites"> — I hear what users need, prototype with AI, and <span class="hl">ship real tools</span>. Not tickets. Products.
+ Customer Success Manager at <img class="inline-logo" src="bites-logo.png" alt="Bites"> — building at the intersection of
+ <span class="hl">Product</span>, <span class="hl">AI</span>, and <span class="hl">Design</span>.
  </p>
- <p class="hero__pitch reveal-on-load" style="--d:.4s">
- Open to <strong>Product Manager</strong> roles where I can stay close to users and move from insight → prototype → impact.
- </p>
- <ul class="hero__tags reveal-on-load" style="--d:.46s" aria-label="Highlights">
- <li>Thousands saved on WhatsApp ops</li>
- <li>3 tools shipped from a CS seat</li>
- <li>Enterprise clients incl. Unilever &amp; Amazon</li>
- </ul>
 
  <div class="hero__ctas reveal-on-load" style="--d:.5s">
  <a href="#contact" class="btn btn--accent">Contact</a>
@@ -105,9 +98,28 @@
  </a>
  </div>
 
- <div class="terminal-bar reveal-on-load" style="--d:.66s" aria-hidden="true">
- <span class="terminal-bar__prompt">visitor@nadavlevy</span><span class="terminal-bar__path">:~/home$</span>
- <span class="terminal-bar__cmd"> whoami</span><span class="cursor cursor--block">▋</span>
+ <div class="terminal-stack reveal-on-load" style="--d:.66s" aria-hidden="true">
+  <div class="terminal-bar">
+   <span class="terminal-bar__prompt">visitor@nadavlevy</span><span class="terminal-bar__path">:~/home$</span>
+   <span class="terminal-bar__cmd"> whoami</span><span class="cursor cursor--block">▋</span>
+  </div>
+  <div class="terminal-bar terminal-bar--out">
+   <span class="terminal-bar__arrow">&gt;</span>
+   <span class="terminal-bar__out">nadav_levy — product · ai · design</span>
+  </div>
+  <div class="terminal-bar terminal-bar--out">
+   <span class="terminal-bar__arrow">&gt;</span>
+   <span class="terminal-bar__out">role: customer success @ bites</span>
+  </div>
+  <div class="terminal-bar terminal-bar--out">
+   <span class="terminal-bar__arrow">&gt;</span>
+   <span class="terminal-bar__out">stack: claude · figma · vibe code</span>
+  </div>
+  <div class="terminal-bar terminal-bar--load">
+   <span class="terminal-bar__arrow">&gt;</span>
+   <span class="terminal-bar__cmd"> loading portfolio</span>
+   <span class="terminal-spinner" aria-hidden="true"><span class="terminal-spinner__track"><span class="terminal-spinner__knob"></span></span></span>
+  </div>
  </div>
  </div>
 
@@ -121,20 +133,16 @@
  <section class="impact" aria-label="Impact at a glance">
  <div class="container impact__grid">
  <div class="impact__stat reveal">
- <span class="impact__num impact__num--brand">Thousands</span>
- <span class="impact__label">saved yearly on WhatsApp messaging</span>
- </div>
- <div class="impact__stat reveal" style="--d:.12s">
- <span class="impact__num">↑ reach</span>
- <span class="impact__label">higher message delivery rate after smart fallbacks</span>
+ <span class="impact__num">3</span>
+ <span class="impact__label">products &amp; tools shipped</span>
  </div>
  <div class="impact__stat reveal" style="--d:.16s">
- <span class="impact__num">3</span>
- <span class="impact__label">products shipped — forms, messaging &amp; this site</span>
+ <span class="impact__num">1 yr</span>
+ <span class="impact__label">owning customer success</span>
  </div>
  <div class="impact__stat reveal" style="--d:.24s">
  <span class="impact__num">20+</span>
- <span class="impact__label">enterprise accounts — Unilever, Amazon &amp; more</span>
+ <span class="impact__label">clients managed</span>
  </div>
  </div>
  </section>
@@ -149,40 +157,13 @@
 
  <div class="about">
  <div class="about__bio reveal">
- <p>I'm a Customer Success Manager at <img class="inline-logo" src="bites-logo.png" alt="Bites"> — but my job doesn't stop at retention. When customers hit the same friction twice, I build the fix: WhatsApp delivery logic, a forms + e-sign tool, internal workflows. <strong>CS gave me the user empathy; AI gave me the speed to act on it.</strong></p>
- <p>What makes me different: I operate like a PM from a CS seat. I talk to users daily, spot patterns in the pain, prototype solutions with Claude and Figma, and push them into production — not slide decks.</p>
- <p>I'm targeting <strong>product management</strong> roles where that loop is the job: research, design, ship, measure. I already do it. I just want the title to match.</p>
+ <p>I'm a Customer Success Manager at <img class="inline-logo" src="bites-logo.png" alt="Bites">, but I don't stay in one lane. I think like a product manager, obsess over user experience, and use AI to move fast — turning rough ideas into real, working things.</p>
+ <p>What drives me is the intersection of <strong>product thinking and AI</strong>. I'm fascinated by what a single person can now build and ship with the right tools — and I spend a lot of my time exploring exactly that. From prototyping new ideas to finding smarter ways to solve real problems, I'm always building something.</p>
+ <p>My goal is to grow into <strong>product management</strong> — the kind of PM who can research it, design it, and prototype it, not just write the spec. Customer success gave me the user empathy; building with AI gave me the range to act on it.</p>
  </div>
  <div class="about__img reveal">
  <img src="1777905097013.jpeg" alt="Nadav at the Bites booth" onerror="this.onerror=null;this.parentElement.style.display='none'">
  </div>
- </div>
-
- <div class="leadership reveal">
- <h3 class="leadership__title">How I lead</h3>
- <p class="leadership__lead">The thread across army, scouts, and CS — I take ownership when things get hard.</p>
- <div class="leadership__grid">
- <article class="card leadership__card">
- <span class="leadership__icon" aria-hidden="true">01</span>
- <h4>IDF Artillery · Sergeant Major</h4>
- <p>Combat commander in high-pressure ops. Head of unit medical staff — full ownership for people and readiness under real constraints.</p>
- </article>
- <article class="card leadership__card">
- <span class="leadership__icon" aria-hidden="true">02</span>
- <h4>Hebrew Scouts · Head Instructor</h4>
- <p>2 years leading youth programs for groups of 20–30. Planning, conflict resolution, and creating environments where people grow.</p>
- </article>
- <article class="card leadership__card">
- <span class="leadership__icon" aria-hidden="true">03</span>
- <h4>Bites · Customer Success</h4>
- <p>Own enterprise relationships end-to-end — and when the product gap is obvious, I ship the workaround myself instead of waiting.</p>
- </article>
- </div>
- </div>
-
- <div class="open-to card reveal">
- <p class="open-to__label">// currently exploring</p>
- <p class="open-to__text"><strong>APM / Product Manager roles</strong> — especially teams building B2B SaaS, AI-native workflows, or tools where customer insight drives the roadmap. Happy to chat even if you're just comparing notes on AI + product.</p>
  </div>
  </div>
  </section>
