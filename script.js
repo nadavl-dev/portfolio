@@ -277,7 +277,7 @@
  id:"projects",
  label:"projects",
  keys: { strong: ["project","portfolio","built","shipped","showcase","what has he built","what did he build","best project","project impact","impact did his projects"], weak: ["work","build","made","creation"] },
- reply:"Nadav's most meaningful work includes four projects with clear business or product impact:\n\nWhatsApp Messaging at Scale — He designed reusable message templates and fallback logic to route around failed deliveries. The result was thousands of dollars saved annually and a higher message delivery rate across customer communications.\n\nBites Forms — He built a workflow that combines structured data collection and legally binding signatures in one place, removing a costly two-tool process clients were using every day.\n\nThis portfolio — He designed and built the site end to end, including live GitHub integration and this assistant, as a working example of AI-assisted product delivery.\n\nArt and Vision — He produced visual work such as an AI-designed infographic, showing strong communication design outside core product features.",
+ reply:"Nadav's most meaningful work includes three projects with clear business or product impact:\n\nWhatsApp Messaging at Scale — He designed reusable message templates and fallback logic to route around failed deliveries. The result was thousands of dollars saved annually and a higher message delivery rate across customer communications.\n\nBites Forms — He built a workflow that combines structured data collection and legally binding signatures in one place, removing a costly two-tool process clients were using every day.\n\nThis portfolio — He designed and built the site end to end, including live GitHub integration and this assistant, as a working example of AI-assisted product delivery.",
  more:"Across these projects, the pattern is consistent: identify a recurring customer or business problem, scope a practical solution, ship it, and measure the outcome. That is the through-line in his work.",
  suggest: ["What was the impact of the WhatsApp project?", "Tell me about Bites Forms", "Why is he moving toward product management?"],
  actions: [{ label: "Open projects", scroll: "#projects" }],
@@ -308,15 +308,6 @@
  more:"For visitors evaluating his profile, the site demonstrates execution quality, attention to detail, and comfort with modern AI-assisted build workflows.",
  suggest: ["What impact did his projects have?", "GitHub activity", "How does he use AI?"],
  actions: [{ label: "GitHub section", scroll: "#github" }],
- },
- {
- id:"sushi",
- label:"Art and Vision",
- keys: { strong: ["sushi","infographic","infografic","art","vision"], weak: ["graphic","visual","poster","illustration","creative"] },
- reply:"Under Art and Vision, Nadav shows design work created with AI tools, including a detailed infographic. The work demonstrates his ability to translate information into a clear, visually structured format that is easy to understand and share.",
- more:"It complements his product work by showing communication design skills: organizing information, simplifying complexity, and producing polished visual output quickly.",
- suggest: ["What impact did his projects have?", "Design approach", "View projects"],
- actions: [{ label: "View infographic", scroll: "#projects" }],
  },
  {
  id:"contact",
@@ -387,7 +378,7 @@
  keys: { strong: ["design","figma","midjourney","ui","ux","design approach"], weak: ["visual","prototype","mockup","interface"] },
  reply:"Nadav uses design as a thinking tool. He works in Figma for interface flows, Midjourney for visual exploration, and rapid prototyping to test ideas before committing to build.",
  more:"His aesthetic preference is clean and minimal, which is reflected in this portfolio. Design, for him, supports clarity and decision-making rather than decoration alone.",
- suggest: ["Art and Vision", "This website", "What impact did his projects have?"],
+ suggest: ["This website", "What impact did his projects have?", "How does he use AI?"],
  actions: [{ label: "View projects", scroll: "#projects" }],
  },
  {
