@@ -214,7 +214,7 @@
  }
 
  /* ============================================================
- AI CHAT WIDGET (keyword demo)
+ AI CHAT WIDGET
  ============================================================ */
  const fab = $("#chatFab");
  const panel = $("#chatPanel");
@@ -224,165 +224,232 @@
  const chatInput = $("#chatInput");
  const suggest = $("#chatSuggest");
  let greeted = false;
+ let lastIntent = null;
+ let pendingOffer = null;
 
- /* --- knowledge base: each intent has weighted keys, a reply, and a deeper"more" --- */
+ const CHAT_STARTERS = [
+ { label: "30-sec recruiter brief", q: "Give me a 30 second recruiter brief on Nadav" },
+ { label: "Top projects", q: "What are your best projects?" },
+ { label: "Why PM?", q: "Why CS to PM?" },
+ { label: "Leadership", q: "What did you do in the army?" },
+ ];
+
+ const DEFAULT_SUGGEST = [
+ { label: "WhatsApp savings", q: "What did you save Bites on WhatsApp?" },
+ { label: "Why PM?", q: "Why CS to PM?" },
+ { label: "Contact", q: "How can I contact you?" },
+ { label: "Resume", q: "Where is your resume?" },
+ ];
+
+ const norm = (s) => s.toLowerCase().replace(/[^a-z0-9֐-׿\s]/g, "").replace(/\s+/g, " ").trim();
+ const stem = (w) => w.replace(/(ing|ed|es|s)$/,"");
+
  const KB = [
+ {
+ id:"recruiter",
+ label:"recruiter brief",
+ keys: { strong: ["recruiter brief","30 second","30 sec","should we hire","hiring manager","interview him","pitch me"], weak: ["recruiter","interview","candidate","hire"] },
+ reply:"**30-second brief:** Nadav is a CSM at Bites who ships product from the customer seat — WhatsApp ops that save thousands/year, a forms + e-sign tool, and this AI-powered portfolio. IDF Sergeant Major + Scouts instructor before tech. Studying Comm/Marketing at Reichman. Targeting PM roles where user empathy meets execution.",
+ more:"Why him over a typical APM? He already runs discovery → prototype → ship loops with real enterprise users (Unilever, Amazon). Less theory, more shipped tools.",
+ suggest: ["Why CS to PM?", "WhatsApp impact", "Download resume"],
+ actions: [{ label: "See projects", scroll: "#projects" }, { label: "Email Nadav", href: "mailto:nadavile415@gmail.com" }],
+ },
  {
  id:"whypm",
  label:"why PM",
  keys: { strong: ["why pm","why product","cs to pm","csm to pm","why product manager","moving to pm"], weak: ["pm role","product role","career goal","aspiring"] },
- reply:"Nadav wants to move from CS to **PM** because he already does the loop — user research from daily customer calls, prototyping with AI, shipping tools like WhatsApp fallbacks and Bites Forms. CS taught him empathy; building taught him execution. He wants a role where that's the job, not a side project.",
- more:"His pitch to recruiters: he's not escaping CS — he's graduating from it. Few PM candidates have shipped production tools from a customer-facing seat while managing enterprise accounts like Unilever and Amazon.",
+ reply:"Nadav wants PM because he already runs the loop — daily user research from CS, AI-powered prototyping, and shipped tools like WhatsApp fallbacks and Bites Forms. CS gave empathy; building gave execution.",
+ more:"Recruiter angle: he's not escaping CS — he's graduating from it. Few candidates ship production tools while managing enterprise accounts.",
+ suggest: ["Top projects", "WhatsApp savings", "Recruiter brief"],
+ actions: [{ label: "View projects", scroll: "#projects" }],
  },
  {
  id:"skills",
  label:"skills",
  keys: { strong: ["skill","stack","tooling","tech stack","good at","capabilities"], weak: ["tool","tech","work with","expert","know"] },
- reply:"Nadav works across four areas: **Product** (thinking, discovery, roadmapping), **AI tools** (Claude, ChatGPT, prompt engineering), **Design with AI** (Figma, Midjourney, rapid prototyping), and **Coding with AI** (vibe coding, HTML/CSS/JS, React basics). Scroll to the Skills section for the full list",
- more:"The thread connecting all of it: speed from idea to working thing. He uses AI at every step — research, writing, design exploration, and code — so one person can cover ground that used to need a team.",
+ reply:"Four lanes: **Product** (discovery, roadmapping, CS), **AI** (Claude, ChatGPT, prompt engineering), **Design** (Figma, Midjourney, rapid UI), **Code** (vibe coding, HTML/CSS/JS, React basics).",
+ more:"The connective tissue is speed — AI at every step so one person covers research → design → build.",
+ suggest: ["AI workflow", "Top projects", "This website"],
+ actions: [{ label: "Skills section", scroll: "#skills" }],
  },
  {
  id:"projects",
  label:"projects",
- keys: { strong: ["project","portfolio","built","shipped","showcase","what has he built","what did he build"], weak: ["work","build","made","creation"] },
- reply:"Nadav has shipped a few real things: **1) WhatsApp Messaging at Scale** — a templating + smart-fallback system that saves the company **thousands of dollars a year** and boosted the message-receiving rate. **2) Bites Forms** — a Google-Forms-meets-DocuSign tool for his clients. **3) This website** — vibe-coded end-to-end with AI. **4) A Sushi infographic** — a clean visual designed with AI. Ask me about any one of them!",
- more:"His build style: scope something real, prototype it fast with AI, put it in front of users, iterate. The common thread is that he's a CSM who actually ships product — not just files tickets.",
+ keys: { strong: ["project","portfolio","built","shipped","showcase","what has he built","what did he build","best project"], weak: ["work","build","made","creation"] },
+ reply:"**1) WhatsApp at Scale** — templates + smart fallbacks → thousands saved/year + higher delivery rate. **2) Bites Forms** — forms + e-sign in one flow. **3) This site** — vibe-coded with AI + live GitHub. **4) Art & Vision** — AI-designed infographic.",
+ more:"Pattern: spot real customer pain → prototype fast → ship → iterate. A CSM who builds, not just escalates.",
+ suggest: ["WhatsApp impact", "Bites Forms", "Why PM?"],
+ actions: [{ label: "Open projects", scroll: "#projects" }],
  },
  {
  id:"whatsapp",
  label:"the WhatsApp project",
- keys: { strong: ["whatsapp","messaging","fallback","thousands","save money","saved money","cost saving","delivery rate","receiving rate"], weak: ["message","template","templates","scale","cost","costs"] },
- reply:"Nadav built a **WhatsApp messaging system at Bites** — reusable templates plus smart fallback logic that routes around delivery failures. Impact: **thousands of dollars saved per year** in messaging costs and a **higher message-receiving rate** through better reach and reliability.",
- more:"It's a great example of how he works — spotting an expensive, overlooked operational problem and engineering a smarter system that's both cheaper and more effective. Real business impact from a Customer Success seat.",
+ keys: { strong: ["whatsapp","messaging","fallback","thousands","save money","saved money","cost saving","delivery rate","receiving rate","whatsapp impact","whatsapp savings"], weak: ["message","template","templates","scale","cost","costs"] },
+ reply:"Built **WhatsApp messaging at Bites** — reusable templates + fallback logic that routes around failed deliveries. Result: **thousands saved per year** and a **higher message-receiving rate**.",
+ more:"Classic Nadav: expensive operational problem → smarter system → measurable ROI from a CS seat.",
+ suggest: ["Top projects", "Why PM?", "Recruiter brief"],
+ actions: [{ label: "See projects", scroll: "#projects" }],
  },
  {
  id:"bitesforms",
  label:"Bites Forms",
  keys: { strong: ["bites forms","forms","docusign","signature","e-sign","esign"], weak: ["form","sign","document","contract"] },
- reply:"**Bites Forms** is a product Nadav designed and shipped for his clients — a hybrid of **Google Forms and DocuSign** in one flow. Customers collect structured responses *and* capture legally-binding signatures in a single tool, no more juggling two separate platforms.",
- more:"It came straight from his customer work: he saw clients bouncing between a form tool and a signing tool, and built the thing that merged them. Classic product instinct from a CS role.",
+ reply:"**Bites Forms** merges **Google Forms + DocuSign** — collect responses and capture legally-binding signatures in one flow. Born from watching clients juggle two tools.",
+ more:"Product instinct from CS: saw the workaround customers invented and shipped the real solution.",
+ suggest: ["Top projects", "WhatsApp savings"],
+ actions: [{ label: "See projects", scroll: "#projects" }],
  },
  {
  id:"thissite",
  label:"this website",
  keys: { strong: ["this website","this site","this portfolio","vibe code","vibe coding","vibe coded"], weak: ["site","website","portfolio site","claude code"] },
- reply:"This very site! Nadav vibe-coded it end-to-end with AI (Claude Code), no framework — liquid-glass navigation, a live GitHub contribution feed from the API, and, well… me. It's proof of his whole thesis: one person + the right tools = a real shipped product.",
- more:"Every part of it — the design system, the GitHub integration, this chatbot's logic — was built by describing intent to AI and iterating fast. That's the workflow he's most excited about.",
+ reply:"This site — vibe-coded with AI, no framework. Liquid-glass nav, live GitHub feed, scrolling impact bar, and me. Proof that one person + AI can ship a real product.",
+ more:"Built by describing intent to AI and iterating — the workflow Nadav uses for everything.",
+ suggest: ["AI workflow", "GitHub activity"],
+ actions: [{ label: "GitHub section", scroll: "#github" }],
  },
  {
  id:"sushi",
  label:"his Art & Vision work",
  keys: { strong: ["sushi","infographic","infografic","art","vision"], weak: ["graphic","visual","poster","illustration","creative"] },
- reply:"Under **Art & Vision**, Nadav shows visual work designed with AI tools — like a clean, engaging infographic. You can see it (and click to open it full-size) in the Projects section.",
- more:"It shows his design side away from product work: a good eye for layout and the ability to go from idea to a polished, shareable visual quickly using AI.",
+ reply:"**Art & Vision** — AI-designed visuals like a sushi infographic. Click the image in Projects to see it full-size.",
+ more:"Shows design taste beyond product work: fast from idea to polished, shareable visual.",
+ suggest: ["Top projects", "Design skills"],
+ actions: [{ label: "See infographic", scroll: "#projects" }],
  },
  {
  id:"contact",
  label:"contact",
  keys: { strong: ["contact","email","reach","hire","get in touch","hiring","recruit"], weak: ["talk","available","message","connect","dm"] },
- reply:"Easiest way to reach Nadav is email: **nadavile415@gmail.com**. There's also a contact form on this page, plus LinkedIn (linkedin.com/in/nadav-levy-26a010273) and GitHub (@nadavl-dev). He's always up for a conversation about product, AI, or building things.",
- more:"If you're a recruiter: the resume download button is in the hero and the Contact section. He responds fastest to email.",
+ reply:"Email **nadavile415@gmail.com** (fastest). Also: contact form on this page, LinkedIn, or GitHub @nadavl-dev.",
+ more:"Recruiters: resume download is in the hero and Contact section.",
+ suggest: ["Recruiter brief", "Resume", "Why PM?"],
+ actions: [{ label: "Contact section", scroll: "#contact" }, { label: "Email now", href: "mailto:nadavile415@gmail.com" }],
  },
  {
  id:"experience",
  label:"experience",
  keys: { strong: ["experience","bites","career","customer success","csm"], weak: ["job","company","role","cs","success","current"] },
- reply:"Nadav is a **Customer Success Manager at Bites** (2022 → present) — a platform that helps enterprise companies train and upskill frontline teams. He owns the customer lifecycle end-to-end: onboarding, adoption, renewal, and growth.",
- more:"What makes his CS work different: he operates like a PM. Customer pain gets translated into concrete product feedback, and he prototypes solutions with AI instead of just filing tickets. Companies like Unilever and Amazon use Bites.",
+ reply:"**CSM at Bites** (2022 → now) — enterprise training platform for frontline teams. Owns onboarding → adoption → renewal. Clients include Unilever & Amazon.",
+ more:"Operates like a PM: customer pain becomes product feedback, and he prototypes fixes with AI instead of waiting on roadmap.",
+ suggest: ["Top projects", "Why PM?", "Leadership"],
+ actions: [{ label: "Work history", scroll: "#experience" }],
  },
  {
  id:"army",
  label:"military service",
- keys: { strong: ["army","idf","military","sergeant","artillery","combat","service","soldier"], weak: ["commander","medical","unit","war"] },
- reply:"Nadav served in the **IDF Artillery Corps** (Apr 2019 – Dec 2021) as a **Sergeant Major** — combat commander leading soldiers in high-pressure operational environments, plus head of his unit's medical staff and all medical equipment.",
- more:"That experience shaped how he works: staying calm under pressure, making decisions with incomplete information, and taking full ownership for the people around him. It translates directly to handling demanding enterprise customers.",
+ keys: { strong: ["army","idf","military","sergeant","artillery","combat","service","soldier","leadership"], weak: ["commander","medical","unit","war"] },
+ reply:"**IDF Artillery** (2019–2021), **Sergeant Major** — combat commander + head of unit medical staff. High-pressure ops, full ownership.",
+ more:"Calm under pressure, decisions with incomplete info, responsibility for people — same muscles he uses with enterprise customers.",
+ suggest: ["Scouts volunteering", "Recruiter brief", "Why PM?"],
+ actions: [{ label: "Education & service", scroll: "#education" }],
  },
  {
  id:"scouts",
  label:"volunteering",
  keys: { strong: ["scout","volunteer","tzofim","youth","instructor"], weak: ["movement","mentor","teach","guide"] },
- reply:"Before the army, Nadav spent **3.5 years in the Hebrew Scouts Movement** (2015–2018), including 2 years as a **Head Instructor** — designing educational programs and leading groups of 20–30 youth.",
- more:"It's where his leadership started: planning activities, handling conflicts, and creating an environment where people grow. Same core skill he uses with customers today.",
+ reply:"**Hebrew Scouts** (2015–2018), 2 years as **Head Instructor** — programs for 20–30 youth. Where his leadership started.",
+ more:"Planning, conflict resolution, mentorship — same skills he uses with customers today.",
+ suggest: ["Army service", "About Nadav"],
+ actions: [{ label: "Education & service", scroll: "#education" }],
  },
  {
  id:"education",
  label:"education",
  keys: { strong: ["education","university","reichman","degree","study","studies","student"], weak: ["school","ba","communication","marketing","academic"] },
- reply:"Nadav is studying for a **B.A. in Communication with a Marketing track at Reichman University** (2023–2026) — while working full-time at Bites.",
- more:"The combo is deliberate: strategic communication and consumer-behavior frameworks from academia, applied immediately to real product and customer work at Bites.",
+ reply:"**B.A. Communication + Marketing** at Reichman University (2023–2026), while working full-time at Bites.",
+ more:"Academic frameworks for comms and consumer behavior, applied immediately to real product work.",
+ suggest: ["Experience at Bites", "About Nadav"],
+ actions: [{ label: "Education section", scroll: "#education" }],
  },
  {
  id:"github",
  label:"GitHub",
  keys: { strong: ["github","git","repo","contribution","commit"], weak: ["code","coding","open source"] },
- reply:"Nadav codes under **@nadavl-dev** on GitHub — the GitHub section on this page pulls his real contribution heatmap and top languages live from the API.",
- more:"Most of his building is AI-assisted ('vibe coding') — describing what he wants precisely and iterating fast. This whole portfolio is an example.",
+ reply:"**@nadavl-dev** on GitHub — the section on this page pulls live contribution data and top languages.",
+ more:"Most building is AI-assisted vibe coding — this portfolio included.",
+ suggest: ["This website", "AI workflow"],
+ actions: [{ label: "GitHub section", scroll: "#github" }, { label: "Open GitHub", href: "https://github.com/nadavl-dev" }],
  },
  {
  id:"ai",
  label:"AI",
- keys: { strong: ["ai","claude","chatgpt","prompt","llm","gpt","artificial"], weak: ["machine learning","automation","model"] },
- reply:"AI is core to how Nadav works — Claude and ChatGPT for thinking and writing, prompt engineering for reliable output, and AI-assisted workflows end-to-end. This whole site was vibe-coded with AI",
- more:"His take: AI rewrote what one person can ship. The interesting skill isn't using a chatbot — it's chaining AI through research → design → build → test so ideas become products in days.",
+ keys: { strong: ["ai","claude","chatgpt","prompt","llm","gpt","artificial","ai workflow"], weak: ["machine learning","automation","model"] },
+ reply:"AI is how Nadav works end-to-end: Claude/ChatGPT for thinking, prompt engineering for reliable output, AI for design exploration and vibe coding.",
+ more:"The skill isn't chatting — it's chaining AI through research → design → build → test so ideas ship in days.",
+ suggest: ["This website", "Top projects"],
  },
  {
  id:"design",
  label:"design",
  keys: { strong: ["design","figma","midjourney","ui","ux"], weak: ["visual","prototype","mockup","interface"] },
- reply:"Nadav designs *with* AI — Figma for UI/UX flows, Midjourney for visual concepts, and fast prototyping to test ideas before committing. The goal: idea → something tangible, quickly.",
- more:"He cares about clean, minimal interfaces (this black-and-white site is his taste). Design for him is a thinking tool, not decoration.",
+ reply:"Design *with* AI — Figma for flows, Midjourney for concepts, fast prototypes to test before committing. Clean, minimal taste (this site).",
+ more:"Design as a thinking tool, not decoration.",
+ suggest: ["Art & Vision", "This website"],
+ actions: [{ label: "Projects", scroll: "#projects" }],
  },
  {
  id:"product",
  label:"product",
  keys: { strong: ["product","pm","roadmap","product manager"], weak: ["manager","strategy","prioritize","discovery"] },
- reply:"Nadav approaches things with a product mindset: find the real problem, prioritize ruthlessly, prototype, ship. Coming from Customer Success means he stays close to actual user needs.",
- more:"CS is his unfair advantage as a product thinker — he hears unfiltered customer pain every day, so his product instincts are grounded in reality, not theory.",
+ reply:"Product mindset: find the real problem, prioritize, prototype, ship. CS keeps him grounded in actual user pain — not theory.",
+ more:"CS is his unfair advantage as a product thinker.",
+ suggest: ["Why PM?", "Top projects"],
  },
  {
  id:"resume",
  label:"resume",
- keys: { strong: ["resume","cv"], weak: ["download","pdf"] },
- reply:"You can grab Nadav's resume from the **Download Resume** button in the hero or the Contact section.",
- more:"Short version: CSM at Bites (2022–now), IDF Sergeant Major before that, B.A. in Communication & Marketing at Reichman in progress, and a Product/AI/Design generalist profile.",
+ keys: { strong: ["resume","cv","download resume"], weak: ["download","pdf"] },
+ reply:"Download from the **Download Resume** button in the hero or Contact section — same PDF you'd get from Nadav directly.",
+ more:"CSM at Bites · IDF Sergeant Major · Reichman B.A. in progress · ships product from a CS seat.",
+ suggest: ["Recruiter brief", "Contact"],
+ actions: [{ label: "Get resume", href: "/resume.pdf" }, { label: "Contact", scroll: "#contact" }],
  },
  {
  id:"location",
  label:"location",
  keys: { strong: ["where","location","based","israel","live"], weak: ["city","country","from","relocate"] },
- reply:"Nadav is based in **Israel** — he studies at Reichman University in Herzliya and works at Bites.",
- more:"He's comfortable working with international teams and customers — Bites serves global enterprise clients.",
+ reply:"Based in **Israel** — Reichman University in Herzliya, Bites during the week.",
+ more:"Works with international enterprise customers daily.",
  },
  {
  id:"greeting",
  label:"hello",
  keys: { strong: ["hello","hi","hey","shalom","howdy"], weak: ["yo","sup","morning","evening"] },
- reply:"Hey! I'm Nadav's AI assistant. Ask about his **WhatsApp savings**, **why he's moving to PM**, projects, leadership (army & scouts), or how to reach him.",
- more:"Try things like: *\"what did he do in the army?\"*, *\"what does he do at Bites?\"*, or *\"how do I contact him?\"*",
+ reply:"Hey! I'm Nadav's AI — I know his projects, path to PM, leadership story, and how to reach him. Pick a suggestion below or ask anything.",
+ suggest: ["Recruiter brief", "Top projects", "Why PM?", "WhatsApp savings"],
  },
  {
  id:"about",
  label:"about Nadav",
  keys: { strong: ["who is","about nadav","tell me about","introduce","bio"], weak: ["who","nadav","yourself","summary"] },
- reply:"Nadav Levy is a **Customer Success Manager at Bites** who works like a PM, designs with AI, and builds with AI. Before tech: IDF Sergeant Major in the Artillery Corps and Head Instructor in the Hebrew Scouts. Currently also studying Communication & Marketing at Reichman University.",
- more:"The pattern across everything: leading people, owning outcomes, and moving fast. Ask me about any specific chapter — army, scouts, Bites, or his AI workflow.",
+ reply:"**Nadav Levy** — CSM at Bites who builds like a PM. Ships tools from customer insight. IDF Sergeant Major, Scouts Head Instructor, Reichman student. Product · AI · Design generalist.",
+ more:"Ask about any chapter — Bites, army, projects, or why PM.",
+ suggest: ["Recruiter brief", "Top projects", "Leadership"],
+ actions: [{ label: "About section", scroll: "#about" }],
  },
  {
  id:"thanks",
  label:"thanks",
  keys: { strong: ["thank","thanks","toda","appreciate"], weak: ["cool","awesome","great","nice"] },
- reply:"Anytime! Anything else you want to know about Nadav?",
- more:"I'm here all day. Literally — I'm a script.",
+ reply:"Anytime! Want to keep going?",
+ suggest: ["Contact", "Recruiter brief", "Top projects"],
+ },
+ {
+ id:"yes",
+ label:"follow-up yes",
+ keys: { strong: ["yes","yeah","yep","sure","ok","okay","please","go ahead"], weak: ["yup","do it"] },
+ reply:"",
+ },
+ {
+ id:"no",
+ label:"follow-up no",
+ keys: { strong: ["no","nope","nah","not now"], weak: [] },
+ reply:"No problem — ask about anything else or jump to a section on the site.",
+ suggest: ["Top projects", "Contact", "Why PM?"],
  },
  ];
 
- /* --- smarter matching: scoring + fuzzy + follow-up memory --- */
- let lastIntent = null;
-
- const norm = (s) => s.toLowerCase().replace(/[^a-z0-9֐-׿\s]/g, "").replace(/\s+/g, " ").trim();
- const stem = (w) => w.replace(/(ing|ed|es|s)$/,"");
-
- // levenshtein distance capped at 2 (early exit), for typo tolerance
  const editDist = (a, b) => {
  if (Math.abs(a.length - b.length) > 2) return 3;
  const m = a.length, n = b.length;
@@ -400,15 +467,14 @@
  return prev[n];
  };
 
- // returns match quality: 1 = exact/stem/phrase, 0.6 = fuzzy (typo), 0 = none
  const keyHit = (text, words, key) => {
- if (key.includes("")) return text.includes(key) ? 1 : 0; // phrases: substring match
+ if (key.includes(" ")) return text.includes(key) ? 1 : 0;
  if (words.includes(key)) return 1;
  const sk = stem(key);
  let fuzzy = 0;
  for (const w of words) {
  if (stem(w) === sk) return 1;
- if (key.length >= 4 && w.length >= 4 && editDist(w, key) <= (key.length >= 7 ? 2 : 1)) fuzzy = 0.6; // typo tolerance
+ if (key.length >= 4 && w.length >= 4 && editDist(w, key) <= (key.length >= 7 ? 2 : 1)) fuzzy = 0.6;
  }
  return fuzzy;
  };
@@ -422,110 +488,189 @@
 
  const FOLLOWUPS = ["more","tell me more","go on","expand","elaborate","why","how come","really","interesting","and"];
 
+ const findIntent = (id) => KB.find((i) => i.id === id);
+
  const getReply = (text) => {
  const t = norm(text);
  const words = t.split(" ");
 
- // follow-up on the previous topic? ("tell me more","why", etc.)
- if (lastIntent && words.length <= 4 && FOLLOWUPS.some((f) => t === f || t.startsWith(f +"") || t.endsWith("" + f))) {
- const intent = KB.find((i) => i.id === lastIntent);
- if (intent && intent.more) { lastIntent = null; return intent.more; }
+ if (pendingOffer && ["yes","yeah","yep","sure","ok","okay","please","yup"].some((w) => t === w || t.startsWith(w + " "))) {
+ const offered = findIntent(pendingOffer);
+ pendingOffer = null;
+ if (offered) {
+ lastIntent = offered.id;
+ return { text: offered.reply, intent: offered, suggest: offered.suggest, actions: offered.actions };
+ }
  }
 
- // score every intent, pick the best
+ if (lastIntent && words.length <= 4 && FOLLOWUPS.some((f) => t === f || t.startsWith(f + " ") || t.endsWith(" " + f))) {
+ const intent = findIntent(lastIntent);
+ if (intent && intent.more) {
+ lastIntent = null;
+ return { text: intent.more, intent, suggest: intent.suggest, actions: intent.actions };
+ }
+ }
+
+ if (t === "yes" || t === "yeah" || t === "sure") {
+ const yesIntent = findIntent("yes");
+ if (yesIntent) { /* handled above via pendingOffer */ }
+ }
+
  const ranked = KB.map((i) => ({ i, s: scoreIntent(i, t, words) }))
-.filter((r) => r.s > 0)
-.sort((a, b) => b.s - a.s);
+ .filter((r) => r.s > 0 && r.i.id !== "yes")
+ .sort((a, b) => b.s - a.s);
 
  if (ranked.length) {
  const best = ranked[0];
  lastIntent = best.i.id;
- let reply = best.i.reply;
- // if a second topic also scored well, offer it
+ let replyText = best.i.reply;
+ pendingOffer = null;
  const second = ranked[1];
- if (second && second.s >= 3 && second.i.id !== best.i.id && !["greeting","thanks"].includes(second.i.id)) {
- reply += `\n\nI can also tell you about his **${second.i.label}** — just ask.`;
+ if (second && second.s >= 3 && second.i.id !== best.i.id && !["greeting","thanks","no"].includes(second.i.id)) {
+ replyText += `\n\nWant to hear about **${second.i.label}** too?`;
+ pendingOffer = second.i.id;
  }
- return reply;
+ return {
+ text: replyText,
+ intent: best.i,
+ suggest: best.i.suggest || DEFAULT_SUGGEST.map((s) => s.q),
+ actions: best.i.actions,
+ };
  }
 
  lastIntent = null;
- return"Hmm, I don't have that one. I know about Nadav's **skills**, **experience at Bites**, **army service**, **scouts**, **education**, **projects**, **AI workflow**, and **how to contact him**. Or email him directly: nadavile415@gmail.com";
+ pendingOffer = null;
+ return {
+ text: "I'm not sure on that one. Try asking about **projects**, **WhatsApp savings**, **why PM**, **leadership**, or **how to contact** Nadav.",
+ suggest: ["Recruiter brief", "Top projects", "Why PM?", "Contact"],
+ actions: [{ label: "Contact Nadav", scroll: "#contact" }],
+ };
  };
 
- // minimal markdown: **bold**
- const fmt = (s) => s.replace(/\*\*(.+?)\*\*/g,"<strong>$1</strong>");
+ const fmt = (s) => s.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
 
- const BOT_AVATAR ="bot-avatar.png";
- const BOT_FALLBACK =
-"data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 40 40%27%3E%3Crect width=%2740%27 height=%2740%27 fill=%27%23eeeeee%27/%3E%3Ccircle cx=%2720%27 cy=%2716%27 r=%276.5%27 fill=%27%23999999%27/%3E%3Cpath d=%27M7 37c1-7 6-11 13-11s12 4 13 11z%27 fill=%27%23999999%27/%3E%3C/svg%3E";
+ const BOT_AVATAR = "bot-avatar.png";
+ const BOT_FALLBACK = "data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 40 40%27%3E%3Crect width=%2740%27 height=%2740%27 fill=%27%23eeeeee%27/%3E%3Ccircle cx=%2720%27 cy=%2716%27 r=%276.5%27 fill=%27%23999999%27/%3E%3Cpath d=%27M7 37c1-7 6-11 13-11s12 4 13 11z%27 fill=%27%23999999%27/%3E%3C/svg%3E";
  const avatarHTML = `<img class="msg-avatar" src="${BOT_AVATAR}" alt="" onerror="this.onerror=null;this.src='${BOT_FALLBACK}'">`;
 
+ const scrollToSection = (sel) => {
+ const el = document.querySelector(sel);
+ if (!el) return;
+ closeChat();
+ setTimeout(() => el.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth", block: "start" }), 220);
+ };
+
+ const setSuggestions = (items) => {
+ if (!suggest) return;
+ const list = (items || DEFAULT_SUGGEST).slice(0, 4);
+ suggest.innerHTML = list.map((item) => {
+ const label = typeof item === "string" ? item : item.label;
+ const q = typeof item === "string" ? item : item.q;
+ return `<button type="button" data-q="${q.replace(/"/g, "&quot;")}">${label}</button>`;
+ }).join("");
+ };
+
  const addMsg = (text, who) => {
- if (who ==="user") {
+ if (who === "user") {
  const el = document.createElement("div");
- el.className ="msg msg--user";
+ el.className = "msg msg--user";
  el.innerHTML = fmt(text);
  log.appendChild(el);
  log.scrollTop = log.scrollHeight;
  return el;
  }
  const row = document.createElement("div");
- row.className ="msg-row";
+ row.className = "msg-row";
  row.innerHTML = `${avatarHTML}<div class="msg msg--bot">${fmt(text)}</div>`;
  log.appendChild(row);
  log.scrollTop = log.scrollHeight;
  return row;
  };
 
+ const addBotReply = (payload) => {
+ const row = document.createElement("div");
+ row.className = "msg-row msg-row--rich";
+ let actionsHTML = "";
+ if (payload.actions && payload.actions.length) {
+ actionsHTML = `<div class="msg-actions">${payload.actions.map((a) => {
+ if (a.scroll) return `<button type="button" class="msg-action" data-scroll="${a.scroll}">${a.label}</button>`;
+ if (a.href) return `<a class="msg-action" href="${a.href}" ${a.href.startsWith("http") ? 'target="_blank" rel="noopener"' : ""}${a.href.endsWith(".pdf") ? " download" : ""}>${a.label}</a>`;
+ if (a.q) return `<button type="button" class="msg-action" data-q="${a.q.replace(/"/g, "&quot;")}">${a.label}</button>`;
+ return "";
+ }).join("")}</div>`;
+ }
+ row.innerHTML = `${avatarHTML}<div class="msg msg--bot">${fmt(payload.text)}${actionsHTML}</div>`;
+ log.appendChild(row);
+ log.scrollTop = log.scrollHeight;
+ if (payload.suggest) setSuggestions(payload.suggest.map((q) => ({ label: q.replace(/\?$/, "").slice(0, 22), q })));
+ return row;
+ };
+
  const showTyping = () => {
  const row = document.createElement("div");
- row.className ="msg-row";
+ row.className = "msg-row";
  row.innerHTML = `${avatarHTML}<div class="typing"><span></span><span></span><span></span></div>`;
  log.appendChild(row);
  log.scrollTop = log.scrollHeight;
  return row;
  };
 
+ const showWelcome = () => {
+ const wrap = document.createElement("div");
+ wrap.className = "chat-welcome";
+ wrap.innerHTML = `
+ <p class="chat-welcome__title">Hey — I'm Nadav's AI.</p>
+ <p class="chat-welcome__sub">I know his story, projects, and path to PM. Start here:</p>
+ <div class="chat-welcome__grid">
+ ${CHAT_STARTERS.map((s) => `<button type="button" class="chat-starter" data-q="${s.q.replace(/"/g, "&quot;")}"><span>${s.label}</span></button>`).join("")}
+ </div>`;
+ log.appendChild(wrap);
+ setSuggestions(DEFAULT_SUGGEST);
+ };
+
  const botRespond = (userText) => {
  const typing = showTyping();
- const delay = prefersReducedMotion ? 200 : 650 + Math.min(userText.length * 18, 700);
+ const delay = prefersReducedMotion ? 200 : 550 + Math.min(userText.length * 14, 600);
  setTimeout(() => {
  typing.remove();
- addMsg(getReply(userText),"bot");
+ const welcome = log.querySelector(".chat-welcome");
+ if (welcome) welcome.remove();
+ addBotReply(getReply(userText));
  }, delay);
  };
 
  const openChat = () => {
  panel.classList.add("is-open");
- panel.setAttribute("aria-hidden","false");
+ panel.setAttribute("aria-hidden", "false");
  fab.classList.add("is-open");
- fab.setAttribute("aria-expanded","true");
+ fab.setAttribute("aria-expanded", "true");
  if (!greeted) {
  greeted = true;
- setTimeout(() => addMsg("Hi! Ask me about Nadav's **WhatsApp impact**, **why CS → PM**, his projects, or his leadership background.","bot"), 250);
+ showWelcome();
  }
  setTimeout(() => chatInput.focus(), 300);
  };
+
  const closeChat = () => {
  panel.classList.remove("is-open");
- panel.setAttribute("aria-hidden","true");
+ panel.setAttribute("aria-hidden", "true");
  fab.classList.remove("is-open");
- fab.setAttribute("aria-expanded","false");
+ fab.setAttribute("aria-expanded", "false");
  };
+
  const toggleChat = () => (panel.classList.contains("is-open") ? closeChat() : openChat());
 
  fab.addEventListener("click", toggleChat);
  closeBtn.addEventListener("click", closeChat);
  document.addEventListener("keydown", (e) => {
- if (e.key ==="Escape" && panel.classList.contains("is-open")) closeChat();
+ if (e.key === "Escape" && panel.classList.contains("is-open")) closeChat();
  });
 
  const send = (text) => {
  const msg = text.trim();
  if (!msg) return;
- addMsg(msg,"user");
- chatInput.value ="";
+ addMsg(msg, "user");
+ chatInput.value = "";
  botRespond(msg);
  };
 
@@ -533,10 +678,23 @@
  e.preventDefault();
  send(chatInput.value);
  });
+
+ log.addEventListener("click", (e) => {
+ const qBtn = e.target.closest("[data-q]");
+ if (qBtn) send(qBtn.dataset.q);
+ const scrollBtn = e.target.closest("[data-scroll]");
+ if (scrollBtn) scrollToSection(scrollBtn.dataset.scroll);
+ });
+
  suggest.addEventListener("click", (e) => {
  const btn = e.target.closest("button[data-q]");
- if (btn) { openChat(); send(btn.dataset.q); }
+ if (btn) {
+ if (!panel.classList.contains("is-open")) openChat();
+ send(btn.dataset.q);
+ }
  });
+
+ setSuggestions(DEFAULT_SUGGEST);
 
  /* ============================================================
  GITHUB ACTIVITY (live, no token required)

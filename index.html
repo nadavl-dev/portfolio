@@ -34,7 +34,7 @@
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
- <link rel="stylesheet" href="style.css?v=25" />
+ <link rel="stylesheet" href="style.css?v=26" />
  <link rel="preload" href="loader-bike.mp4" as="video" type="video/mp4" />
 </head>
 <body class="is-loading">
@@ -530,18 +530,21 @@
  </footer>
 
  <!-- ============ AI CHAT WIDGET ============ -->
- <button class="fab" id="chatFab" type="button" aria-label="Chat with AI" aria-expanded="false">
- <img class="fab__icon fab__icon--chat fab__avatar" src="bot-avatar.png" alt="" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 40 40%27%3E%3Crect width=%2740%27 height=%2740%27 fill=%27%23eeeeee%27/%3E%3Ccircle cx=%2720%27 cy=%2716%27 r=%276.5%27 fill=%27%23999999%27/%3E%3Cpath d=%27M7 37c1-7 6-11 13-11s12 4 13 11z%27 fill=%27%23999999%27/%3E%3C/svg%3E'">
- <svg class="fab__icon fab__icon--close" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+ <button class="fab" id="chatFab" type="button" aria-label="Ask about Nadav" aria-expanded="false">
+ <span class="fab__label">Ask AI</span>
+ <span class="fab__icons">
+  <img class="fab__icon fab__icon--chat fab__avatar" src="bot-avatar.png" alt="" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 40 40%27%3E%3Crect width=%2740%27 height=%2740%27 fill=%27%23eeeeee%27/%3E%3Ccircle cx=%2720%27 cy=%2716%27 r=%276.5%27 fill=%27%23999999%27/%3E%3Cpath d=%27M7 37c1-7 6-11 13-11s12 4 13 11z%27 fill=%27%23999999%27/%3E%3C/svg%3E'">
+  <svg class="fab__icon fab__icon--close" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+ </span>
  </button>
 
- <div class="chat" id="chatPanel" role="dialog" aria-label="Chat with Nadav's AI" aria-hidden="true">
+ <div class="chat" id="chatPanel" role="dialog" aria-label="Ask about Nadav" aria-hidden="true">
  <div class="chat__head">
  <div class="chat__head-id">
- <img class="chat__avatar" src="bot-avatar.png" alt="Nadav's AI bot" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 40 40%27%3E%3Crect width=%2740%27 height=%2740%27 fill=%27%23eeeeee%27/%3E%3Ccircle cx=%2720%27 cy=%2716%27 r=%276.5%27 fill=%27%23999999%27/%3E%3Cpath d=%27M7 37c1-7 6-11 13-11s12 4 13 11z%27 fill=%27%23999999%27/%3E%3C/svg%3E'">
+ <img class="chat__avatar" src="bot-avatar.png" alt="" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 40 40%27%3E%3Crect width=%2740%27 height=%2740%27 fill=%27%23eeeeee%27/%3E%3Ccircle cx=%2720%27 cy=%2716%27 r=%276.5%27 fill=%27%23999999%27/%3E%3Cpath d=%27M7 37c1-7 6-11 13-11s12 4 13 11z%27 fill=%27%23999999%27/%3E%3C/svg%3E'">
  <div>
- <strong>Ask about Nadav</strong>
- <span class="chat__head-sub">AI assistant · try “WhatsApp project” or “why PM?”</span>
+ <strong>Nadav's AI</strong>
+ <span class="chat__head-sub"><span class="dot-live" aria-hidden="true"></span> online · ask me anything</span>
  </div>
  </div>
  <button class="chat__close" id="chatClose" type="button" aria-label="Close chat"></button>
@@ -549,19 +552,14 @@
 
  <div class="chat__log" id="chatLog" aria-live="polite"></div>
 
- <div class="chat__suggest" id="chatSuggest">
- <button type="button" data-q="What did you save Bites on WhatsApp?">WhatsApp impact</button>
- <button type="button" data-q="Why CS to PM?">Why PM?</button>
- <button type="button" data-q="Tell me about your projects">Projects</button>
- <button type="button" data-q="What did you do in the army?">Leadership</button>
- </div>
+ <div class="chat__suggest" id="chatSuggest" aria-label="Suggested questions"></div>
 
  <form class="chat__form" id="chatForm">
- <input id="chatInput" type="text" autocomplete="off" placeholder="Type a message…" aria-label="Message" />
+ <input id="chatInput" type="text" autocomplete="off" placeholder="Ask about projects, PM path, army…" aria-label="Message" />
  <button class="btn btn--accent btn--sm" type="submit" aria-label="Send">→</button>
  </form>
  </div>
 
- <script src="script.js?v=20"></script>
+ <script src="script.js?v=21"></script>
 </body>
 </html>
