@@ -5,7 +5,7 @@
  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
  <title>Nadav Levy — Product · AI · Design</title>
- <meta name="description" content="Nadav Levy — Customer Success Manager at Bites building at the intersection of Product, AI, and Design. A PM/AI/Design generalist who ships." />
+ <meta name="description" content="Nadav Levy — CSM at Bites who ships product. Saved thousands on WhatsApp delivery, built Bites Forms, and vibe-coded this site. Open to PM roles." />
  <meta name="author" content="Nadav Levy" />
  <meta name="theme-color" content="#ffffff" />
 
@@ -34,9 +34,25 @@
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
- <link rel="stylesheet" href="style.css?v=20" />
+ <link rel="stylesheet" href="style.css?v=29" />
+ <link rel="preload" href="loader-bike.mp4" as="video" type="video/mp4" />
 </head>
-<body>
+<body class="is-loading">
+
+ <!-- ============ LOADING SCREEN ============ -->
+ <div class="loader" id="loader" aria-hidden="true">
+  <div class="loader__stage">
+   <video
+    class="loader__video"
+    id="loaderVideo"
+    src="loader-bike.mp4"
+    playsinline
+    muted
+    preload="auto"
+    aria-hidden="true"
+   ></video>
+  </div>
+ </div>
 
  <!-- ============ BOTTOM DOCK NAV ============ -->
  <nav class="dock" id="nav" aria-label="Primary">
@@ -82,9 +98,24 @@
  </a>
  </div>
 
- <div class="terminal-bar reveal-on-load" style="--d:.66s" aria-hidden="true">
- <span class="terminal-bar__prompt">visitor@nadavlevy</span><span class="terminal-bar__path">:~/home$</span>
- <span class="terminal-bar__cmd"> whoami</span><span class="cursor cursor--block">▋</span>
+ <div class="terminal-stack reveal-on-load" style="--d:.66s" aria-hidden="true">
+  <div class="terminal-bar">
+   <span class="terminal-bar__prompt">visitor@nadavlevy</span><span class="terminal-bar__path">:~/home$</span>
+   <span class="terminal-bar__cmd"> whoami</span><span class="cursor cursor--block">▋</span>
+  </div>
+  <div class="terminal-bar terminal-bar--out">
+   <span class="terminal-bar__arrow">&gt;</span>
+   <span class="terminal-bar__out">nadav_levy — product · ai · design</span>
+  </div>
+  <div class="terminal-bar terminal-bar--out">
+   <span class="terminal-bar__arrow">&gt;</span>
+   <span class="terminal-bar__out">role: customer success @ bites</span>
+  </div>
+  <div class="terminal-bar terminal-bar--load">
+   <span class="terminal-bar__arrow">&gt;</span>
+   <span class="terminal-bar__cmd"> loading portfolio</span>
+   <span class="terminal-spinner" aria-hidden="true"><span class="terminal-spinner__track"><span class="terminal-spinner__knob"></span></span></span>
+  </div>
  </div>
  </div>
 
@@ -96,18 +127,23 @@
 
  <!-- ============ IMPACT STRIP ============ -->
  <section class="impact" aria-label="Impact at a glance">
- <div class="container impact__grid">
- <div class="impact__stat reveal">
+ <div class="impact__viewport">
+ <div class="impact__track" id="impactTrack">
+ <div class="impact__set" id="impactSet">
+ <div class="impact__stat">
  <span class="impact__num">3</span>
  <span class="impact__label">products &amp; tools shipped</span>
  </div>
- <div class="impact__stat reveal" style="--d:.16s">
+ <div class="impact__stat">
  <span class="impact__num">1 yr</span>
  <span class="impact__label">owning customer success</span>
  </div>
- <div class="impact__stat reveal" style="--d:.24s">
+ <div class="impact__stat">
  <span class="impact__num">20+</span>
  <span class="impact__label">clients managed</span>
+ </div>
+ <!-- add more .impact__stat blocks here — they will scroll automatically -->
+ </div>
  </div>
  </div>
  </section>
@@ -139,7 +175,7 @@
  <header class="section__head reveal">
  <span class="section__index">02 / projects</span>
  <h2 class="section__title">Projects</h2>
- <p class="section__lead">Real things I've built at <img class="inline-logo inline-logo--sm" src="bites-logo.png" alt="Bites"> and beyond — where product, AI, and design meet measurable impact.</p>
+ <p class="section__lead">Proof, not pitch — each one started as a customer problem I couldn't ignore.</p>
  </header>
 
  <div class="filters reveal" role="tablist" aria-label="Filter projects">
@@ -155,19 +191,24 @@
  <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#25D366" d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.163 5.335 5.5.001 12.057.001c3.181 0 6.167 1.24 8.413 3.488a11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
  </span>
  <div class="project__body">
+ <div class="project__metrics">
+ <span class="metric-pill metric-pill--brand">Thousands saved / year</span>
+ <span class="metric-pill">Higher delivery rate</span>
+ <span class="metric-pill">Ops → Product</span>
+ </div>
  <h3 class="project__title">WhatsApp Messaging at Scale</h3>
  <div class="case">
  <div class="case__row">
  <span class="case__label">Problem</span>
- <p>Customers weren't reliably receiving content over WhatsApp — delivery failures hurt reach while messaging costs kept climbing.</p>
+ <p>WhatsApp is how Bites delivers training to frontline workers — but failed sends meant content never reached people while we still paid per message. Reach dropped and messaging spend kept climbing.</p>
  </div>
  <div class="case__row">
  <span class="case__label">Action</span>
- <p>Designed reusable message templates and a smarter fallback logic that reroutes around failed deliveries instead of paying to resend blindly.</p>
+ <p>Built approved WhatsApp Business templates and a fallback flow: when a delivery fails, the system reroutes automatically instead of blind retries that double the cost.</p>
  </div>
  <div class="case__row">
  <span class="case__label">Result</span>
- <p>A <strong>higher message-receiving rate</strong> and <strong>lower messaging costs</strong> — better reach, less waste.</p>
+ <p>A <strong>higher message-receiving rate</strong> across customer comms and <strong>thousands saved annually</strong> in messaging spend — better reach, less waste.</p>
  </div>
  </div>
  </div>
@@ -178,8 +219,15 @@
  <img src="bites-logo.png" alt="Bites">
  </span>
  <div class="project__body">
+ <div class="project__metrics">
+ <span class="metric-pill">Google Forms + DocuSign</span>
+ <span class="metric-pill metric-pill--brand">Shipped to clients</span>
+ </div>
  <h3 class="project__title">Bites Forms</h3>
- <p class="project__desc">A hybrid of <strong>Google Forms and DocuSign</strong> in one flow — clients collect structured responses and capture legally-binding signatures in a single tool, cutting out the back-and-forth between two platforms.</p>
+ <p class="project__desc">Clients were bouncing between a form tool and a signing tool — so I designed and shipped a single flow: collect structured responses <em>and</em> capture legally-binding signatures in one place.</p>
+ <figure class="project__shot">
+ <img src="bites-forms-dashboard.png" alt="Bites Forms dashboard — template picker and recent forms" loading="lazy">
+ </figure>
  </div>
  </article>
 
@@ -188,22 +236,13 @@
  <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6l-5 6 5 6M16 6l5 6-5 6"/></svg>
  </span>
  <div class="project__body">
+ <div class="project__metrics">
+ <span class="metric-pill">AI-built</span>
+ <span class="metric-pill metric-pill--brand">Zero framework</span>
+ </div>
  <h3 class="project__title">This Website</h3>
  <p class="project__desc">The site you're on — vibe-coded end-to-end with AI, no framework. Liquid-glass nav, a live GitHub feed, and an AI assistant. Proof of the thesis: one person, the right tools, a shipped product.</p>
  </div>
- </article>
-
- <article class="card project project--media reveal" data-tags="design">
- <div class="project__body">
- <span class="project__icon">
- <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M18.5 15.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></svg>
- </span>
- <h3 class="project__title">Art &amp; Vision</h3>
- <p class="project__desc">Visual work designed with AI tools — turning ideas and information into clean, engaging layouts. From concept to a polished, shareable visual, fast.</p>
- </div>
- <a class="project__media" href="sushi-infographic.png" target="_blank" rel="noopener" aria-label="Open full sushi infographic">
- <img src="sushi-infographic.png" alt="Infographic designed by Nadav" loading="lazy">
- </a>
  </article>
  </div>
 
@@ -217,24 +256,43 @@
  <header class="section__head reveal">
  <span class="section__index">03 / skills</span>
  <h2 class="section__title">What I Work With</h2>
- <p class="section__lead">Four areas I move between — the proof is in the projects below.</p>
+ <p class="section__lead">Four areas I move between — tools I reach for daily.</p>
  </header>
 
  <div class="skills-strip">
  <div class="skill-chip reveal">
  <h3 class="skill-chip__title">Product</h3>
- <p class="skill-chip__keys">Discovery · Roadmapping · Customer success · Feedback loops</p>
+ <ul class="skill-tags" aria-label="Product focus areas">
+ <li>Discovery</li>
+ <li>Roadmapping</li>
+ <li>Customer success</li>
+ <li>Feedback loops</li>
+ </ul>
  </div>
  <div class="skill-chip reveal">
  <h3 class="skill-chip__title">AI</h3>
+ <ul class="skill-logos" aria-label="AI tools">
+ <li class="skill-logo"><img src="logos/anthropic.svg" alt="Claude" width="22" height="22" loading="lazy"></li>
+ <li class="skill-logo"><img src="logos/openai.svg" alt="ChatGPT" width="22" height="22" loading="lazy"></li>
+ </ul>
  <p class="skill-chip__keys">Claude · ChatGPT · Prompt engineering · AI-assisted workflows</p>
  </div>
  <div class="skill-chip reveal">
  <h3 class="skill-chip__title">Design</h3>
+ <ul class="skill-logos" aria-label="Design tools">
+ <li class="skill-logo"><img src="logos/figma.svg" alt="Figma" width="22" height="22" loading="lazy"></li>
+ <li class="skill-logo"><img src="logos/midjourney.svg" alt="Midjourney" width="22" height="22" loading="lazy"></li>
+ </ul>
  <p class="skill-chip__keys">Figma · Midjourney · UI/UX flows · Rapid prototyping</p>
  </div>
  <div class="skill-chip reveal">
  <h3 class="skill-chip__title">Code</h3>
+ <ul class="skill-logos" aria-label="Code tools">
+ <li class="skill-logo"><img src="logos/html5.svg" alt="HTML5" width="22" height="22" loading="lazy"></li>
+ <li class="skill-logo"><img src="logos/css3.svg" alt="CSS3" width="22" height="22" loading="lazy"></li>
+ <li class="skill-logo"><img src="logos/javascript.svg" alt="JavaScript" width="22" height="22" loading="lazy"></li>
+ <li class="skill-logo"><img src="logos/react.svg" alt="React" width="22" height="22" loading="lazy"></li>
+ </ul>
  <p class="skill-chip__keys">Vibe coding · HTML/CSS/JS · React basics · Claude Code</p>
  </div>
  </div>
@@ -250,7 +308,7 @@
  <svg class="title-logo" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.014 2.898-.014 3.293 0 .322.216.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" fill="currentColor"/></svg>
  GitHub Activity
  </h2>
- <p class="section__lead">A snapshot of my coding activity over the year.</p>
+ <p class="section__lead">Live data from <a class="text-link" href="https://github.com/nadavl-dev" target="_blank" rel="noopener">@nadavl-dev</a> — how I build when I'm not in front of customers.</p>
  </header>
 
  <div class="gh reveal">
@@ -456,7 +514,7 @@
  <!-- ============ FOOTER ============ -->
  <footer class="footer">
  <div class="container footer__inner">
- <span class="footer__prompt">visitor@nadavlevy:~$ <span class="footer__cmd">echo"thanks for visiting"</span></span>
+ <span class="footer__prompt">visitor@nadavlevy:~$ <span class="footer__cmd">echo "thanks for visiting — let's build something"</span></span>
  <div class="footer__social">
  <a href="https://www.linkedin.com/in/nadav-levy-26a010273/" target="_blank" rel="noopener" aria-label="LinkedIn">
  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.94 8.5V19H3.7V8.5h3.24zM5.32 3.5a1.88 1.88 0 110 3.76 1.88 1.88 0 010-3.76zM20.3 19h-3.24v-5.6c0-1.34-.48-2.25-1.68-2.25-.92 0-1.46.62-1.7 1.22-.09.21-.11.5-.11.8V19H10.3s.04-9.5 0-10.5h3.24v1.49c.43-.66 1.2-1.6 2.92-1.6 2.13 0 3.74 1.39 3.74 4.39V19z" fill="currentColor"/></svg>
@@ -469,37 +527,37 @@
  </footer>
 
  <!-- ============ AI CHAT WIDGET ============ -->
- <button class="fab" id="chatFab" type="button" aria-label="Chat with AI" aria-expanded="false">
- <img class="fab__icon fab__icon--chat fab__avatar" src="bot-avatar.png" alt="" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 40 40%27%3E%3Crect width=%2740%27 height=%2740%27 fill=%27%23eeeeee%27/%3E%3Ccircle cx=%2720%27 cy=%2716%27 r=%276.5%27 fill=%27%23999999%27/%3E%3Cpath d=%27M7 37c1-7 6-11 13-11s12 4 13 11z%27 fill=%27%23999999%27/%3E%3C/svg%3E'">
- <svg class="fab__icon fab__icon--close" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+ <button class="fab" id="chatFab" type="button" aria-label="Ask about Nadav" aria-expanded="false">
+ <span class="fab__label">Ask AI</span>
+ <span class="fab__icons">
+  <img class="fab__icon fab__icon--chat fab__avatar" src="bot-avatar.png" alt="" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 40 40%27%3E%3Crect width=%2740%27 height=%2740%27 fill=%27%23eeeeee%27/%3E%3Ccircle cx=%2720%27 cy=%2716%27 r=%276.5%27 fill=%27%23999999%27/%3E%3Cpath d=%27M7 37c1-7 6-11 13-11s12 4 13 11z%27 fill=%27%23999999%27/%3E%3C/svg%3E'">
+  <svg class="fab__icon fab__icon--close" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+ </span>
  </button>
 
- <div class="chat" id="chatPanel" role="dialog" aria-label="Chat with Nadav's AI" aria-hidden="true">
+ <div class="chat" id="chatPanel" role="dialog" aria-label="Ask about Nadav" aria-hidden="true">
  <div class="chat__head">
+ <button class="chat__back" id="chatBack" type="button" aria-label="Back to menu" hidden>← Back</button>
  <div class="chat__head-id">
- <img class="chat__avatar" src="bot-avatar.png" alt="Nadav's AI bot" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 40 40%27%3E%3Crect width=%2740%27 height=%2740%27 fill=%27%23eeeeee%27/%3E%3Ccircle cx=%2720%27 cy=%2716%27 r=%276.5%27 fill=%27%23999999%27/%3E%3Cpath d=%27M7 37c1-7 6-11 13-11s12 4 13 11z%27 fill=%27%23999999%27/%3E%3C/svg%3E'">
+ <img class="chat__avatar" src="bot-avatar.png" alt="" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 40 40%27%3E%3Crect width=%2740%27 height=%2740%27 fill=%27%23eeeeee%27/%3E%3Ccircle cx=%2720%27 cy=%2716%27 r=%276.5%27 fill=%27%23999999%27/%3E%3Cpath d=%27M7 37c1-7 6-11 13-11s12 4 13 11z%27 fill=%27%23999999%27/%3E%3C/svg%3E'">
  <div>
- <strong>Ask about Nadav</strong>
- <span class="chat__head-sub">AI assistant · keyword demo</span>
+ <strong>Nadav Levy</strong>
+ <span class="chat__head-sub"><span class="dot-live" aria-hidden="true"></span> Assistant · experience &amp; projects</span>
  </div>
  </div>
- <button class="chat__close" id="chatClose" type="button" aria-label="Close chat"></button>
+ <button class="chat__close" id="chatClose" type="button" aria-label="Close chat">×</button>
  </div>
 
  <div class="chat__log" id="chatLog" aria-live="polite"></div>
 
- <div class="chat__suggest" id="chatSuggest">
- <button type="button" data-q="What are your skills?">Skills</button>
- <button type="button" data-q="Tell me about your projects">Projects</button>
- <button type="button" data-q="How can I contact you?">Contact</button>
- </div>
+ <div class="chat__suggest" id="chatSuggest" aria-label="Suggested questions"></div>
 
  <form class="chat__form" id="chatForm">
- <input id="chatInput" type="text" autocomplete="off" placeholder="Type a message…" aria-label="Message" />
+ <input id="chatInput" type="text" autocomplete="off" placeholder="Ask about experience, projects, or background…" aria-label="Message" />
  <button class="btn btn--accent btn--sm" type="submit" aria-label="Send">→</button>
  </form>
  </div>
 
- <script src="script.js?v=17"></script>
+ <script src="script.js?v=24"></script>
 </body>
 </html>
