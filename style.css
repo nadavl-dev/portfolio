@@ -98,7 +98,7 @@ body.is-loading {
   z-index: 9999;
   display: grid;
   place-items: center;
-  background: #ffffff;
+  background: var(--bg);
   transition: opacity 0.55s var(--ease), visibility 0.55s var(--ease);
 }
 
@@ -553,12 +553,13 @@ button { font-family: inherit; cursor: pointer; }
   flex-direction: column;
   gap: 8px;
   width: min(100%, 520px);
+  margin-bottom: 2.5rem;
 }
 
 .terminal-bar {
   font-family: var(--font-mono);
   font-size: 0.85rem;
-  background: var(--surface);
+  background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   padding: 10px 14px;
@@ -697,7 +698,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 .impact__num--brand { color: var(--brand); }
 .impact__label {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.74rem;
   color: var(--muted);
   letter-spacing: 0.01em;
@@ -1116,7 +1117,7 @@ button { font-family: inherit; cursor: pointer; }
   margin-bottom: 28px;
 }
 .filter {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.82rem;
   color: var(--muted);
   background: transparent;
@@ -1185,7 +1186,7 @@ button { font-family: inherit; cursor: pointer; }
   flex: 1;
 }
 .project__metric {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.78rem;
   color: var(--text);
   background: var(--surface);
@@ -1201,7 +1202,7 @@ button { font-family: inherit; cursor: pointer; }
 .case__row { display: flex; gap: 14px; align-items: baseline; }
 .case__label {
   flex: 0 0 64px;
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.7rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -1261,7 +1262,7 @@ button { font-family: inherit; cursor: pointer; }
 .project--media:hover .project__media img { transform: scale(1.05); }
 
 .projects-empty {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   color: var(--dim);
   font-size: 0.9rem;
   padding-top: 8px;
@@ -1326,7 +1327,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 .leadership__icon {
   display: inline-block;
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.75rem;
   font-weight: 600;
   color: var(--brand);
@@ -1340,7 +1341,7 @@ button { font-family: inherit; cursor: pointer; }
   background: linear-gradient(135deg, var(--brand-soft), var(--card));
 }
 .open-to__label {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.78rem;
   color: var(--brand);
   margin-bottom: 8px;
@@ -1363,7 +1364,7 @@ button { font-family: inherit; cursor: pointer; }
 
 .metric-pill {
   display: inline-block;
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.68rem;
   font-weight: 500;
   padding: 4px 10px;
@@ -1446,7 +1447,7 @@ button { font-family: inherit; cursor: pointer; }
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.72rem;
   color: var(--dim);
 }
@@ -1465,7 +1466,7 @@ button { font-family: inherit; cursor: pointer; }
   gap: 4px;
 }
 .stat__num {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 2rem;
   font-weight: 700;
   color: var(--text);
@@ -1490,7 +1491,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 .skill-chip:hover { border-color: var(--text); transform: translateY(-3px); }
 .skill-chip__title {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 1.05rem;
   font-weight: 600;
   letter-spacing: -0.01em;
@@ -1535,7 +1536,7 @@ button { font-family: inherit; cursor: pointer; }
   list-style: none;
 }
 .skill-tags li {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.72rem;
   color: var(--muted);
   border: 1px solid var(--border);
@@ -1556,7 +1557,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 .skill-group { padding: 24px 24px 26px; }
 .skill-group__title {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.95rem;
   color: var(--text);
   margin-bottom: 16px;
@@ -1600,12 +1601,12 @@ button { font-family: inherit; cursor: pointer; }
   margin-bottom: 6px;
 }
 .timeline__date {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.8rem;
   color: var(--muted);
 }
 .timeline__where {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.8rem;
   color: var(--text);
   background: var(--surface);
@@ -1664,7 +1665,7 @@ button { font-family: inherit; cursor: pointer; }
   border-radius: 50%;
   border: 1px solid var(--border);
   flex: 0 0 auto;
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.04em;
@@ -1696,7 +1697,7 @@ button { font-family: inherit; cursor: pointer; }
 .field { margin-bottom: 16px; }
 .field label {
   display: block;
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.78rem;
   color: var(--muted);
   margin-bottom: 7px;
@@ -1706,7 +1707,7 @@ button { font-family: inherit; cursor: pointer; }
   font-family: var(--font-sans);
   font-size: 0.95rem;
   color: var(--text);
-  background: var(--surface);
+  background: var(--bg);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   padding: 11px 14px;
@@ -1722,7 +1723,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 .contact__note {
   margin-top: 14px;
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.85rem;
   color: var(--text);
 }
@@ -1730,7 +1731,7 @@ button { font-family: inherit; cursor: pointer; }
 
 .contact__side { padding-top: 4px; }
 .contact__sidelabel {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.78rem;
   color: var(--dim);
   margin-bottom: 14px;
@@ -1742,7 +1743,7 @@ button { font-family: inherit; cursor: pointer; }
   padding: 14px 16px;
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
-  background: var(--bg);
+  background: var(--card);
   margin-bottom: 10px;
   color: var(--text);
   transition: border-color 0.18s var(--ease), transform 0.18s var(--ease), box-shadow 0.18s var(--ease);
@@ -1754,7 +1755,7 @@ button { font-family: inherit; cursor: pointer; }
 .contact__social .ic { color: var(--text); }
 .contact__social > span { display: flex; flex-direction: column; font-size: 0.92rem; }
 .contact__social-k {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.68rem;
   color: var(--dim);
   text-transform: lowercase;
@@ -1777,13 +1778,13 @@ button { font-family: inherit; cursor: pointer; }
   flex-wrap: wrap;
 }
 .footer__prompt {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.82rem;
   color: var(--muted);
 }
 .footer__cmd { color: var(--text); }
 .footer__copy {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.78rem;
   color: var(--dim);
 }
@@ -1837,7 +1838,7 @@ button { font-family: inherit; cursor: pointer; }
   transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), padding 0.25s var(--ease);
 }
 .fab__label {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.02em;
@@ -1875,9 +1876,9 @@ button { font-family: inherit; cursor: pointer; }
   z-index: 109;
   width: min(380px, calc(100vw - 32px));
   height: min(540px, calc(100vh - 130px));
-  background: var(--bg);
+  background: var(--card);
   border: 1px solid var(--border);
-  border-radius: 18px;
+  border-radius: var(--radius);
   box-shadow: var(--shadow-lg);
   display: flex;
   flex-direction: column;
@@ -1900,7 +1901,7 @@ button { font-family: inherit; cursor: pointer; }
   background: var(--surface);
 }
 .chat__back {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.72rem;
   font-weight: 500;
   color: var(--muted);
@@ -1922,7 +1923,7 @@ button { font-family: inherit; cursor: pointer; }
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.7rem;
   color: var(--dim);
 }
@@ -2044,7 +2045,7 @@ button { font-family: inherit; cursor: pointer; }
   flex-wrap: wrap;
 }
 .chat__suggest button {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.74rem;
   color: var(--text);
   background: var(--surface);
@@ -2076,7 +2077,7 @@ button { font-family: inherit; cursor: pointer; }
   gap: 8px;
 }
 .chat-starter {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.72rem;
   text-align: left;
   padding: 10px 12px;
@@ -2104,7 +2105,7 @@ button { font-family: inherit; cursor: pointer; }
   border-top: 1px solid var(--border);
 }
 .msg-action {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.68rem;
   font-weight: 500;
   padding: 5px 10px;
@@ -2154,7 +2155,7 @@ button { font-family: inherit; cursor: pointer; }
   margin-bottom: 18px;
 }
 .gh__year {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.85rem;
   color: var(--muted);
   background: transparent;
@@ -2199,7 +2200,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 .gh__panel-title { font-weight: 600; font-size: 0.98rem; }
 .gh__handle {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.82rem;
   color: var(--muted);
 }
@@ -2216,7 +2217,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 .gh__month {
   grid-row: 1;
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.62rem;
   color: var(--muted);
   white-space: nowrap;
@@ -2255,7 +2256,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 .gh__langs-wrap { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 .gh__langs-label {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.8rem;
   color: var(--muted);
 }
@@ -2278,14 +2279,14 @@ button { font-family: inherit; cursor: pointer; }
   display: flex;
   align-items: center;
   gap: 5px;
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.74rem;
   color: var(--dim);
 }
 
 .gh__msg {
   margin-top: 14px;
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.82rem;
   color: var(--muted);
 }
