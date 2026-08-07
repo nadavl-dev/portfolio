@@ -132,25 +132,70 @@
  revealEls.forEach((el) => revealObserver.observe(el));
  }
 
- /* ---------- project filtering ---------- */
- const filters = $$(".filter");
- const projects = $$(".project");
- const emptyMsg = $("#projectsEmpty");
+ /* ---------- hero portrait: use the cut-out version when it exists ----------
+ Drop a background-removed "profile-cutout.png" in the repo root and the hero
+ switches to the floating-badge treatment automatically. */
+ const heroPhoto = $("#heroPhoto");
+ if (heroPhoto) {
+ const cutout = new Image();
+ cutout.onload = () => {
+ const img = heroPhoto.querySelector("img");
+ if (img) img.src = cutout.src;
+ heroPhoto.classList.add("hero__photo--cutout");
+ };
+ cutout.src = "profile-cutout.png";
+ }
 
- filters.forEach((btn) => {
+ /* ---------- top nav: shadow on scroll + mobile menu ---------- */
+ const siteNav = $("#siteNav");
+ const navBurger = $("#navBurger");
+ if (siteNav) {
+ const syncNavShadow = () => siteNav.classList.toggle("is-stuck", window.scrollY > 8);
+ syncNavShadow();
+ window.addEventListener("scroll", syncNavShadow, { passive: true });
+ }
+ if (navBurger && siteNav) {
+ navBurger.addEventListener("click", () => {
+ const open = siteNav.classList.toggle("is-open");
+ navBurger.setAttribute("aria-expanded", String(open));
+ });
+ $$(".site-nav__link").forEach((link) => {
+ link.addEventListener("click", () => {
+ siteNav.classList.remove("is-open");
+ navBurger.setAttribute("aria-expanded", "false");
+ });
+ });
+ }
+
+ /* ---------- tech stack tabs ---------- */
+ const stackTabs = $$(".stack__tab");
+ stackTabs.forEach((tab) => {
+ tab.addEventListener("click", () => {
+ const key = tab.dataset.stack;
+ stackTabs.forEach((t) => {
+ const on = t === tab;
+ t.classList.toggle("is-active", on);
+ t.setAttribute("aria-selected", String(on));
+ });
+ $$("[data-stack-panel]").forEach((panel) => {
+ panel.classList.toggle("is-active", panel.dataset.stackPanel === key);
+ });
+ });
+ });
+
+ /* ---------- experience accordion + work card detail ---------- */
+ const bindToggle = (selector, parentSelector, openLabel, closeLabel) => {
+ $$(selector).forEach((btn) => {
  btn.addEventListener("click", () => {
- filters.forEach((b) => b.classList.remove("is-active"));
- btn.classList.add("is-active");
- const f = btn.dataset.filter;
- let visible = 0;
- projects.forEach((p) => {
- const match = f === "all" || (p.dataset.tags || "").split(" ").includes(f);
- p.style.display = match ?"" :"none";
- if (match) visible++;
- });
- if (emptyMsg) emptyMsg.hidden = visible !== 0;
+ const parent = btn.closest(parentSelector);
+ if (!parent) return;
+ const open = parent.classList.toggle("is-open");
+ btn.textContent = open ? closeLabel : openLabel;
  });
  });
+ };
+ bindToggle("[data-exp-toggle]", ".exp__job", "Read more...", "Hide");
+ bindToggle("[data-work-toggle]", ".work-card", "Read more...", "Hide");
 
  /* ---------- contact form (Formspree) ---------- */
  // 👉 Set this to your Formspree endpoint, e.g. "https://formspree.io/f/abcdwxyz".
