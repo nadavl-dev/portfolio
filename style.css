@@ -2025,6 +2025,7 @@ button { font-family: inherit; cursor: pointer; }
   color: #fff;
   border-bottom-right-radius: 5px;
 }
+.msg--user .msg-p { color: #fff; }
 
 /* typing indicator */
 .typing {
