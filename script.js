@@ -276,13 +276,13 @@
  const CHAT_STARTERS = [
  { label: "Professional summary", q: "Give me a professional summary for a recruiter" },
  { label: "Project impact", q: "What impact did his projects have?" },
- { label: "Path to product", q: "Why is he moving toward product management?" },
+ { label: "Path to AI product roles", q: "What AI roles is he looking for?" },
  { label: "Leadership background", q: "Tell me about his leadership experience" },
  ];
 
  const DEFAULT_SUGGEST = [
  { label: "WhatsApp project", q: "What was the impact of the WhatsApp project?" },
- { label: "Product path", q: "Why is he moving toward product management?" },
+ { label: "AI role fit", q: "What AI roles is he looking for?" },
  { label: "Contact", q: "How can I contact Nadav?" },
  { label: "Resume", q: "Where can I find his resume?" },
  ];
@@ -295,17 +295,17 @@
  id:"recruiter",
  label:"professional summary",
  keys: { strong: ["recruiter brief","professional summary","30 second","30 sec","should we hire","hiring manager","interview him","pitch me","summary for a recruiter"], weak: ["recruiter","interview","candidate","hire"] },
- reply:"Nadav Levy is a Customer Success Manager at Bites who consistently translates customer needs into shipped product improvements. He led a WhatsApp messaging initiative that reduced annual messaging costs by thousands of dollars while improving delivery reliability. He also designed Bites Forms, a single workflow for structured responses and legally binding signatures.\n\nBefore Bites, he served as a Sergeant Major in the IDF Artillery Corps and spent several years as a Head Instructor in the Hebrew Scouts Movement. He is completing a B.A. in Communication and Marketing at Reichman University and is exploring product management roles where customer insight and execution are equally valued.",
+ reply:"Nadav Levy is a Customer Success Manager at Bites who consistently translates customer needs into shipped product improvements. He led a WhatsApp messaging initiative that reduced annual messaging costs by thousands of dollars while improving delivery reliability. He also designed Bites Forms, a single workflow for structured responses and legally binding signatures.\n\nBefore Bites, he served as a Sergeant Major in the IDF Artillery Corps and spent several years as a Head Instructor in the Hebrew Scouts Movement. He is completing a B.A. in Communication and Marketing at Reichman University and is pursuing AI product roles — AI product management, go-to-market engineering, and AI-driven customer solutions — where customer insight and hands-on building are equally valued.",
  more:"What distinguishes him from many applicants is that he has already operated across discovery, prototyping, and delivery while managing enterprise relationships with companies such as Unilever and Amazon. His customer success background provides depth; his shipped work provides evidence.",
- suggest: ["What impact did his projects have?", "Why is he moving toward product management?", "How can I contact Nadav?"],
+ suggest: ["What impact did his projects have?", "What AI roles is he looking for?", "How can I contact Nadav?"],
  actions: [{ label: "View projects", scroll: "#projects" }, { label: "Email Nadav", href: "mailto:nadavile415@gmail.com" }],
  },
  {
  id:"whypm",
- label:"path to product management",
- keys: { strong: ["why pm","why product","cs to pm","csm to pm","why product manager","moving to pm","path to product"], weak: ["pm role","product role","career goal","aspiring"] },
- reply:"Nadav is moving toward product management because he already works across the full product loop. In customer success, he speaks with users daily, identifies recurring friction, prototypes solutions, and ships tools that solve real operational problems.\n\nHis goal is not to leave customer understanding behind. It is to move into a role where research, prioritization, design, and delivery are the core responsibility rather than a side initiative.",
- more:"In practice, he has already demonstrated PM-level ownership through projects such as WhatsApp Messaging at Scale and Bites Forms. Product management is the natural next step in a career built on user empathy and execution.",
+ label:"path to AI product roles",
+ keys: { strong: ["why pm","why product","cs to pm","csm to pm","why product manager","moving to pm","path to product","ai product manager","ai pm","gtm engineer","go to market engineer","ai roles","what role is he looking for","what is he looking for"], weak: ["pm role","product role","career goal","aspiring","next role"] },
+ reply:"Nadav is focused on AI product roles — AI product management, go-to-market engineering, and AI-driven customer solutions — because he already works across the full product loop with AI at the center.\n\nIn customer success, he speaks with users daily, identifies recurring friction, prototypes solutions in Figma, and uses AI-assisted development to ship tools that solve real operational problems. His goal is a role where research, prioritization, design, and AI-powered delivery are the core responsibility rather than a side initiative.",
+ more:"In practice, he has already demonstrated this ownership through projects such as WhatsApp Messaging at Scale, Bites Forms, and this AI-built portfolio. AI product work is the natural next step in a career built on user empathy and hands-on execution.",
  suggest: ["What impact did his projects have?", "Professional summary", "View projects"],
  actions: [{ label: "About Nadav", scroll: "#about" }],
  },
@@ -313,7 +313,7 @@
  id:"skills",
  label:"skills",
  keys: { strong: ["skill","stack","tooling","tech stack","good at","capabilities"], weak: ["tool","tech","work with","expert","know"] },
- reply:"Nadav works across four areas: product thinking and discovery, AI-assisted workflows, design and prototyping, and practical implementation.\n\nOn the product side, he focuses on customer research, prioritization, and feedback loops. With AI, he uses Claude, ChatGPT, and structured prompting to move faster from insight to output. In design, he works in Figma and Midjourney to test ideas quickly. In implementation, he builds with HTML, CSS, JavaScript, and AI-assisted development workflows.",
+ reply:"Nadav works across four areas: product thinking and discovery, AI-assisted workflows, design and prototyping, and practical implementation.\n\nOn the product side, he focuses on customer research, prioritization, go-to-market, and feedback loops. With AI, he uses Claude, ChatGPT, Cursor, and structured prompting to move from insight to shipped output, including AI agents and automation. In design, he works in Figma and Midjourney on web design, UX flows, and rapid prototyping. In implementation, he builds with HTML, CSS, JavaScript, React, and AI-assisted development workflows.",
  more:"His strength is not depth in one isolated tool. It is the ability to connect customer insight, design exploration, and delivery into one continuous workflow.",
  suggest: ["What impact did his projects have?", "How does he use AI?", "View skills"],
  actions: [{ label: "Skills section", scroll: "#skills" }],
@@ -324,7 +324,7 @@
  keys: { strong: ["project","portfolio","built","shipped","showcase","what has he built","what did he build","best project","project impact","impact did his projects"], weak: ["work","build","made","creation"] },
  reply:"Nadav's most meaningful work includes three projects with clear business or product impact:\n\nWhatsApp Messaging at Scale — WhatsApp is how Bites delivers training to frontline workers. He built approved message templates and fallback logic so failed sends reroute automatically instead of burning budget on retries. The result was thousands of dollars saved annually and a higher message receiving rate.\n\nBites Forms — He built a workflow that combines structured data collection and legally binding signatures in one place, removing a costly two-tool process clients were using every day.\n\nThis portfolio — He designed and built the site end to end, including live GitHub integration and this assistant, as a working example of AI-assisted product delivery.",
  more:"Across these projects, the pattern is consistent: identify a recurring customer or business problem, scope a practical solution, ship it, and measure the outcome. That is the through-line in his work.",
- suggest: ["What was the impact of the WhatsApp project?", "Tell me about Bites Forms", "Why is he moving toward product management?"],
+ suggest: ["What was the impact of the WhatsApp project?", "Tell me about Bites Forms", "What AI roles is he looking for?"],
  actions: [{ label: "Open projects", scroll: "#projects" }],
  },
  {
@@ -432,7 +432,7 @@
  keys: { strong: ["product","pm","roadmap","product manager","product thinking"], weak: ["manager","strategy","prioritize","discovery"] },
  reply:"Nadav approaches problems with a product mindset: define the real issue, prioritize what matters, prototype quickly, and ship something measurable. His customer success role keeps that process grounded in live user feedback.",
  more:"That proximity to customer pain is one of his strongest advantages as a product thinker.",
- suggest: ["Why is he moving toward product management?", "What impact did his projects have?", "Professional summary"],
+ suggest: ["What AI roles is he looking for?", "What impact did his projects have?", "Professional summary"],
  },
  {
  id:"resume",
@@ -455,13 +455,13 @@
  label:"hello",
  keys: { strong: ["hello","hi","hey","shalom","howdy"], weak: ["yo","sup","morning","evening"] },
  reply:"Hello. I can help you understand Nadav's experience, project impact, leadership background, and the direction of his career. Choose one of the topics below or ask a question in your own words.",
- suggest: ["Professional summary", "What impact did his projects have?", "Why is he moving toward product management?", "How can I contact Nadav?"],
+ suggest: ["Professional summary", "What impact did his projects have?", "What AI roles is he looking for?", "How can I contact Nadav?"],
  },
  {
  id:"about",
  label:"about Nadav",
  keys: { strong: ["who is","about nadav","tell me about","introduce","bio"], weak: ["who","nadav","yourself","summary"] },
- reply:"Nadav Levy is a Customer Success Manager at Bites who operates at the intersection of customer insight, product thinking, design, and AI-assisted execution. He has shipped tools that reduced cost and improved customer workflows, while managing enterprise relationships and working toward a product management path.\n\nHis background includes military leadership in the IDF, youth instruction in the Hebrew Scouts, and ongoing study in Communication and Marketing at Reichman University.",
+ reply:"Nadav Levy is a Customer Success Manager at Bites who operates at the intersection of customer insight, product thinking, design, and AI-assisted execution. He has shipped tools that reduced cost and improved customer workflows, while managing enterprise relationships and pursuing AI product and go-to-market engineering roles.\n\nHis background includes military leadership in the IDF, youth instruction in the Hebrew Scouts, and ongoing study in Communication and Marketing at Reichman University.",
  more:"If you would like, I can go deeper on his projects, his path to product, his leadership experience, or the best way to contact him.",
  suggest: ["Professional summary", "What impact did his projects have?", "Leadership background"],
  actions: [{ label: "About section", scroll: "#about" }],
@@ -579,7 +579,7 @@
  lastIntent = null;
  pendingOffer = null;
  return {
- text: "I may not have a precise answer to that yet. You could ask about his project impact, professional summary, path to product management, leadership background, or how to contact him.",
+ text: "I may not have a precise answer to that yet. You could ask about his project impact, professional summary, his fit for AI product roles, leadership background, or how to contact him.",
  suggest: ["Professional summary", "What impact did his projects have?", "How can I contact Nadav?"],
  actions: [{ label: "Contact section", scroll: "#contact" }],
  };
