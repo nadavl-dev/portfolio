@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+ <title>WhatsApp Messaging at Scale — Nadav Levy</title>
+ <meta name="description" content="Case study: how Nadav Levy built approved WhatsApp Business templates and automatic fallback routing at Bites — saving over $10,000 a year and raising the message-receiving rate." />
+ <meta name="author" content="Nadav Levy" />
+ <meta name="theme-color" content="#fdf6f4" />
+
+ <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23fdf6f4'/%3E%3Ctext x='6' y='22' font-family='sans-serif' font-size='15' font-weight='700' fill='%230a0a0a'%3ENL%3C/text%3E%3C/svg%3E" />
+
+ <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+ <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet" />
+ <link rel="preconnect" href="https://fonts.googleapis.com" />
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+ <link rel="stylesheet" href="style.css?v=37" />
+</head>
+<body class="is-ready">
+
+ <!-- ============ TOP NAV ============ -->
+ <header class="site-nav is-stuck" id="siteNav">
+  <div class="container site-nav__inner">
+   <a class="site-nav__logo" href="index.html">Nadav<br>Levy.</a>
+   <nav class="site-nav__menu" aria-label="Primary">
+    <div class="site-nav__links">
+     <a href="index.html#about" class="site-nav__link">About</a>
+     <a href="index.html#projects" class="site-nav__link">My Works</a>
+     <a href="index.html#experience" class="site-nav__link">Experience</a>
+     <a href="index.html#contact" class="site-nav__link">Contact</a>
+    </div>
+    <a class="btn btn--accent btn--sm" href="/resume.pdf" download>Download Resume</a>
+   </nav>
+  </div>
+ </header>
+
+ <main>
+  <!-- ============ CASE HERO ============ -->
+  <section class="case-hero">
+   <div class="container">
+    <a class="case-hero__back" href="index.html#projects">&larr; Back to My Works</a>
+    <h1 class="case-hero__title">WhatsApp Messaging<br>at Scale</h1>
+    <p class="case-hero__summary">How I turned a silent budget leak into a reliable delivery system — saving Bites over $10,000 a year while getting more content into the hands of frontline workers.</p>
+    <div class="case-hero__meta">
+     <span class="work-card__tag">Bites</span>
+     <span class="work-card__tag">Product ownership</span>
+     <span class="work-card__tag">WhatsApp Business Platform</span>
+     <span class="work-card__tag">$10,000+ saved / year</span>
+    </div>
+   </div>
+  </section>
+
+  <!-- ============ PROBLEM ============ -->
+  <section class="case-section case-section--alt">
+   <div class="container case-section__grid">
+    <span class="case-section__label">The problem</span>
+    <div class="case-section__body">
+     <p>WhatsApp is how Bites reaches frontline workers — it is the primary channel for delivering training and communication to people who don't sit behind a desk. If a message fails, the content simply never arrives.</p>
+     <p>Two things were going wrong at once. <strong>Failed sends meant lost reach:</strong> workers never received their training, and nobody knew until engagement numbers dropped. And <strong>we were still paying for it:</strong> every send costs money on the WhatsApp Business Platform, including retries that were blindly re-sent into the same failure.</p>
+     <p>The cost was buried in an infrastructure bill nobody read line by line. I found it because clients kept asking the same question: "Why didn't my team get the Bite?"</p>
+    </div>
+   </div>
+  </section>
+
+  <!-- ============ APPROACH ============ -->
+  <section class="case-section">
+   <div class="container case-section__grid">
+    <span class="case-section__label">My approach</span>
+    <div class="case-section__body">
+     <p>I started from the data, not the tooling. I mapped where deliveries were failing, which message types failed most, and what a failed send actually cost us across a year. That turned a vague "sometimes messages don't arrive" complaint into a quantified, prioritized problem.</p>
+     <ul>
+      <li><strong>Audited the full message flow</strong> — from trigger to delivery receipt — to find where sends silently died.</li>
+      <li><strong>Quantified the waste</strong> — repeated blind retries were effectively doubling the cost of every failed conversation.</li>
+      <li><strong>Designed for the failure case first</strong> — the system had to know what to do when a message doesn't land, not just when it does.</li>
+     </ul>
+    </div>
+   </div>
+  </section>
+
+  <!-- ============ SOLUTION ============ -->
+  <section class="case-section case-section--alt">
+   <div class="container case-section__grid">
+    <span class="case-section__label">What I built</span>
+    <div class="case-section__body">
+     <p>I built a two-part system on the WhatsApp Business Platform:</p>
+     <ul>
+      <li><strong>Approved message templates</strong> — properly structured WhatsApp Business templates that pass Meta's approval flow, so messages send reliably at scale instead of getting throttled or rejected.</li>
+      <li><strong>Automatic fallback routing</strong> — when a delivery fails, the system reroutes to an alternative channel automatically instead of paying for blind retries into the same dead end.</li>
+     </ul>
+     <p>The design principle was simple: <strong>every send should either arrive or trigger a smarter next step</strong> — never a silent failure, never a wasted retry.</p>
+    </div>
+   </div>
+  </section>
+
+  <!-- ============ IMPACT ============ -->
+  <section class="case-section">
+   <div class="container case-section__grid">
+    <span class="case-section__label">The impact</span>
+    <div class="case-section__body">
+     <p>The results were measurable on both sides of the problem — cost and reach:</p>
+     <div class="case-impact">
+      <div class="case-impact__item">
+       <span class="case-impact__num">$10,000+</span>
+       <span class="case-impact__label">saved annually in messaging spend by eliminating blind retries</span>
+      </div>
+      <div class="case-impact__item">
+       <span class="case-impact__num">&uarr;</span>
+       <span class="case-impact__label">higher message-receiving rate — more training actually reaching frontline workers</span>
+      </div>
+      <div class="case-impact__item">
+       <span class="case-impact__num">0</span>
+       <span class="case-impact__label">silent failures — every failed send now triggers a fallback automatically</span>
+      </div>
+     </div>
+     <p style="margin-top:1.5rem">Beyond the numbers, this project is how I work: I found a recurring customer complaint, traced it to a quantifiable business problem, designed a system around the failure case, and shipped it — from inside a customer success role, without waiting for a roadmap slot.</p>
+    </div>
+   </div>
+  </section>
+
+  <!-- ============ NEXT ============ -->
+  <div class="container">
+   <div class="case-next">
+    <div>
+     <span class="case-next__label">Next case study</span>
+     <a class="case-next__link" href="bites-forms.html">Bites Forms &rarr;</a>
+    </div>
+    <a class="hero__cta" href="index.html#contact">Let's talk &rarr;</a>
+   </div>
+  </div>
+ </main>
+
+ <!-- ============ FOOTER ============ -->
+ <footer class="footer">
+  <div class="container footer__inner">
+   <span>&copy; <span id="year"></span> Nadav Levy</span>
+   <span>Built with AI — designed &amp; shipped by me</span>
+  </div>
+ </footer>
+
+ <script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+ </script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+ <title>Bites Forms — Nadav Levy</title>
+ <meta name="description" content="Case study: how Nadav Levy designed and shipped Bites Forms — a single flow for structured responses and legally binding signatures, replacing a two-tool workaround clients used daily." />
+ <meta name="author" content="Nadav Levy" />
+ <meta name="theme-color" content="#fdf6f4" />
+
+ <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23fdf6f4'/%3E%3Ctext x='6' y='22' font-family='sans-serif' font-size='15' font-weight='700' fill='%230a0a0a'%3ENL%3C/text%3E%3C/svg%3E" />
+
+ <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+ <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet" />
+ <link rel="preconnect" href="https://fonts.googleapis.com" />
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+ <link rel="stylesheet" href="style.css?v=37" />
+</head>
+<body class="is-ready">
+
+ <!-- ============ TOP NAV ============ -->
+ <header class="site-nav is-stuck" id="siteNav">
+  <div class="container site-nav__inner">
+   <a class="site-nav__logo" href="index.html">Nadav<br>Levy.</a>
+   <nav class="site-nav__menu" aria-label="Primary">
+    <div class="site-nav__links">
+     <a href="index.html#about" class="site-nav__link">About</a>
+     <a href="index.html#projects" class="site-nav__link">My Works</a>
+     <a href="index.html#experience" class="site-nav__link">Experience</a>
+     <a href="index.html#contact" class="site-nav__link">Contact</a>
+    </div>
+    <a class="btn btn--accent btn--sm" href="/resume.pdf" download>Download Resume</a>
+   </nav>
+  </div>
+ </header>
+
+ <main>
+  <!-- ============ CASE HERO ============ -->
+  <section class="case-hero">
+   <div class="container">
+    <a class="case-hero__back" href="index.html#projects">&larr; Back to My Works</a>
+    <h1 class="case-hero__title">Bites Forms</h1>
+    <p class="case-hero__summary">Clients were bouncing between a form tool and a signing tool to finish what should have been one process. I designed and shipped a single flow that does both — structured responses and legally binding signatures in one place.</p>
+    <div class="case-hero__meta">
+     <span class="work-card__tag">Bites</span>
+     <span class="work-card__tag">Product design</span>
+     <span class="work-card__tag">Forms + e-signatures</span>
+     <span class="work-card__tag">Shipped to clients</span>
+    </div>
+   </div>
+  </section>
+
+  <!-- ============ PROBLEM ============ -->
+  <section class="case-section case-section--alt">
+   <div class="container case-section__grid">
+    <span class="case-section__label">The problem</span>
+    <div class="case-section__body">
+     <p>Bites clients constantly need two things from their frontline teams: <strong>structured information</strong> (surveys, applications, checklists, orders) and <strong>signed documents</strong> (policies, agreements, acknowledgements).</p>
+     <p>No single tool did both. So every client ran the same painful workaround: build a form in one product, chase signatures in another, then manually stitch the results together. Two subscriptions, two logins, two exports — for what is really one workflow.</p>
+     <p>I watched clients repeat this workaround week after week. That repetition is exactly the signal I look for: when users build the same manual bridge twice, the product is missing a road.</p>
+    </div>
+   </div>
+  </section>
+
+  <!-- ============ SOLUTION ============ -->
+  <section class="case-section">
+   <div class="container case-section__grid">
+    <span class="case-section__label">What I built</span>
+    <div class="case-section__body">
+     <p>Bites Forms is one flow that collects structured responses and captures legally binding signatures in the same place. It ships with everything a client needs to go from blank page to signed, routed document:</p>
+     <ul>
+      <li><strong>Template gallery</strong> — ready-made starting points (customer feedback, event registration, job applications, order forms) plus blank form and PDF options.</li>
+      <li><strong>Drag-and-drop builder</strong> — question types added from a toolbar, with live preview and autosave.</li>
+      <li><strong>PDF signing</strong> — upload an existing PDF, place signature boxes, and collect legally binding signatures.</li>
+      <li><strong>Automated routing</strong> — file generation, naming conventions, destination folders, and email notifications configured per form.</li>
+      <li><strong>Sharing built in</strong> — links, QR codes, and embed options so forms reach frontline workers wherever they are.</li>
+     </ul>
+
+     <figure class="case-shot">
+      <img src="bites-forms-templates.png" alt="Bites Forms template gallery — blank form, PDF upload, and ready-made templates" loading="lazy" onerror="this.closest('figure').remove()">
+      <figcaption>The template gallery — start blank, upload a PDF for signing, or pick a ready-made template.</figcaption>
+     </figure>
+
+     <figure class="case-shot">
+      <img src="bites-forms-builder.png" alt="Bites Forms builder — question toolbar, live form preview, and publisher settings panel" loading="lazy" onerror="this.closest('figure').remove()">
+      <figcaption>The builder — drag-and-drop questions, live preview, and a publisher panel for signing, routing, and notifications.</figcaption>
+     </figure>
+    </div>
+   </div>
+  </section>
+
+  <!-- ============ IMPACT ============ -->
+  <section class="case-section case-section--alt">
+   <div class="container case-section__grid">
+    <span class="case-section__label">The impact</span>
+    <div class="case-section__body">
+     <p>The impact was operational and immediate for the clients who relied on the old workaround:</p>
+     <div class="case-impact">
+      <div class="case-impact__item">
+       <span class="case-impact__num">2 &rarr; 1</span>
+       <span class="case-impact__label">tools consolidated — one flow replaces a form product plus a signing product</span>
+      </div>
+      <div class="case-impact__item">
+       <span class="case-impact__num">0</span>
+       <span class="case-impact__label">manual stitching — responses and signatures land in the same place, routed automatically</span>
+      </div>
+      <div class="case-impact__item">
+       <span class="case-impact__num">Daily</span>
+       <span class="case-impact__label">use by clients who previously juggled the two-tool workaround</span>
+      </div>
+     </div>
+     <p style="margin-top:1.5rem">This project reflects how I work: I noticed a repeated customer workaround, defined the real problem underneath it, and shipped a practical solution — rather than waiting for it to become a formal roadmap item.</p>
+    </div>
+   </div>
+  </section>
+
+  <!-- ============ NEXT ============ -->
+  <div class="container">
+   <div class="case-next">
+    <div>
+     <span class="case-next__label">Next case study</span>
+     <a class="case-next__link" href="whatsapp.html">WhatsApp Messaging at Scale &rarr;</a>
+    </div>
+    <a class="hero__cta" href="index.html#contact">Let's talk &rarr;</a>
+   </div>
+  </div>
+ </main>
+
+ <!-- ============ FOOTER ============ -->
+ <footer class="footer">
+  <div class="container footer__inner">
+   <span>&copy; <span id="year"></span> Nadav Levy</span>
+   <span>Built with AI — designed &amp; shipped by me</span>
+  </div>
+ </footer>
+
+ <script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+ </script>
+</body>
+</html>

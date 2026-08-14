@@ -973,6 +973,7 @@ button { font-family: inherit; cursor: pointer; }
   transition: opacity 0.2s var(--ease);
 }
 .work-card__more:hover { opacity: 1; }
+a.work-card__more { text-decoration: none; display: inline-block; }
 .work-card__detail {
   position: relative;
   z-index: 1;
@@ -2434,6 +2435,153 @@ body.is-ready .reveal-on-load {
   .stat { flex-direction: row; align-items: baseline; gap: 12px; }
   .skills-strip { grid-template-columns: 1fr; }
   .hero__row { gap: 1.25rem; }
+}
+
+/* ============================================================
+   CASE STUDY PAGES
+   ============================================================ */
+.case-hero {
+  padding-top: calc(var(--nav-h) + clamp(2.5rem, 7vw, 5rem));
+  padding-bottom: clamp(2rem, 5vw, 3.5rem);
+}
+.case-hero__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 2rem;
+  transition: color 0.2s var(--ease);
+}
+.case-hero__back:hover { color: var(--text); }
+.case-hero__title {
+  font-size: clamp(2.4rem, 5.6vw, 3.75rem);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.25rem;
+}
+.case-hero__summary {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  max-width: 46rem;
+}
+.case-hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1.75rem;
+}
+.case-section { padding-block: clamp(2.25rem, 5vw, 3.5rem); }
+.case-section--alt { background: var(--surface); }
+.case-section__grid {
+  display: grid;
+  grid-template-columns: 14rem 1fr;
+  gap: clamp(1.5rem, 5vw, 4rem);
+  align-items: start;
+}
+.case-section__label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-top: 0.35rem;
+}
+.case-section__body { max-width: 46rem; }
+.case-section__body p {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+}
+.case-section__body p + p { margin-top: 1.1rem; }
+.case-section__body strong { color: var(--text); font-weight: 600; }
+.case-section__body ul {
+  list-style: none;
+  margin-top: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+.case-section__body ul li {
+  position: relative;
+  padding-left: 1.4rem;
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+.case-section__body ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--text);
+}
+.case-impact {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+.case-impact__item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 1.5rem;
+}
+.case-impact__num {
+  display: block;
+  font-size: 2.2rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+.case-impact__label {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+.case-shot {
+  margin: 2rem 0 0;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: #fff;
+  box-shadow: var(--shadow-md);
+}
+.case-shot img { display: block; width: 100%; height: auto; }
+.case-shot figcaption {
+  font-size: 0.82rem;
+  color: var(--muted);
+  padding: 0.75rem 1rem;
+  border-top: 1px solid var(--border);
+}
+.case-next {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding-block: clamp(2.5rem, 6vw, 4rem);
+  border-top: 1px solid var(--border);
+}
+.case-next__label { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.4rem; display: block; }
+.case-next__link {
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  font-weight: 600;
+  color: var(--text);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: gap 0.22s var(--ease), opacity 0.2s var(--ease);
+}
+.case-next__link:hover { gap: 1rem; opacity: 0.75; }
+@media (max-width: 767px) {
+  .case-section__grid { grid-template-columns: 1fr; gap: 1rem; }
 }
 
 /* ============================================================
