@@ -455,14 +455,6 @@ button { font-family: inherit; cursor: pointer; }
   line-height: 1.0625;
   letter-spacing: -0.02em;
 }
-.hero__tagline {
-  font-size: 1.125rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
-  max-width: 34rem;
-}
-.hero__tagline .hl { color: var(--text); font-weight: 600; }
-
 .hero__cta {
   font-size: 1rem;
   font-weight: 600;
