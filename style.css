@@ -975,11 +975,9 @@ button { font-family: inherit; cursor: pointer; }
 .work-card__more:hover { opacity: 1; }
 a.work-card__more { text-decoration: none; display: inline-block; }
 .exp__logo {
-  height: 1.6rem;
+  height: 4.5rem;
   width: auto;
-  vertical-align: -0.25rem;
-  margin-right: 0.6rem;
-  border-radius: 0.35rem;
+  max-width: 8rem;
   object-fit: contain;
 }
 .work-card__detail {
@@ -1051,7 +1049,30 @@ a.work-card__more { text-decoration: none; display: inline-block; }
   width: 1.5px;
   background: var(--border-strong);
 }
-.exp__job { position: relative; }
+.exp__job {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(1.5rem, 4vw, 3rem);
+}
+.exp__copy { flex: 1 1 auto; min-width: 0; }
+.exp__brand {
+  flex: 0 0 8.5rem;
+  width: 8.5rem;
+  height: 8.5rem;
+  display: grid;
+  place-items: center;
+  align-self: center;
+}
+.exp__brand img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 0.75rem;
+}
 .exp__job::before {
   content: "";
   position: absolute;
@@ -2445,6 +2466,8 @@ body.is-ready .reveal-on-load {
   .works-grid, .works-grid--split { grid-template-columns: 1fr; }
   .work-card { min-height: 0; padding: 1rem 1rem 1.35rem; }
   .exp__company { font-size: 1.4rem; }
+  .exp__job { flex-direction: column; align-items: flex-start; }
+  .exp__brand { align-self: flex-start; }
   .projects-grid { grid-template-columns: 1fr; }
   .skills-grid { grid-template-columns: 1fr; }
   .impact__stat { min-width: 180px; padding: 22px 16px; }
