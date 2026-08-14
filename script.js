@@ -8,47 +8,9 @@
  const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
- /* ---------- intro loading screen ---------- */
- const LOADER_MIN_MS = 3200;
- const LOADER_MAX_MS = 5200;
-
- const finishIntro = () => {
+ /* ---------- no intro loader: page is ready immediately ---------- */
  document.body.classList.remove("is-loading");
  document.body.classList.add("is-ready");
- const loader = $("#loader");
- if (loader) loader.classList.add("is-hidden");
- };
-
- const skipIntro = () => finishIntro();
-
- if (prefersReducedMotion) {
- skipIntro();
- } else {
- const loaderVideo = $("#loaderVideo");
- const startedAt = performance.now();
- let finished = false;
-
- const maybeFinish = () => {
- if (finished) return;
- if (performance.now() - startedAt < LOADER_MIN_MS) return;
- finished = true;
- finishIntro();
- };
-
- if (!loaderVideo) {
- skipIntro();
- } else {
- loaderVideo.addEventListener("ended", maybeFinish);
- loaderVideo.addEventListener("error", skipIntro);
-
- const playPromise = loaderVideo.play();
- if (playPromise && typeof playPromise.catch === "function") {
- playPromise.catch(skipIntro);
- }
-
- setTimeout(maybeFinish, LOADER_MAX_MS);
- }
- }
 
  /* ---------- impact bar infinite scroll ---------- */
  const impactTrack = $("#impactTrack");
@@ -295,7 +257,7 @@
  id:"recruiter",
  label:"professional summary",
  keys: { strong: ["recruiter brief","professional summary","30 second","30 sec","should we hire","hiring manager","interview him","pitch me","summary for a recruiter"], weak: ["recruiter","interview","candidate","hire"] },
- reply:"Nadav Levy is a Customer Success Manager at Bites who consistently translates customer needs into shipped product improvements. He led a WhatsApp messaging initiative that reduced annual messaging costs by thousands of dollars while improving delivery reliability. He also designed Bites Forms, a single workflow for structured responses and legally binding signatures.\n\nBefore Bites, he served as a Sergeant Major in the IDF Artillery Corps and spent several years as a Head Instructor in the Hebrew Scouts Movement. He is completing a B.A. in Communication and Marketing at Reichman University and is pursuing AI product roles — AI product management, go-to-market engineering, and AI-driven customer solutions — where customer insight and hands-on building are equally valued.",
+ reply:"Nadav Levy is a Customer Success Manager at Bites who consistently translates customer needs into shipped product improvements. He leads all company support and built smart AI agents for triage and solution delivery. He also led a WhatsApp messaging initiative that cut annual messaging costs by more than $10,000, and designed Bites Forms, a single workflow for structured responses and legally binding signatures.\n\nBefore Bites, he served as a Sergeant Major in the IDF Artillery Corps and spent several years as a Head Instructor in the Hebrew Scouts Movement. He is completing a B.A. in Communication and Marketing at Reichman University and is pursuing AI product roles — AI product management, go-to-market engineering, and AI-driven customer solutions — where customer insight and hands-on building are equally valued.",
  more:"What distinguishes him from many applicants is that he has already operated across discovery, prototyping, and delivery while managing enterprise relationships with companies such as Unilever and Amazon. His customer success background provides depth; his shipped work provides evidence.",
  suggest: ["What impact did his projects have?", "What AI roles is he looking for?", "How can I contact Nadav?"],
  actions: [{ label: "View projects", scroll: "#projects" }, { label: "Email Nadav", href: "mailto:nadavile415@gmail.com" }],
@@ -305,7 +267,7 @@
  label:"path to AI product roles",
  keys: { strong: ["why pm","why product","cs to pm","csm to pm","why product manager","moving to pm","path to product","ai product manager","ai pm","gtm engineer","go to market engineer","ai roles","what role is he looking for","what is he looking for"], weak: ["pm role","product role","career goal","aspiring","next role"] },
  reply:"Nadav is focused on AI product roles — AI product management, go-to-market engineering, and AI-driven customer solutions — because he already works across the full product loop with AI at the center.\n\nIn customer success, he speaks with users daily, identifies recurring friction, prototypes solutions in Figma, and uses AI-assisted development to ship tools that solve real operational problems. His goal is a role where research, prioritization, design, and AI-powered delivery are the core responsibility rather than a side initiative.",
- more:"In practice, he has already demonstrated this ownership through projects such as WhatsApp Messaging at Scale, Bites Forms, and this AI-built portfolio. AI product work is the natural next step in a career built on user empathy and hands-on execution.",
+ more:"In practice, he has already demonstrated this ownership through support AI agents, WhatsApp Messaging at Scale, Bites Forms, and this AI-built portfolio. AI product work is the natural next step in a career built on user empathy and hands-on execution.",
  suggest: ["What impact did his projects have?", "Professional summary", "View projects"],
  actions: [{ label: "About Nadav", scroll: "#about" }],
  },
@@ -313,16 +275,16 @@
  id:"skills",
  label:"skills",
  keys: { strong: ["skill","stack","tooling","tech stack","good at","capabilities"], weak: ["tool","tech","work with","expert","know"] },
- reply:"Nadav works across four areas: product thinking and discovery, AI-assisted workflows, design and prototyping, and practical implementation.\n\nOn the product side, he focuses on customer research, prioritization, go-to-market, and feedback loops. With AI, he uses Claude, ChatGPT, Cursor, and structured prompting to move from insight to shipped output, including AI agents and automation. In design, he works in Figma and Midjourney on web design, UX flows, and rapid prototyping. In implementation, he builds with HTML, CSS, JavaScript, React, and AI-assisted development workflows.",
+ reply:"Nadav works across three areas: product thinking and discovery, AI-assisted workflows, and design and prototyping.\n\nOn the product side, he focuses on customer research, prioritization, go-to-market, and feedback loops. With AI, he uses Claude, ChatGPT, Cursor, and structured prompting to move from insight to shipped output, including AI agents and automation. In design, he works in Figma and Midjourney on web design, UX flows, and rapid prototyping. He ships working software through AI-assisted development — this site included.",
  more:"His strength is not depth in one isolated tool. It is the ability to connect customer insight, design exploration, and delivery into one continuous workflow.",
- suggest: ["What impact did his projects have?", "How does he use AI?", "View skills"],
- actions: [{ label: "Skills section", scroll: "#skills" }],
+ suggest: ["What impact did his projects have?", "How does he use AI?", "View stack"],
+ actions: [{ label: "Stack section", scroll: "#stack" }],
  },
  {
  id:"projects",
  label:"projects",
  keys: { strong: ["project","portfolio","built","shipped","showcase","what has he built","what did he build","best project","project impact","impact did his projects"], weak: ["work","build","made","creation"] },
- reply:"Nadav's most meaningful work includes three projects with clear business or product impact:\n\nWhatsApp Messaging at Scale — WhatsApp is how Bites delivers training to frontline workers. He built approved message templates and fallback logic so failed sends reroute automatically instead of burning budget on retries. The result was thousands of dollars saved annually and a higher message receiving rate.\n\nBites Forms — He built a workflow that combines structured data collection and legally binding signatures in one place, removing a costly two-tool process clients were using every day.\n\nThis portfolio — He designed and built the site end to end, including live GitHub integration and this assistant, as a working example of AI-assisted product delivery.",
+ reply:"Nadav's most meaningful work includes four areas with clear business or product impact:\n\nSupport AI Agents — He leads all company support at Bites and built smart AI agents for triage and automated solution delivery, reducing manual load and improving response quality.\n\nWhatsApp Messaging at Scale — WhatsApp is how Bites delivers training to frontline workers. He built approved message templates and fallback logic so failed sends reroute automatically instead of burning budget on retries. The result was more than $10,000 saved annually and a higher message receiving rate.\n\nBites Forms — He built a workflow that combines structured data collection and legally binding signatures in one place, removing a costly two-tool process clients were using every day.\n\nThis portfolio — He designed and built the site end to end with AI-assisted development, including this assistant, as a working example of AI-assisted product delivery.",
  more:"Across these projects, the pattern is consistent: identify a recurring customer or business problem, scope a practical solution, ship it, and measure the outcome. That is the through-line in his work.",
  suggest: ["What was the impact of the WhatsApp project?", "Tell me about Bites Forms", "What AI roles is he looking for?"],
  actions: [{ label: "Open projects", scroll: "#projects" }],
@@ -331,10 +293,19 @@
  id:"whatsapp",
  label:"WhatsApp messaging",
  keys: { strong: ["whatsapp","messaging","fallback","thousands","save money","saved money","cost saving","delivery rate","receiving rate","whatsapp impact","whatsapp savings","impact of the whatsapp"], weak: ["message","template","templates","scale","cost","costs"] },
- reply:"At Bites, WhatsApp is the primary channel for delivering microlearning to frontline workers. Nadav led a messaging initiative focused on reliability and cost efficiency at scale.\n\nHe built approved WhatsApp Business templates and fallback logic that reroutes communication when deliveries fail, instead of paying for blind retries on messages that never landed.\n\nThe impact was measurable: thousands of dollars saved per year in messaging costs and a higher message receiving rate. This addressed both reach — content actually reaching workers — and a recurring operational expense.",
+ reply:"At Bites, WhatsApp is the primary channel for delivering microlearning to frontline workers. Nadav led a messaging initiative focused on reliability and cost efficiency at scale.\n\nHe built approved WhatsApp Business templates and fallback logic that reroutes communication when deliveries fail, instead of paying for blind retries on messages that never landed.\n\nThe impact was measurable: more than $10,000 saved per year in messaging costs and a higher message receiving rate. This addressed both reach — content actually reaching workers — and a recurring operational expense.",
  more:"The project is a strong example of product thinking inside a customer success role: he identified waste, designed a smarter system, and delivered a result that improved both cost and performance.",
  suggest: ["What impact did his projects have?", "Tell me about Bites Forms", "Professional summary"],
  actions: [{ label: "See case study", scroll: "#projects" }],
+ },
+ {
+ id:"supportagents",
+ label:"support AI agents",
+ keys: { strong: ["support agent","smart agent","ai agent","support triage","triage","helpdesk","customer support","support lead","in charge of support","company support","support automation"], weak: ["ticket","help","support team","cs support"] },
+ reply:"At Bites, Nadav leads all company support — owning triage, resolution, and customer issue handling across the business.\n\nHe built and deployed smart AI agents for support triage and automated solution delivery. The agents handle initial classification and route or resolve common issues before they reach manual handling, improving response speed and reducing repetitive load on the team.",
+ more:"This is one of his strongest signals for AI product and GTM roles: he identified a real operational bottleneck, designed an AI-powered workflow, and shipped it inside a live customer support function.",
+ suggest: ["What impact did his projects have?", "How does he use AI?", "Experience at Bites"],
+ actions: [{ label: "Work history", scroll: "#experience" }],
  },
  {
  id:"bitesforms",
@@ -349,10 +320,10 @@
  id:"thissite",
  label:"this website",
  keys: { strong: ["this website","this site","this portfolio","vibe code","vibe coding","vibe coded"], weak: ["site","website","portfolio site","claude code"] },
- reply:"This portfolio is itself one of Nadav's projects. He designed and built it end to end with AI-assisted development, without relying on a traditional framework.\n\nIt includes a live GitHub activity section, a scrolling impact summary, and this assistant. The site functions as both a presentation layer and a proof point: he can take an idea from concept to a polished, working product.",
+ reply:"This portfolio is itself one of Nadav's projects. He designed and built it end to end with AI-assisted development, without relying on a traditional framework.\n\nIt includes this AI assistant and a scrolling impact summary. The site functions as both a presentation layer and a proof point: he can take an idea from concept to a polished, working product.",
  more:"For visitors evaluating his profile, the site demonstrates execution quality, attention to detail, and comfort with modern AI-assisted build workflows.",
- suggest: ["What impact did his projects have?", "GitHub activity", "How does he use AI?"],
- actions: [{ label: "GitHub section", scroll: "#github" }],
+ suggest: ["What impact did his projects have?", "How does he use AI?", "What AI roles is he looking for?"],
+ actions: [{ label: "View projects", scroll: "#projects" }],
  },
  {
  id:"contact",
@@ -367,7 +338,7 @@
  id:"experience",
  label:"experience at Bites",
  keys: { strong: ["experience","bites","career","customer success","csm"], weak: ["job","company","role","cs","success","current"] },
- reply:"Nadav is a Customer Success Manager at Bites, where he supports enterprise customers using a platform built for frontline team training and enablement. He owns the relationship from onboarding through adoption, renewal, and growth.\n\nHis client base includes large enterprise accounts, and his work goes beyond account management. He regularly translates customer friction into product direction and ships internal solutions when gaps become clear.",
+ reply:"Nadav is a Customer Success Manager at Bites, where he supports enterprise customers using a platform built for frontline team training and enablement. He owns the relationship from onboarding through adoption, renewal, and growth across 25+ accounts.\n\nHe also leads all company support — triage, resolution, and issue handling — and built smart AI agents to automate triage and solution delivery. His work goes beyond account management: he regularly translates customer friction into product direction and ships internal solutions when gaps become clear.",
  more:"That combination of relationship ownership and product execution is central to how he operates today and to the product role he is working toward.",
  suggest: ["What impact did his projects have?", "Professional summary", "Leadership background"],
  actions: [{ label: "Work history", scroll: "#experience" }],
@@ -403,10 +374,10 @@
  id:"github",
  label:"GitHub",
  keys: { strong: ["github","git","repo","contribution","commit"], weak: ["code","coding","open source"] },
- reply:"Nadav publishes work under @nadavl-dev on GitHub. The GitHub section on this page pulls live contribution data and language activity directly from his account.",
+ reply:"Nadav publishes work under @nadavl-dev on GitHub. You can review his repositories and project history there.",
  more:"Most of his technical work is AI-assisted and iterative, focused on turning ideas into working software quickly rather than large standalone engineering projects.",
  suggest: ["This website", "How does he use AI?", "What impact did his projects have?"],
- actions: [{ label: "GitHub section", scroll: "#github" }, { label: "Open GitHub", href: "https://github.com/nadavl-dev" }],
+ actions: [{ label: "Open GitHub", href: "https://github.com/nadavl-dev" }],
  },
  {
  id:"ai",

@@ -5,7 +5,7 @@
  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
  <title>Nadav Levy — AI Product Builder</title>
- <meta name="description" content="Nadav Levy — AI product builder with a customer success foundation. Shipped WhatsApp messaging at scale, Bites Forms, and this AI-built site. Open to AI product and GTM engineering roles." />
+ <meta name="description" content="Nadav Levy — AI product builder with a customer success foundation. Leads company support, built smart AI agents for triage, shipped WhatsApp at scale and Bites Forms. Open to AI product and GTM engineering roles." />
  <meta name="author" content="Nadav Levy" />
  <meta name="theme-color" content="#fdf6f4" />
 
@@ -36,25 +36,9 @@
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
- <link rel="stylesheet" href="style.css?v=33" />
- <link rel="preload" href="loader-bike.mp4" as="video" type="video/mp4" />
+ <link rel="stylesheet" href="style.css?v=38" />
 </head>
-<body class="is-loading">
-
- <!-- ============ LOADING SCREEN ============ -->
- <div class="loader" id="loader" aria-hidden="true">
-  <div class="loader__stage">
-   <video
-    class="loader__video"
-    id="loaderVideo"
-    src="loader-bike.mp4"
-    playsinline
-    muted
-    preload="auto"
-    aria-hidden="true"
-   ></video>
-  </div>
- </div>
+<body class="is-ready">
 
  <!-- ============ TOP NAV ============ -->
  <header class="site-nav" id="siteNav">
@@ -80,35 +64,27 @@
   <section class="hero" id="hero">
    <div class="container hero__inner">
 
-    <div class="hero__top">
-     <div class="hero__headline">
+    <div class="hero__split">
+     <div class="hero__content">
       <h1 class="hero__name reveal-on-load" style="--d:.1s">
        <span class="hero__pre">Hey there,</span>I'm Nadav<br>Levy
       </h1>
-     </div>
-
-     <div class="hero__side reveal-on-load" style="--d:.26s">
-      <p class="hero__tagline">
-       I build with <span class="hl">AI</span> — turning customer insight into shipped products and workflows,
-       including <span class="hl">tools that save thousands a year</span>. Grounded in a year of enterprise customer success at Bites.
+      <p class="hero__tagline reveal-on-load" style="--d:.26s">
+       I build with <span class="hl">AI</span> — turning customer insight into <span class="hl">shipped products and workflows</span>.
+       Grounded in a year of enterprise customer success at Bites, aiming at AI product and AI engineering roles.
       </p>
-      <a href="#contact" class="hero__cta">Let's talk &rarr;</a>
-     </div>
-    </div>
-
-    <div class="hero__stage reveal-on-load" style="--d:.4s">
-     <div class="hero__photo" id="heroPhoto">
-      <img src="profile.jpg" alt="Nadav Levy" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22%3E%3Crect width=%22200%22 height=%22200%22 fill=%22%23f8e9e6%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22sans-serif%22 font-size=%2248%22 fill=%22%236b6b6b%22%3ENL%3C/text%3E%3C/svg%3E'">
-     </div>
-
-     <div class="hero__stats">
-      <div class="hero__stat hero__stat--left">
-       <span class="hero__stat-num">3</span>
-       <span class="hero__stat-label">Products &amp; tools shipped</span>
+      <div class="hero__row reveal-on-load" style="--d:.36s">
+       <a href="#contact" class="hero__cta">Let's talk &rarr;</a>
+       <div class="hero__stat">
+        <span class="hero__stat-num">25+</span>
+        <span class="hero__stat-label">Clients managed</span>
+       </div>
       </div>
-      <div class="hero__stat hero__stat--right">
-       <span class="hero__stat-num">20+</span>
-       <span class="hero__stat-label">Clients managed</span>
+     </div>
+
+     <div class="hero__stage reveal-on-load" style="--d:.4s">
+      <div class="hero__photo" id="heroPhoto">
+       <img src="profile.jpg" alt="Nadav Levy" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22%3E%3Crect width=%22200%22 height=%22200%22 fill=%22%23f8e9e6%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22sans-serif%22 font-size=%2248%22 fill=%22%236b6b6b%22%3ENL%3C/text%3E%3C/svg%3E'">
       </div>
      </div>
     </div>
@@ -123,16 +99,20 @@
     <div class="impact__track" id="impactTrack">
      <div class="impact__set" id="impactSet">
       <div class="impact__stat">
-       <span class="impact__num">3</span>
-       <span class="impact__label">products &amp; tools shipped</span>
-      </div>
-      <div class="impact__stat">
        <span class="impact__num">1 yr</span>
        <span class="impact__label">owning customer success</span>
       </div>
       <div class="impact__stat">
-       <span class="impact__num">20+</span>
+       <span class="impact__num">25+</span>
        <span class="impact__label">clients managed</span>
+      </div>
+      <div class="impact__stat">
+       <span class="impact__num">2</span>
+       <span class="impact__label">products built from customer needs</span>
+      </div>
+      <div class="impact__stat">
+       <span class="impact__num">AI agents</span>
+       <span class="impact__label">deployed for support triage</span>
       </div>
       <!-- add more .impact__stat blocks here — they will scroll automatically -->
      </div>
@@ -149,22 +129,22 @@
     </header>
 
     <div class="expertise__prose reveal">
-     <p>I'm a Customer Success Manager at <img class="inline-logo" src="bites-logo.png" alt="Bites">, but I operate like a builder. I research the problem, design the flow in Figma, and use AI to take it from prototype to shipped product — end to end, without waiting for a roadmap slot.</p>
-     <p>What drives me is the intersection of <strong>product thinking and AI</strong>. I'm focused on <strong>AI product roles</strong> — AI product management, go-to-market engineering, and AI-driven customer solutions — where understanding users and building with AI are equally valued. Customer success gave me the user empathy; building with AI gave me the range to act on it.</p>
+     <p>I'm a Customer Success Manager at <img class="inline-logo" src="bites-logo.png" alt="Bites">. I manage the full client portfolio in Israel and several accounts in the US — <strong>25+ companies</strong>, from small businesses to large enterprises. I own each relationship end to end: onboarding, adoption, renewal, and growth.</p>
+     <p>What drives me is the intersection of <strong>product thinking and AI</strong>. My goal is clear: <strong>AI product roles and AI engineer roles</strong> — AI product manager, AI engineer, go-to-market engineer, or similar — where understanding users and building with AI are equally valued.</p>
     </div>
 
     <div class="statrow reveal">
      <div class="statrow__item">
-      <span class="statrow__num">3</span>
-      <span class="statrow__label">products &amp; tools shipped end to end</span>
+      <span class="statrow__num">25+</span>
+      <span class="statrow__label">clients managed</span>
      </div>
      <div class="statrow__item">
-      <span class="statrow__num">20+</span>
-      <span class="statrow__label">enterprise clients managed</span>
+      <span class="statrow__num">2</span>
+      <span class="statrow__label">products built from customer needs — and shipped</span>
      </div>
      <div class="statrow__item">
-      <span class="statrow__num">$1000s</span>
-      <span class="statrow__label">saved annually on WhatsApp delivery</span>
+      <span class="statrow__num">1 yr</span>
+      <span class="statrow__label">owning customer success at Bites</span>
      </div>
     </div>
    </div>
@@ -176,7 +156,7 @@
     <header class="section__head reveal">
      <span class="section__index">Stack</span>
      <h2 class="section__title">What I work with</h2>
-     <p class="section__lead">Four areas I move between — these are the tools I actually reach for.</p>
+     <p class="section__lead">Three areas I move between — these are the tools I actually reach for.</p>
     </header>
 
     <div class="stack reveal">
@@ -184,7 +164,6 @@
       <button class="stack__tab is-active" type="button" role="tab" data-stack="product" aria-selected="true">Product</button>
       <button class="stack__tab" type="button" role="tab" data-stack="ai" aria-selected="false">AI</button>
       <button class="stack__tab" type="button" role="tab" data-stack="design" aria-selected="false">Design</button>
-      <button class="stack__tab" type="button" role="tab" data-stack="code" aria-selected="false">Code</button>
      </div>
 
      <div class="stack__panel is-active" data-stack-panel="product">
@@ -203,6 +182,7 @@
        <li class="stack__item"><img src="logos/openai.svg" alt="" loading="lazy">ChatGPT</li>
        <li class="stack__item">Cursor &amp; Claude Code</li>
        <li class="stack__item">Prompt engineering</li>
+       <li class="stack__item">Support AI agents</li>
        <li class="stack__item">AI agents &amp; automation</li>
        <li class="stack__item">AI-assisted workflows</li>
       </ul>
@@ -221,44 +201,7 @@
       <p class="stack__note">Design is a thinking tool for me. I map user flows and prototype interfaces in Figma before committing to a build, so ideas get tested while they're still cheap to change.</p>
      </div>
 
-     <div class="stack__panel" data-stack-panel="code">
-      <ul class="stack__items">
-       <li class="stack__item"><img src="logos/html5.svg" alt="" loading="lazy">HTML</li>
-       <li class="stack__item"><img src="logos/css3.svg" alt="" loading="lazy">CSS</li>
-       <li class="stack__item"><img src="logos/javascript.svg" alt="" loading="lazy">JavaScript</li>
-       <li class="stack__item"><img src="logos/react.svg" alt="" loading="lazy">React</li>
-      </ul>
-      <p class="stack__note">Enough code to build and ship real things myself — this site included, written end to end without a framework.</p>
-     </div>
     </div>
-   </div>
-  </section>
-
-  <!-- ============ CAPABILITIES ============ -->
-  <section class="section" id="capabilities">
-   <div class="container">
-    <header class="section__head reveal">
-     <span class="section__index">Capabilities</span>
-     <h2 class="section__title">How I work</h2>
-    </header>
-
-    <ul class="cap-grid reveal">
-     <li>AI Product Strategy</li>
-     <li>Product Discovery</li>
-     <li>Roadmapping</li>
-     <li>Go-to-Market</li>
-     <li>Prompt Engineering</li>
-     <li>AI Agents &amp; Automation</li>
-     <li>AI-Assisted Development</li>
-     <li>Figma &amp; Prototyping</li>
-     <li>Web Design</li>
-     <li>UX Flows</li>
-     <li>Customer Success</li>
-     <li>Customer Feedback Loops</li>
-     <li>Stakeholder Management</li>
-     <li>Data-Informed Decisions</li>
-     <li>Cross-Functional Communication</li>
-    </ul>
    </div>
   </section>
 
@@ -279,17 +222,12 @@
       </span>
       <div class="work-card__body">
        <div class="work-card__tags">
-        <span class="work-card__tag">Thousands saved / year</span>
+        <span class="work-card__tag">$10,000+ saved / year</span>
         <span class="work-card__tag">Higher delivery rate</span>
        </div>
        <h3 class="work-card__title">WhatsApp Messaging at Scale</h3>
        <p class="work-card__desc">WhatsApp is how Bites reaches frontline workers. Failed sends meant content never landed — while we still paid per message.</p>
-       <div class="work-card__detail">
-        <div>
-         <p class="work-card__desc" style="margin-top:.75rem">I built approved WhatsApp Business templates and a fallback flow that reroutes automatically when a delivery fails, instead of blind retries that double the cost. The result: a higher message-receiving rate and thousands saved annually in messaging spend.</p>
-        </div>
-       </div>
-       <button class="work-card__more" type="button" data-work-toggle>Read more...</button>
+       <a class="work-card__more" href="whatsapp.html">Read the case study &rarr;</a>
       </div>
      </article>
 
@@ -305,15 +243,7 @@
        <figure class="work-card__shot">
         <img src="bites-forms-templates.png" alt="Bites Forms — template gallery" loading="lazy" onerror="this.closest('figure').remove()">
        </figure>
-       <div class="work-card__detail">
-        <div>
-         <p class="work-card__desc" style="margin-top:.75rem">I designed and shipped a single flow that collects structured responses and captures legally-binding signatures in one place — removing a costly two-tool workaround clients used every day. It ships with a template gallery, a drag-and-drop builder, PDF signing, and automated routing.</p>
-         <figure class="work-card__shot" style="margin-top:.75rem">
-          <img src="bites-forms-builder.png" alt="Bites Forms — form builder with publisher settings" loading="lazy" onerror="this.closest('figure').remove()">
-         </figure>
-        </div>
-       </div>
-       <button class="work-card__more" type="button" data-work-toggle>Read more...</button>
+       <a class="work-card__more" href="bites-forms.html">Read the case study &rarr;</a>
       </div>
      </article>
 
@@ -327,7 +257,7 @@
         <span class="work-card__tag">Zero framework</span>
        </div>
        <h3 class="work-card__title">This Website</h3>
-       <p class="work-card__desc">Designed and built end to end with AI-assisted development, no framework — a live GitHub feed and an AI assistant included.</p>
+       <p class="work-card__desc">Designed and built end to end with AI-assisted development, no framework — with an AI assistant built in.</p>
        <div class="work-card__detail">
         <div>
          <p class="work-card__desc" style="margin-top:.75rem">Proof of the thesis: one person with the right AI tooling can take an idea from concept to a polished, shipped product — research, design, build, and deploy.</p>
@@ -353,7 +283,7 @@
      <div class="exp__list reveal">
 
       <article class="exp__job is-current">
-       <h3 class="exp__company">Bites</h3>
+       <h3 class="exp__company"><img class="exp__logo" src="bites-logo.png" alt="" loading="lazy">Bites</h3>
        <div class="exp__meta">
         <strong>Customer Success Manager</strong>
         <span class="exp__dot" aria-hidden="true"></span>
@@ -362,12 +292,14 @@
         <span>May 2025 &ndash; Present</span>
        </div>
        <ul class="exp__bullets">
-        <li>Own enterprise customer relationships end to end — onboarding, adoption, renewal, and growth across 20+ accounts.</li>
-        <li>Built a WhatsApp messaging system with approved templates and fallback routing, <strong>saving thousands of dollars a year</strong> while raising the message-receiving rate.</li>
+        <li>Own enterprise customer relationships end to end — onboarding, adoption, renewal, and growth across 25+ accounts.</li>
+        <li>Lead all company support — owning triage, resolution, and customer issue handling across the business.</li>
+        <li>Built and deployed <strong>smart AI agents</strong> for support triage and automated solution delivery.</li>
        </ul>
        <div class="exp__hidden">
         <div>
          <ul class="exp__bullets" style="margin-top:.85rem">
+          <li>Built a WhatsApp messaging system with approved templates and fallback routing, <strong>saving $10,000+ a year</strong> while raising the message-receiving rate.</li>
           <li>Designed and shipped <strong>Bites Forms</strong>, combining structured data collection and legally-binding signatures in one flow, replacing a two-tool workaround clients relied on daily.</li>
           <li>Translate recurring customer friction into product feedback and feature priorities for the product team.</li>
           <li>Use AI tools daily to move faster across research, customer comms, prototypes, and analysis.</li>
@@ -398,89 +330,12 @@
    </div>
   </section>
 
-  <!-- ============ GITHUB ACTIVITY ============ -->
-  <section class="section section--alt" id="github">
-   <div class="container">
-    <header class="section__head reveal">
-     <span class="section__index">Code</span>
-     <h2 class="section__title section__title--logo">
-      <svg class="title-logo" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.014 2.898-.014 3.293 0 .322.216.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" fill="currentColor"/></svg>
-      GitHub Activity
-     </h2>
-     <p class="section__lead">Live data from <a class="text-link" href="https://github.com/nadavl-dev" target="_blank" rel="noopener">@nadavl-dev</a> — how I build when I'm not in front of customers.</p>
-    </header>
-
-    <div class="terminal-stack reveal" aria-hidden="true">
-     <div class="terminal-bar">
-      <span class="terminal-bar__prompt">visitor@nadavlevy</span><span class="terminal-bar__path">:~/home$</span>
-      <span class="terminal-bar__cmd"> whoami</span><span class="cursor cursor--block">▋</span>
-     </div>
-     <div class="terminal-bar terminal-bar--out">
-      <span class="terminal-bar__arrow">&gt;</span>
-      <span class="terminal-bar__out">nadav_levy — product · ai · design</span>
-     </div>
-     <div class="terminal-bar terminal-bar--out">
-      <span class="terminal-bar__arrow">&gt;</span>
-      <span class="terminal-bar__out">role: customer success @ bites</span>
-     </div>
-     <div class="terminal-bar terminal-bar--load">
-      <span class="terminal-bar__arrow">&gt;</span>
-      <span class="terminal-bar__cmd"> fetching contributions</span>
-      <span class="terminal-spinner" aria-hidden="true"><span class="terminal-spinner__track"><span class="terminal-spinner__knob"></span></span></span>
-     </div>
-    </div>
-
-    <div class="gh reveal">
-     <div class="gh__years" id="ghYears" role="tablist" aria-label="Select year">
-      <button class="gh__year is-active" data-year="2026" type="button">2026</button>
-      <button class="gh__year" data-year="2025" type="button">2025</button>
-      <button class="gh__year" data-year="2024" type="button">2024</button>
-     </div>
-
-     <div class="card gh__total">
-      <span class="gh__total-label">Total Contributions (<span id="ghYearLabel">2026</span>)</span>
-      <span class="gh__total-num" id="ghTotal">—</span>
-     </div>
-
-     <div class="card gh__panel">
-      <div class="gh__panel-head">
-       <span class="gh__panel-title">Contribution graph — <span id="ghYearLabel2">2026</span></span>
-       <a class="gh__handle" id="ghHandle" target="_blank" rel="noopener">github.com/—</a>
-      </div>
-
-      <div class="gh__graph-wrap">
-       <div class="gh__months" id="ghMonths" aria-hidden="true"></div>
-       <div class="gh__graph" id="ghGraph" role="img" aria-label="GitHub contribution heatmap"></div>
-      </div>
-
-      <div class="gh__foot">
-       <div class="gh__langs-wrap">
-        <span class="gh__langs-label">Top Languages:</span>
-        <div class="gh__langs" id="ghLangs"></div>
-       </div>
-       <div class="gh__legend" aria-hidden="true">
-        <span>Less</span>
-        <span class="gh__cell" data-l="0"></span>
-        <span class="gh__cell" data-l="1"></span>
-        <span class="gh__cell" data-l="2"></span>
-        <span class="gh__cell" data-l="3"></span>
-        <span class="gh__cell" data-l="4"></span>
-        <span>More</span>
-       </div>
-      </div>
-
-      <p class="gh__msg" id="ghMsg" role="status" hidden></p>
-     </div>
-    </div>
-   </div>
-  </section>
-
   <!-- ============ EDUCATION & SERVICE ============ -->
   <section class="section" id="education">
    <div class="container">
     <header class="section__head reveal">
-     <span class="section__index">Education &amp; service</span>
-     <h2 class="section__title">Where I come from</h2>
+     <span class="section__index">Background</span>
+     <h2 class="section__title">Education &amp; Service</h2>
     </header>
 
     <div class="timeline">
@@ -675,6 +530,6 @@
   </form>
  </div>
 
- <script src="script.js?v=27"></script>
+ <script src="script.js?v=30"></script>
 </body>
 </html>
