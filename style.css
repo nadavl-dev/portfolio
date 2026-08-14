@@ -1058,10 +1058,7 @@ a.work-card__more { text-decoration: none; display: inline-block; }
   display: grid;
   place-items: center;
   align-self: center;
-  border-radius: var(--radius);
-  overflow: hidden;
-  background: #0a0a0a;
-  box-shadow: var(--shadow-lg);
+  background: transparent;
 }
 .exp__brand img {
   display: block;
