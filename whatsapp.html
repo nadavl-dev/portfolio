@@ -5,7 +5,7 @@
  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
  <title>WhatsApp Messaging at Scale — Nadav Levy</title>
- <meta name="description" content="Case study: how Nadav Levy built approved WhatsApp Business templates and automatic fallback routing at Bites — saving over $10,000 a year and raising the message-receiving rate." />
+ <meta name="description" content="Case study: how Nadav Levy built a WhatsApp fallback at Bites — blocked marketing messages retry as utility, then SMS — reaching 98% deliverability across China, Israel, the Middle East, and Europe." />
  <meta name="author" content="Nadav Levy" />
  <meta name="theme-color" content="#fdf6f4" />
 
@@ -43,11 +43,11 @@
    <div class="container">
     <a class="case-hero__back" href="index.html#projects">&larr; Back to My Works</a>
     <h1 class="case-hero__title">WhatsApp Messaging<br>at Scale</h1>
-    <p class="case-hero__summary">How I turned a silent budget leak into a reliable delivery system — saving Bites over $10,000 a year while getting more content into the hands of frontline workers.</p>
+    <p class="case-hero__summary">WhatsApp is how we reach frontline employees — primarily in China, Israel, the Middle East, and Europe. Meta kept blocking marketing messages, and we were still paying for them. I built a fallback: blocked send → utility message → SMS. That reached 98% deliverability and cut the cost of sending again and again.</p>
     <div class="case-hero__meta">
      <span class="work-card__tag">Bites</span>
-     <span class="work-card__tag">Product ownership</span>
-     <span class="work-card__tag">WhatsApp Business Platform</span>
+     <span class="work-card__tag">China · Israel · Middle East · Europe</span>
+     <span class="work-card__tag">98% deliverability</span>
      <span class="work-card__tag">$10,000+ saved / year</span>
     </div>
    </div>
@@ -58,9 +58,9 @@
    <div class="container case-section__grid">
     <span class="case-section__label">The problem</span>
     <div class="case-section__body">
-     <p>WhatsApp is how Bites reaches frontline workers — it is the primary channel for delivering training and communication to people who don't sit behind a desk. If a message fails, the content simply never arrives.</p>
-     <p>Two things were going wrong at once. <strong>Failed sends meant lost reach:</strong> workers never received their training, and nobody knew until engagement numbers dropped. And <strong>we were still paying for it:</strong> every send costs money on the WhatsApp Business Platform, including retries that were blindly re-sent into the same failure.</p>
-     <p>The cost was buried in an infrastructure bill nobody read line by line. I found it because clients kept asking the same question: "Why didn't my team get the Bite?"</p>
+     <p>WhatsApp is how Bites reaches <strong>frontline employees</strong> — people who don't sit behind a desk. The work is primarily across <strong>China, Israel, the Middle East, and Europe</strong>. If a message does not land, the training never arrives.</p>
+     <p>The thing that was going wrong: <strong>Meta kept blocking the messages</strong>. They were treated as marketing, so they never reached the employee. And we were <strong>still paying for every blocked send</strong> — then paying again to send the same marketing message over and over.</p>
+     <p>Clients were not happy. Employees were missing content. The bill kept growing because retries of a blocked marketing message cost the same as a message that actually arrived.</p>
     </div>
    </div>
   </section>
@@ -68,14 +68,14 @@
   <!-- ============ APPROACH ============ -->
   <section class="case-section">
    <div class="container case-section__grid">
-    <span class="case-section__label">My approach</span>
+    <span class="case-section__label">The insight</span>
     <div class="case-section__body">
-     <p>I started from the data, not the tooling. I mapped where deliveries were failing, which message types failed most, and what a failed send actually cost us across a year. That turned a vague "sometimes messages don't arrive" complaint into a quantified, prioritized problem.</p>
+     <p>Meta splits WhatsApp Business traffic into two categories. That split is the whole product:</p>
      <ul>
-      <li><strong>Audited the full message flow</strong> — from trigger to delivery receipt — to find where sends silently died.</li>
-      <li><strong>Quantified the waste</strong> — repeated blind retries were effectively doubling the cost of every failed conversation.</li>
-      <li><strong>Designed for the failure case first</strong> — the system had to know what to do when a message doesn't land, not just when it does.</li>
+      <li><strong>Marketing messages</strong> — promotional or campaign-style sends. These are the ones Meta blocks. They are also the expensive ones, especially when you resend them after a block.</li>
+      <li><strong>Utility messages</strong> — operational messages the user needs to see. These cannot be blocked the same way, because they are treated as important for the recipient. They also cost a lot less than marketing messages.</li>
      </ul>
+     <p>The idea: stop paying to push a blocked marketing message again. When Meta blocks a send, fall back to a utility message for the same employee. If WhatsApp still does not land, fall back once more — to SMS.</p>
     </div>
    </div>
   </section>
@@ -85,12 +85,13 @@
    <div class="container case-section__grid">
     <span class="case-section__label">What I built</span>
     <div class="case-section__body">
-     <p>I built a two-part system on the WhatsApp Business Platform:</p>
+     <p>I designed and shipped a fallback mechanism so a blocked send never dies silently and never burns budget on the same marketing retry:</p>
      <ul>
-      <li><strong>Approved message templates</strong> — properly structured WhatsApp Business templates that pass Meta's approval flow, so messages send reliably at scale instead of getting throttled or rejected.</li>
-      <li><strong>Automatic fallback routing</strong> — when a delivery fails, the system reroutes to an alternative channel automatically instead of paying for blind retries into the same dead end.</li>
+      <li><strong>WhatsApp send</strong> — the original message goes out to the frontline employee.</li>
+      <li><strong>If Meta blocks it → utility fallback</strong> — the same employee gets a utility message instead. Utility cannot be blocked the way marketing can, and it is much cheaper.</li>
+      <li><strong>If WhatsApp still does not arrive → SMS fallback</strong> — the utility path falls back to SMS, so the employee still gets the message.</li>
      </ul>
-     <p>The design principle was simple: <strong>every send should either arrive or trigger a smarter next step</strong> — never a silent failure, never a wasted retry.</p>
+     <p>Nothing fails for the employee. The content reaches them on the first channel that actually works — without paying to fire the same blocked marketing message again and again.</p>
     </div>
    </div>
   </section>
@@ -100,22 +101,22 @@
    <div class="container case-section__grid">
     <span class="case-section__label">The impact</span>
     <div class="case-section__body">
-     <p>The results were measurable on both sides of the problem — cost and reach:</p>
+     <p>Deliverability went up. The bill went down. Clients were happy because employees actually got the message:</p>
      <div class="case-impact">
       <div class="case-impact__item">
+       <span class="case-impact__num">98%</span>
+       <span class="case-impact__label">deliverability — marketing block → utility → SMS, so almost nothing fails for the employee</span>
+      </div>
+      <div class="case-impact__item">
        <span class="case-impact__num">$10,000+</span>
-       <span class="case-impact__label">saved annually in messaging spend by eliminating blind retries</span>
+       <span class="case-impact__label">saved / year — utility messages cost far less than marketing, and we stopped paying to resend blocked ones</span>
       </div>
       <div class="case-impact__item">
-       <span class="case-impact__num">&uarr;</span>
-       <span class="case-impact__label">higher message-receiving rate — more training actually reaching frontline workers</span>
-      </div>
-      <div class="case-impact__item">
-       <span class="case-impact__num">0</span>
-       <span class="case-impact__label">silent failures — every failed send now triggers a fallback automatically</span>
+       <span class="case-impact__num">Clients</span>
+       <span class="case-impact__label">happy across China, Israel, the Middle East, and Europe — frontline teams receive what we send</span>
       </div>
      </div>
-     <p style="margin-top:1.5rem">Beyond the numbers, this project is how I work: I found a recurring customer complaint, traced it to a quantifiable business problem, designed a system around the failure case, and shipped it — from inside a customer success role, without waiting for a roadmap slot.</p>
+     <p style="margin-top:1.5rem">This is how I work: I learned how the platform actually decides what gets through, designed a fallback around that rule, and shipped it so employees get the message and the company stops paying for blocks.</p>
     </div>
    </div>
   </section>
