@@ -980,6 +980,7 @@ a.work-card__more { text-decoration: none; display: inline-block; }
   vertical-align: -0.25rem;
   margin-right: 0.6rem;
   border-radius: 0.35rem;
+  object-fit: contain;
 }
 .work-card__detail {
   position: relative;

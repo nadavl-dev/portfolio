@@ -335,6 +335,15 @@
  actions: [{ label: "Contact section", scroll: "#contact" }, { label: "Email Nadav", href: "mailto:nadavile415@gmail.com" }],
  },
  {
+ id:"gerem",
+ label:"Gerem 22",
+ keys: { strong: ["gerem","garam","garam 22","gerem 22","front of house","front house","foh"], weak: ["hospitality","jaffa","hotel"] },
+ reply:"Before Bites, Nadav was Front of House Manager at Gerem 22 in Jaffa (August to November 2022) — a hospitality house for private stays and events.\n\nHe ran front-of-house operations end to end: client meetings, guest experience, and day-to-day property upkeep in a small, high-touch venue.",
+ more:"It is an earlier operations role — owning the floor and the guest, which later shows up in how he runs customer relationships.",
+ suggest: ["Experience at Bites", "Leadership background", "Professional summary"],
+ actions: [{ label: "Work history", scroll: "#experience" }],
+ },
+ {
  id:"experience",
  label:"experience at Bites",
  keys: { strong: ["experience","bites","career","customer success","csm"], weak: ["job","company","role","cs","success","current"] },
