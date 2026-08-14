@@ -974,14 +974,6 @@ button { font-family: inherit; cursor: pointer; }
 }
 .work-card__more:hover { opacity: 1; }
 a.work-card__more { text-decoration: none; display: inline-block; }
-.exp__logo {
-  height: 1.6rem;
-  width: auto;
-  vertical-align: -0.25rem;
-  margin-right: 0.6rem;
-  border-radius: 0.35rem;
-  object-fit: contain;
-}
 .work-card__detail {
   position: relative;
   z-index: 1;
@@ -1051,7 +1043,32 @@ a.work-card__more { text-decoration: none; display: inline-block; }
   width: 1.5px;
   background: var(--border-strong);
 }
-.exp__job { position: relative; }
+.exp__job {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(1.75rem, 4vw, 3.5rem);
+}
+.exp__copy { flex: 1 1 auto; min-width: 0; }
+.exp__brand {
+  flex: 0 0 clamp(12.5rem, 26vw, 16.5rem);
+  width: clamp(12.5rem, 26vw, 16.5rem);
+  aspect-ratio: 1 / 1;
+  display: grid;
+  place-items: center;
+  align-self: center;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: #0a0a0a;
+  box-shadow: var(--shadow-lg);
+}
+.exp__brand img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
 .exp__job::before {
   content: "";
   position: absolute;
@@ -2408,6 +2425,12 @@ body.is-ready .reveal-on-load {
   .cap-grid { grid-template-columns: 1fr 1fr; }
   .works-grid, .works-grid--split { grid-template-columns: 1fr 1fr; }
   .exp { grid-template-columns: 1fr; gap: 2rem; }
+  .exp__job { flex-direction: column; align-items: flex-start; }
+  .exp__brand {
+    width: min(16.5rem, 70%);
+    flex-basis: auto;
+    align-self: flex-start;
+  }
   .about { grid-template-columns: 1fr; gap: 28px; }
   .contact { grid-template-columns: 1fr; }
   .skills-strip { grid-template-columns: 1fr 1fr; }

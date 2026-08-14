@@ -337,8 +337,8 @@
  {
  id:"gerem",
  label:"Gerem 22",
- keys: { strong: ["gerem","garam","garam 22","gerem 22","front of house","front house","foh"], weak: ["hospitality","jaffa","hotel"] },
- reply:"Before Bites, Nadav was Front of House Manager at Gerem 22 in Jaffa (August to November 2022) — a hospitality house for private stays and events.\n\nHe ran front-of-house operations end to end: client meetings, guest experience, and day-to-day property upkeep in a small, high-touch venue.",
+ keys: { strong: ["gerem","garam","garam 22","gerem 22","front of house","front house","foh","patelina","petelina","shift manager"], weak: ["hospitality","jaffa","hotel"] },
+ reply:"Before and alongside Bites, Nadav worked hospitality operations in Tel Aviv.\n\nAt Petelina he was Shift Manager (December 2021 to July 2025), running daily floor operations, staffing, and guest issues in a busy neighborhood bistro.\n\nAt Gerem 22 in Jaffa he was Front of House Manager (August to November 2022) — client meetings, guest experience, and day-to-day property upkeep in a small hospitality house.",
  more:"It is an earlier operations role — owning the floor and the guest, which later shows up in how he runs customer relationships.",
  suggest: ["Experience at Bites", "Leadership background", "Professional summary"],
  actions: [{ label: "Work history", scroll: "#experience" }],
