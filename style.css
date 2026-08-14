@@ -867,9 +867,9 @@ button { font-family: inherit; cursor: pointer; }
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  min-height: 25rem;
-  padding: 2rem;
+  justify-content: flex-start;
+  min-height: 0;
+  padding: 1.15rem 1.15rem 1.5rem;
   border-radius: var(--radius);
   overflow: hidden;
   background: var(--surface);
@@ -916,20 +916,20 @@ button { font-family: inherit; cursor: pointer; }
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  padding: 1.1rem 0.6rem 0.15rem;
+  flex: 1;
 }
 .work-card__mark {
-  position: absolute;
-  top: 2rem;
-  left: 2rem;
-  z-index: 1;
-  width: 56px;
-  height: 56px;
-  border-radius: 1rem;
+  position: static;
+  width: 48px;
+  height: 48px;
+  border-radius: 0.85rem;
   background: #fff;
   border: 1px solid var(--border);
   display: grid;
   place-items: center;
   overflow: hidden;
+  flex-shrink: 0;
 }
 .work-card__mark svg { width: 30px; height: 30px; }
 .work-card__mark img { width: 32px; height: 32px; object-fit: contain; }
@@ -992,17 +992,37 @@ a.work-card__more { text-decoration: none; display: inline-block; }
 .work-card.is-open .work-card__detail { grid-template-rows: 1fr; }
 .work-card.is-open { min-height: 25rem; }
 .work-card__shot {
-  margin: 0.25rem 0 0;
+  margin: 0;
   border-radius: 0.9rem;
   overflow: hidden;
   border: 1px solid var(--border);
   background: #fff;
+  aspect-ratio: 16 / 10;
 }
 .work-card__shot img {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
 }
+.work-card--empty {
+  background: #f6eee9;
+  border-style: dashed;
+}
+.work-card--empty:hover { transform: none; box-shadow: none; }
+.work-card__mark--empty {
+  color: var(--muted);
+  font-size: 1.4rem;
+  font-weight: 500;
+  background: transparent;
+}
+.work-card__shot--empty {
+  background: #faf6f4;
+  border-style: dashed;
+}
+.work-card--empty .work-card__title,
+.work-card--empty .work-card__desc { color: var(--muted); }
 
 /* ============================================================
    EXPERIENCE ACCORDION (Kane)
@@ -2422,8 +2442,7 @@ body.is-ready .reveal-on-load {
   .cap-grid { grid-template-columns: 1fr; gap: 0; }
   .cap-grid li { padding-block: 1rem; }
   .works-grid, .works-grid--split { grid-template-columns: 1fr; }
-  .work-card { min-height: 21rem; padding: 1.5rem; }
-  .work-card__mark { top: 1.5rem; left: 1.5rem; }
+  .work-card { min-height: 0; padding: 1rem 1rem 1.35rem; }
   .exp__company { font-size: 1.4rem; }
   .projects-grid { grid-template-columns: 1fr; }
   .skills-grid { grid-template-columns: 1fr; }
