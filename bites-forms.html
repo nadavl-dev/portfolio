@@ -5,7 +5,7 @@
  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
  <title>Bites Forms — Nadav Levy</title>
- <meta name="description" content="Case study: how Nadav Levy designed and shipped Bites Forms — a single flow for structured responses and legally binding signatures, replacing a two-tool workaround clients used daily." />
+ <meta name="description" content="Case study: how Nadav Levy built Bites Forms in-house after clients asked to embed Google Forms — then added DocuSign-style signing, email copies, and database storage so nothing gets lost." />
  <meta name="author" content="Nadav Levy" />
  <meta name="theme-color" content="#fdf6f4" />
 
@@ -43,12 +43,12 @@
    <div class="container">
     <a class="case-hero__back" href="index.html#projects">&larr; Back to My Works</a>
     <h1 class="case-hero__title">Bites Forms</h1>
-    <p class="case-hero__summary">Clients were bouncing between a form tool and a signing tool to finish what should have been one process. I designed and shipped a single flow that does both — structured responses and legally binding signatures in one place.</p>
+    <p class="case-hero__summary">Clients kept asking us to embed Google Forms. Instead of iframing a third-party publisher and paying for it, I built Forms in-house. Then they needed DocuSign-style signing to onboard employees end to end — so I made it two in one.</p>
     <div class="case-hero__meta">
      <span class="work-card__tag">Bites</span>
-     <span class="work-card__tag">Product design</span>
-     <span class="work-card__tag">Forms + e-signatures</span>
-     <span class="work-card__tag">Shipped to clients</span>
+     <span class="work-card__tag">Built in-house</span>
+     <span class="work-card__tag">Forms + signing</span>
+     <span class="work-card__tag">Used by clients</span>
     </div>
    </div>
   </section>
@@ -58,9 +58,9 @@
    <div class="container case-section__grid">
     <span class="case-section__label">The problem</span>
     <div class="case-section__body">
-     <p>Bites clients constantly need two things from their frontline teams: <strong>structured information</strong> (surveys, applications, checklists, orders) and <strong>signed documents</strong> (policies, agreements, acknowledgements).</p>
-     <p>No single tool did both. So every client ran the same painful workaround: build a form in one product, chase signatures in another, then manually stitch the results together. Two subscriptions, two logins, two exports — for what is really one workflow.</p>
-     <p>I watched clients repeat this workaround week after week. That repetition is exactly the signal I look for: when users build the same manual bridge twice, the product is missing a road.</p>
+     <p>A lot of Bites clients were asking us to <strong>embed Google Forms</strong> — and other third-party form tools — inside the product. The default path was to iframe someone else's publisher and pay for it as a company.</p>
+     <p>That meant another vendor, another invoice, and client data living outside Bites. I said: why pay a form publisher when we can build this ourselves?</p>
+     <p>Once forms existed, the next request showed up immediately. Clients needed <strong>DocuSign-style signing</strong> so they could onboard employees from top to bottom — collect the information, sign the documents, and keep the whole trail in one place.</p>
     </div>
    </div>
   </section>
@@ -70,13 +70,13 @@
    <div class="container case-section__grid">
     <span class="case-section__label">What I built</span>
     <div class="case-section__body">
-     <p>Bites Forms is one flow that collects structured responses and captures legally binding signatures in the same place. It ships with everything a client needs to go from blank page to signed, routed document:</p>
+     <p>I started by building the forms. Then I added signing. The result is two in one — structured responses and legally binding signatures — without embedding Google Forms or paying a third-party publisher:</p>
      <ul>
       <li><strong>Template gallery</strong> — ready-made starting points (customer feedback, event registration, job applications, order forms) plus blank form and PDF options.</li>
       <li><strong>Drag-and-drop builder</strong> — question types added from a toolbar, with live preview and autosave.</li>
-      <li><strong>PDF signing</strong> — upload an existing PDF, place signature boxes, and collect legally binding signatures.</li>
-      <li><strong>Automated routing</strong> — file generation, naming conventions, destination folders, and email notifications configured per form.</li>
-      <li><strong>Sharing built in</strong> — links, QR codes, and embed options so forms reach frontline workers wherever they are.</li>
+      <li><strong>DocuSign-style signing</strong> — upload a PDF, place signature boxes, and onboard employees from top to bottom in the same flow.</li>
+      <li><strong>Email copies</strong> — every submission sends a copy out, so clients and signers have a record immediately.</li>
+      <li><strong>Stored in our database</strong> — responses and signed files live in Bites, so nothing gets lost in a third-party tool.</li>
      </ul>
 
      <figure class="case-shot">
@@ -97,22 +97,22 @@
    <div class="container case-section__grid">
     <span class="case-section__label">The impact</span>
     <div class="case-section__body">
-     <p>The impact was operational and immediate for the clients who relied on the old workaround:</p>
+     <p>Clients use it. It replaced the Google Forms embed request and the extra signing tool in one product:</p>
      <div class="case-impact">
       <div class="case-impact__item">
-       <span class="case-impact__num">2 &rarr; 1</span>
-       <span class="case-impact__label">tools consolidated — one flow replaces a form product plus a signing product</span>
+       <span class="case-impact__num">In-house</span>
+       <span class="case-impact__label">no third-party form publisher — no iframe, no extra vendor invoice</span>
       </div>
       <div class="case-impact__item">
-       <span class="case-impact__num">0</span>
-       <span class="case-impact__label">manual stitching — responses and signatures land in the same place, routed automatically</span>
+       <span class="case-impact__num">2 in 1</span>
+       <span class="case-impact__label">forms plus DocuSign-style signing for employee onboarding end to end</span>
       </div>
       <div class="case-impact__item">
-       <span class="case-impact__num">Daily</span>
-       <span class="case-impact__label">use by clients who previously juggled the two-tool workaround</span>
+       <span class="case-impact__num">Kept</span>
+       <span class="case-impact__label">email copies go out; everything is stored in our database so nothing gets lost</span>
       </div>
      </div>
-     <p style="margin-top:1.5rem">This project reflects how I work: I noticed a repeated customer workaround, defined the real problem underneath it, and shipped a practical solution — rather than waiting for it to become a formal roadmap item.</p>
+     <p style="margin-top:1.5rem">This is how I work: a client asks for an embed, I ask whether we should own the workflow instead — then I ship it, listen for the next gap, and add what they actually need.</p>
     </div>
    </div>
   </section>
