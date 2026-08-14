@@ -974,6 +974,13 @@ button { font-family: inherit; cursor: pointer; }
 }
 .work-card__more:hover { opacity: 1; }
 a.work-card__more { text-decoration: none; display: inline-block; }
+.exp__logo {
+  height: 1.6rem;
+  width: auto;
+  vertical-align: -0.25rem;
+  margin-right: 0.6rem;
+  border-radius: 0.35rem;
+}
 .work-card__detail {
   position: relative;
   z-index: 1;

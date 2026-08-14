@@ -36,25 +36,9 @@
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
- <link rel="stylesheet" href="style.css?v=37" />
- <link rel="preload" href="loader-bike.mp4" as="video" type="video/mp4" />
+ <link rel="stylesheet" href="style.css?v=38" />
 </head>
-<body class="is-loading">
-
- <!-- ============ LOADING SCREEN ============ -->
- <div class="loader" id="loader" aria-hidden="true">
-  <div class="loader__stage">
-   <video
-    class="loader__video"
-    id="loaderVideo"
-    src="loader-bike.mp4"
-    playsinline
-    muted
-    preload="auto"
-    aria-hidden="true"
-   ></video>
-  </div>
- </div>
+<body class="is-ready">
 
  <!-- ============ TOP NAV ============ -->
  <header class="site-nav" id="siteNav">
@@ -124,7 +108,7 @@
       </div>
       <div class="impact__stat">
        <span class="impact__num">2</span>
-       <span class="impact__label">products shipped end to end</span>
+       <span class="impact__label">products built from customer needs</span>
       </div>
       <div class="impact__stat">
        <span class="impact__num">AI agents</span>
@@ -145,22 +129,22 @@
     </header>
 
     <div class="expertise__prose reveal">
-     <p>I'm a Customer Success Manager at <img class="inline-logo" src="bites-logo.png" alt="Bites">, but I operate like a builder. I lead all company support, research the problem, design the flow in Figma, and use AI to take it from prototype to shipped product — end to end, without waiting for a roadmap slot.</p>
-     <p>What drives me is the intersection of <strong>product thinking and AI</strong>. I've deployed smart agents for support triage and solution delivery, and my goal is clear: <strong>AI product roles and AI engineer roles</strong> — AI product manager, AI engineer, go-to-market engineer, or similar — where understanding users and building with AI are equally valued.</p>
+     <p>I'm a Customer Success Manager at <img class="inline-logo" src="bites-logo.png" alt="Bites">. I manage the full client portfolio in Israel and several accounts in the US — <strong>25+ companies</strong>, from small businesses to large enterprises. I own each relationship end to end: onboarding, adoption, renewal, and growth.</p>
+     <p>What drives me is the intersection of <strong>product thinking and AI</strong>. My goal is clear: <strong>AI product roles and AI engineer roles</strong> — AI product manager, AI engineer, go-to-market engineer, or similar — where understanding users and building with AI are equally valued.</p>
     </div>
 
     <div class="statrow reveal">
      <div class="statrow__item">
       <span class="statrow__num">25+</span>
-      <span class="statrow__label">enterprise clients managed</span>
-     </div>
-     <div class="statrow__item">
-      <span class="statrow__num">100%</span>
-      <span class="statrow__label">of company support led, with AI agents for triage</span>
+      <span class="statrow__label">clients managed</span>
      </div>
      <div class="statrow__item">
       <span class="statrow__num">2</span>
-      <span class="statrow__label">products shipped end to end at Bites</span>
+      <span class="statrow__label">products built from customer needs — and shipped</span>
+     </div>
+     <div class="statrow__item">
+      <span class="statrow__num">1 yr</span>
+      <span class="statrow__label">owning customer success at Bites</span>
      </div>
     </div>
    </div>
@@ -172,7 +156,7 @@
     <header class="section__head reveal">
      <span class="section__index">Stack</span>
      <h2 class="section__title">What I work with</h2>
-     <p class="section__lead">Four areas I move between — these are the tools I actually reach for.</p>
+     <p class="section__lead">Three areas I move between — these are the tools I actually reach for.</p>
     </header>
 
     <div class="stack reveal">
@@ -180,7 +164,6 @@
       <button class="stack__tab is-active" type="button" role="tab" data-stack="product" aria-selected="true">Product</button>
       <button class="stack__tab" type="button" role="tab" data-stack="ai" aria-selected="false">AI</button>
       <button class="stack__tab" type="button" role="tab" data-stack="design" aria-selected="false">Design</button>
-      <button class="stack__tab" type="button" role="tab" data-stack="code" aria-selected="false">Code</button>
      </div>
 
      <div class="stack__panel is-active" data-stack-panel="product">
@@ -218,15 +201,6 @@
       <p class="stack__note">Design is a thinking tool for me. I map user flows and prototype interfaces in Figma before committing to a build, so ideas get tested while they're still cheap to change.</p>
      </div>
 
-     <div class="stack__panel" data-stack-panel="code">
-      <ul class="stack__items">
-       <li class="stack__item"><img src="logos/html5.svg" alt="" loading="lazy">HTML</li>
-       <li class="stack__item"><img src="logos/css3.svg" alt="" loading="lazy">CSS</li>
-       <li class="stack__item"><img src="logos/javascript.svg" alt="" loading="lazy">JavaScript</li>
-       <li class="stack__item"><img src="logos/react.svg" alt="" loading="lazy">React</li>
-      </ul>
-      <p class="stack__note">Enough code to build and ship real things myself — this site included, written end to end without a framework.</p>
-     </div>
     </div>
    </div>
   </section>
@@ -309,7 +283,7 @@
      <div class="exp__list reveal">
 
       <article class="exp__job is-current">
-       <h3 class="exp__company">Bites</h3>
+       <h3 class="exp__company"><img class="exp__logo" src="bites-logo.png" alt="" loading="lazy">Bites</h3>
        <div class="exp__meta">
         <strong>Customer Success Manager</strong>
         <span class="exp__dot" aria-hidden="true"></span>
@@ -360,8 +334,8 @@
   <section class="section" id="education">
    <div class="container">
     <header class="section__head reveal">
-     <span class="section__index">Education &amp; service</span>
-     <h2 class="section__title">Where I come from</h2>
+     <span class="section__index">Background</span>
+     <h2 class="section__title">Education &amp; Service</h2>
     </header>
 
     <div class="timeline">
@@ -556,6 +530,6 @@
   </form>
  </div>
 
- <script src="script.js?v=29"></script>
+ <script src="script.js?v=30"></script>
 </body>
 </html>

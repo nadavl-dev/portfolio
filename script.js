@@ -8,47 +8,9 @@
  const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
- /* ---------- intro loading screen ---------- */
- const LOADER_MIN_MS = 3200;
- const LOADER_MAX_MS = 5200;
-
- const finishIntro = () => {
+ /* ---------- no intro loader: page is ready immediately ---------- */
  document.body.classList.remove("is-loading");
  document.body.classList.add("is-ready");
- const loader = $("#loader");
- if (loader) loader.classList.add("is-hidden");
- };
-
- const skipIntro = () => finishIntro();
-
- if (prefersReducedMotion) {
- skipIntro();
- } else {
- const loaderVideo = $("#loaderVideo");
- const startedAt = performance.now();
- let finished = false;
-
- const maybeFinish = () => {
- if (finished) return;
- if (performance.now() - startedAt < LOADER_MIN_MS) return;
- finished = true;
- finishIntro();
- };
-
- if (!loaderVideo) {
- skipIntro();
- } else {
- loaderVideo.addEventListener("ended", maybeFinish);
- loaderVideo.addEventListener("error", skipIntro);
-
- const playPromise = loaderVideo.play();
- if (playPromise && typeof playPromise.catch === "function") {
- playPromise.catch(skipIntro);
- }
-
- setTimeout(maybeFinish, LOADER_MAX_MS);
- }
- }
 
  /* ---------- impact bar infinite scroll ---------- */
  const impactTrack = $("#impactTrack");
@@ -313,7 +275,7 @@
  id:"skills",
  label:"skills",
  keys: { strong: ["skill","stack","tooling","tech stack","good at","capabilities"], weak: ["tool","tech","work with","expert","know"] },
- reply:"Nadav works across four areas: product thinking and discovery, AI-assisted workflows, design and prototyping, and practical implementation.\n\nOn the product side, he focuses on customer research, prioritization, go-to-market, and feedback loops. With AI, he uses Claude, ChatGPT, Cursor, and structured prompting to move from insight to shipped output, including AI agents and automation. In design, he works in Figma and Midjourney on web design, UX flows, and rapid prototyping. In implementation, he builds with HTML, CSS, JavaScript, React, and AI-assisted development workflows.",
+ reply:"Nadav works across three areas: product thinking and discovery, AI-assisted workflows, and design and prototyping.\n\nOn the product side, he focuses on customer research, prioritization, go-to-market, and feedback loops. With AI, he uses Claude, ChatGPT, Cursor, and structured prompting to move from insight to shipped output, including AI agents and automation. In design, he works in Figma and Midjourney on web design, UX flows, and rapid prototyping. He ships working software through AI-assisted development — this site included.",
  more:"His strength is not depth in one isolated tool. It is the ability to connect customer insight, design exploration, and delivery into one continuous workflow.",
  suggest: ["What impact did his projects have?", "How does he use AI?", "View stack"],
  actions: [{ label: "Stack section", scroll: "#stack" }],
