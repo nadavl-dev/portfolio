@@ -129,22 +129,6 @@
  });
  }
 
- /* ---------- tech stack tabs ---------- */
- const stackTabs = $$(".stack__tab");
- stackTabs.forEach((tab) => {
- tab.addEventListener("click", () => {
- const key = tab.dataset.stack;
- stackTabs.forEach((t) => {
- const on = t === tab;
- t.classList.toggle("is-active", on);
- t.setAttribute("aria-selected", String(on));
- });
- $$("[data-stack-panel]").forEach((panel) => {
- panel.classList.toggle("is-active", panel.dataset.stackPanel === key);
- });
- });
- });
-
  /* ---------- experience accordion + work card detail ---------- */
  const bindToggle = (selector, parentSelector, openLabel, closeLabel) => {
  $$(selector).forEach((btn) => {
@@ -275,7 +259,7 @@
  id:"skills",
  label:"skills",
  keys: { strong: ["skill","stack","tooling","tech stack","good at","capabilities"], weak: ["tool","tech","work with","expert","know"] },
- reply:"Nadav works across three areas: product thinking and discovery, AI-assisted workflows, and design and prototyping.\n\nOn the product side, he focuses on customer research, prioritization, go-to-market, and feedback loops. With AI, he uses Claude, ChatGPT, Cursor, and structured prompting to move from insight to shipped output, including AI agents and automation. In design, he works in Figma and Midjourney on web design, UX flows, and rapid prototyping. He ships working software through AI-assisted development — this site included.",
+ reply:"The tools Nadav actually reaches for are Claude Code, Twilio, Figma, Notion, and Cursor.\n\nHe uses Claude Code and Cursor to ship working software with AI-assisted development — this site included. Twilio is part of the WhatsApp fallback work at Bites (utility, then SMS). Figma and Notion are how he maps flows, writes, and keeps product work moving.",
  more:"His strength is not depth in one isolated tool. It is the ability to connect customer insight, design exploration, and delivery into one continuous workflow.",
  suggest: ["What impact did his projects have?", "How does he use AI?", "View stack"],
  actions: [{ label: "Stack section", scroll: "#stack" }],

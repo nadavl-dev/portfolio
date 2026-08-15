@@ -766,42 +766,14 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 /* ============================================================
-   TECH STACK TABS (Kane)
+   TECH STACK
    ============================================================ */
-.stack__tabs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 2.5rem;
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 1rem;
-}
-.stack__tab {
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: var(--muted);
-  background: transparent;
-  border: 1px solid transparent;
-  padding: 0.6rem 1.25rem;
-  border-radius: 999px;
-  transition: color 0.2s var(--ease), background 0.2s var(--ease), border-color 0.2s var(--ease);
-}
-.stack__tab:hover { color: var(--text); }
-.stack__tab.is-active {
-  color: var(--text);
-  background: var(--card);
-  border-color: var(--border);
-}
-.stack__panel { display: none; }
-.stack__panel.is-active { display: block; animation: stackFade 0.35s var(--ease) both; }
-@keyframes stackFade { from { opacity: 0; transform: translateY(8px); } }
-
 .stack__items {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
   list-style: none;
-  margin: 0 0 1.5rem;
+  margin: 0;
   padding: 0;
 }
 .stack__item {
@@ -817,13 +789,7 @@ button { font-family: inherit; cursor: pointer; }
   transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
 }
 .stack__item:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
-.stack__item img { width: 22px; height: 22px; object-fit: contain; }
-.stack__note {
-  font-size: 1rem;
-  color: var(--text-secondary);
-  max-width: 52ch;
-  line-height: 1.6;
-}
+.stack__item img { width: 28px; height: 28px; object-fit: contain; }
 
 /* ============================================================
    CAPABILITIES — 3-column list grid (Kane)
