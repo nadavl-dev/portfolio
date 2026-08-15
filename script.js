@@ -259,7 +259,7 @@
  id:"skills",
  label:"skills",
  keys: { strong: ["skill","stack","tooling","tech stack","good at","capabilities"], weak: ["tool","tech","work with","expert","know"] },
- reply:"The tools Nadav actually reaches for are Claude, ChatGPT, Cursor, Figma, and Midjourney.\n\nHe uses Claude and ChatGPT for research, writing, and structured prompting; Cursor to ship working software with AI-assisted development — this site included; and Figma and Midjourney to map flows and explore interfaces before a build.",
+ reply:"The tools Nadav actually reaches for are Claude Code, Twilio, Figma, Notion, and Cursor.\n\nHe uses Claude Code and Cursor to ship working software with AI-assisted development — this site included. Twilio is part of the WhatsApp fallback work at Bites (utility, then SMS). Figma and Notion are how he maps flows, writes, and keeps product work moving.",
  more:"His strength is not depth in one isolated tool. It is the ability to connect customer insight, design exploration, and delivery into one continuous workflow.",
  suggest: ["What impact did his projects have?", "How does he use AI?", "View stack"],
  actions: [{ label: "Stack section", scroll: "#stack" }],
