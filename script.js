@@ -357,8 +357,8 @@
  {
  id:"education",
  label:"education",
- keys: { strong: ["education","university","reichman","degree","study","studies","student"], weak: ["school","ba","communication","marketing","academic"] },
- reply:"Nadav is completing a B.A. in Communication and Marketing at Reichman University, expected 2026, while working full time at Bites.",
+ keys: { strong: ["education","university","reichman","degree","study","studies","student","graduate","graduation","when does he graduate","when did he graduate"], weak: ["school","ba","communication","marketing","academic","finish school"] },
+ reply:"Nadav graduates in August 2026 with a B.A. in Communication and Marketing from Reichman University. He is working full time at Bites while he finishes the degree.",
  more:"He uses the program to strengthen strategic communication and consumer behavior frameworks, then applies those concepts directly to customer and product work.",
  suggest: ["Experience at Bites", "Professional summary", "About Nadav"],
  actions: [{ label: "Work and education", scroll: "#experience" }],
@@ -410,9 +410,35 @@
  {
  id:"location",
  label:"location",
- keys: { strong: ["where","location","based","israel","live"], weak: ["city","country","from","relocate"] },
- reply:"Nadav is based in Israel. He studies at Reichman University in Herzliya and works at Bites.",
- more:"He is accustomed to working with international enterprise customers and teams.",
+ keys: { strong: ["where does he live","where do you live","where is he based","tel aviv","tlv","where","location","based","israel","live"], weak: ["city","country","from"] },
+ reply:"Nadav lives in Tel Aviv. He studies at Reichman University in Herzliya and works at Bites.",
+ more:"He already works with US accounts from Israel, so day-to-day customer work is both local and international.",
+ suggest: ["Is he open to remote?", "What AI roles is he looking for?", "How can I contact Nadav?"],
+ },
+ {
+ id:"age",
+ label:"age",
+ keys: { strong: ["how old","years old","age","birthday","born"], weak: ["old"] },
+ reply:"Nadav is 26.",
+ more:"He is finishing his degree in August 2026 while working full time at Bites.",
+ suggest: ["Where does he live?", "When does he graduate?", "Professional summary"],
+ },
+ {
+ id:"interests",
+ label:"what drives him",
+ keys: { strong: ["what drives","interested in","interests","passion","what does he care","what is he interested","ui ux","ui/ux"], weak: ["care about","curious","excited"] },
+ reply:"Nadav is very interested in AI and technology — more on the business side and on product, and in finding the balance between both. He is also very interested in UI and UX.",
+ more:"That is why he is aiming at AI product and AI engineer roles: understand the user, then build with AI.",
+ suggest: ["What AI roles is he looking for?", "How does he use AI?", "What does he do in his free time?"],
+ actions: [{ label: "About Nadav", scroll: "#about" }],
+ },
+ {
+ id:"hobbies",
+ label:"hobbies",
+ keys: { strong: ["hobby","hobbies","free time","spare time","outside work","sports","football","soccer","basketball","fashion","reading","books"], weak: ["fun","personal life","weekend"] },
+ reply:"In his free time Nadav plays sports — football, basketball, basically any sport. His hobbies are sports, reading books, and fashion. He loves fashion as well.",
+ more:"If you want the work story, ask about Bites, the WhatsApp project, or Bites Forms.",
+ suggest: ["What drives him?", "What impact did his projects have?", "How can I contact Nadav?"],
  },
  {
  id:"languages",
@@ -451,10 +477,64 @@
  actions: [{ label: "View projects", scroll: "#projects" }],
  },
  {
+ id:"cancode",
+ label:"can he code",
+ keys: { strong: ["can he code","does he code","vibe code","vibe coding","is he a developer","is he a programmer","is he an engineer"], weak: ["coder","python","javascript"] },
+ reply:"He can vibe-code. He is not a traditional coder and does not have a CS or Python-style major. Claude Code and Cursor are how he ships — this site is the proof.",
+ more:"The point is not leetcode. It is taking a real customer problem and getting a working product out.",
+ suggest: ["How did he learn to build?", "This website", "What impact did his projects have?"],
+ actions: [{ label: "View projects", scroll: "#projects" }],
+ },
+ {
+ id:"peoplelead",
+ label:"managed people",
+ keys: { strong: ["managed people","manage people","people manager","has he managed","did he manage","manage a team","managed a team"], weak: ["direct reports","ran a team"] },
+ reply:"Yes. He ran the floor as Shift Manager at Petelina, was Front of House Manager at Gerem 22, served as a combat commander in the IDF Artillery Corps, and was a Head Instructor in the Hebrew Scouts.",
+ more:"That is operations and people under pressure — staffing, guests, soldiers, and youth groups — not a software-engineering org chart.",
+ suggest: ["Leadership in the IDF", "Experience at Bites", "Professional summary"],
+ actions: [{ label: "Work and education", scroll: "#experience" }],
+ },
+ {
+ id:"typicalday",
+ label:"typical day",
+ keys: { strong: ["typical day","day to day","day-to-day","what does a day","everyday work","daily work"], weak: ["routine","schedule"] },
+ reply:"A typical day is customer conversations, support triage, and turning recurring friction into product and AI work.",
+ more:"That is also how WhatsApp fallback and Bites Forms started — a pattern in the queue, then something shipped.",
+ suggest: ["Experience at Bites", "What impact did his projects have?", "How does he use AI?"],
+ actions: [{ label: "Work and education", scroll: "#experience" }],
+ },
+ {
+ id:"remote",
+ label:"remote or office",
+ keys: { strong: ["remote","hybrid","office","on site","onsite","wfh","work from home","in person"], weak: ["relocate","relocation"] },
+ reply:"He is based in Tel Aviv. The role can be remote or not — he can do either. He prefers office.",
+ more:"He already works with US accounts from Israel. For a specific setup, email nadavile415@gmail.com.",
+ suggest: ["Where does he live?", "What AI roles is he looking for?", "How can I contact Nadav?"],
+ actions: [{ label: "Email Nadav", href: "mailto:nadavile415@gmail.com" }],
+ },
+ {
+ id:"favoritework",
+ label:"biggest work",
+ keys: { strong: ["favorite project","favourite project","biggest project","proudest","best work","favorite work","biggest work"], weak: ["most proud","highlight"] },
+ reply:"The two that matter most are both of them: the WhatsApp fallback — 98% deliverability and $10,000+ saved a year — and Bites Forms, built in-house after clients asked to embed Google Forms, then given DocuSign-style signing.",
+ more:"Same pattern in both: a customer problem he could not ignore, then ship it.",
+ suggest: ["What was the impact of the WhatsApp project?", "Tell me about Bites Forms", "How did he learn to build?"],
+ actions: [{ label: "View projects", scroll: "#projects" }],
+ },
+ {
+ id:"learned",
+ label:"how he learned to build",
+ keys: { strong: ["how did he learn","how he learned","self taught","self-taught","learn to build","learn to code","youtube"], weak: ["taught himself","picked up"] },
+ reply:"He learned by himself — a lot of YouTube, then shipping real customer problems with AI-assisted tools. No CS major.",
+ more:"Claude Code and Cursor are the current stack. The portfolio is one of the things that came out of that.",
+ suggest: ["Can he code?", "This website", "What impact did his projects have?"],
+ actions: [{ label: "View projects", scroll: "#projects" }],
+ },
+ {
  id:"greeting",
  label:"hello",
  keys: { strong: ["hello","hi","hey","shalom","howdy"], weak: ["yo","sup","morning","evening"] },
- reply:"Hello. Ask anything about Nadav in your own words — his work at Bites, school, projects, leadership, or how to reach him. You can also pick a topic below.",
+ reply:"Hello. Ask anything about Nadav in your own words — work, school, what drives him, or just the person. You can also pick a topic below.",
  suggest: ["Professional summary", "What impact did his projects have?", "What AI roles is he looking for?", "How can I contact Nadav?"],
  },
  {
@@ -524,14 +604,11 @@
  return score;
  };
 
- /* Extra facts for free-form questions that are not a dedicated topic.
-    Add a line here when Nadav shares more about himself. */
+ /* Extra facts for questions that are not a dedicated topic. */
  const PROFILE = [
- { keys: ["hobby","hobbies","free time","fun","personal life","outside work"], fact:"This assistant is built from his professional story — work, school, and shipped projects. For a more personal conversation, email him at nadavile415@gmail.com." },
- { keys: ["age","old","born","birthday","years old"], fact:"His age is not listed on the site. You can ask him directly at nadavile415@gmail.com." },
  { keys: ["salary","compensation","pay","rate","how much"], fact:"Compensation is not listed here. Email nadavile415@gmail.com if you want to talk about a role." },
- { keys: ["visa","relocate","relocation","move","remote","hybrid"], fact:"Nadav is based in Israel and already works with US accounts. For location or remote setup, email him at nadavile415@gmail.com." },
- { keys: ["name","pronounce","levy"], fact:"His name is Nadav Levy. He is a Customer Success Manager at Bites, based in Israel." },
+ { keys: ["visa","work permit","authorization"], fact:"Nadav lives in Tel Aviv and already works with US accounts. For work-authorization details, email nadavile415@gmail.com." },
+ { keys: ["name","pronounce","levy"], fact:"His name is Nadav Levy. He is 26, lives in Tel Aviv, and is a Customer Success Manager at Bites." },
  ];
 
  const FOLLOWUPS = ["more","tell me more","go on","expand","elaborate","why","how come","really","interesting","and"];
@@ -701,7 +778,7 @@
  wrap.className = "chat-welcome";
  wrap.innerHTML = `
  <p class="chat-welcome__title">Ask anything about Nadav.</p>
- <p class="chat-welcome__sub">Type a question in your own words — work, school, projects, or how to reach him — or start with a topic below.</p>
+ <p class="chat-welcome__sub">Type a question in your own words — work, school, what drives him, or just the person — or start with a topic below.</p>
  <div class="chat-welcome__grid">
  ${CHAT_STARTERS.map((s) => `<button type="button" class="chat-starter" data-q="${s.q.replace(/"/g, "&quot;")}"><span>${s.label}</span></button>`).join("")}
  </div>`;
