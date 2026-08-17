@@ -330,7 +330,7 @@
  {
  id:"experience",
  label:"experience at Bites",
- keys: { strong: ["experience","bites","career","customer success","csm"], weak: ["job","company","role","cs","success","current"] },
+ keys: { strong: ["experience","bites","career","customer success","csm","what does he do","day to day","daily work"], weak: ["job","company","role","cs","success","current"] },
  reply:"Nadav is a Customer Success Manager at Bites, where he supports enterprise customers using a platform built for frontline team training and enablement. He owns the relationship from onboarding through adoption, renewal, and growth across 25+ accounts.\n\nHe also leads all company support — triage, resolution, and issue handling — and built smart AI agents to automate triage and solution delivery. His work goes beyond account management: he regularly translates customer friction into product direction and ships internal solutions when gaps become clear.",
  more:"That combination of relationship ownership and product execution is central to how he operates today and to the product role he is working toward.",
  suggest: ["What impact did his projects have?", "Professional summary", "Leadership background"],
@@ -343,7 +343,7 @@
  reply:"Nadav served in the Israel Defense Forces from 2019 to 2021 as a Sergeant Major in the Artillery Corps. He worked as a combat commander in high-pressure operational environments and served as head of the medical staff in his unit, with responsibility for personnel readiness and medical equipment.",
  more:"That experience shaped his leadership style: accountability under pressure, decision-making with incomplete information, and direct responsibility for people and outcomes.",
  suggest: ["Scouts background", "Professional summary", "Experience at Bites"],
- actions: [{ label: "Education and service", scroll: "#education" }],
+ actions: [{ label: "Work and education", scroll: "#experience" }],
  },
  {
  id:"scouts",
@@ -352,7 +352,7 @@
  reply:"From 2015 to 2018, Nadav was active in the Hebrew Scouts Movement, including two years as a Head Instructor. He designed educational programs and led groups of 20 to 30 participants.",
  more:"This was an early foundation in facilitation, planning, and group leadership — skills that later translated into customer-facing and team-facing work.",
  suggest: ["Leadership in the IDF", "Professional summary", "About Nadav"],
- actions: [{ label: "Education and service", scroll: "#education" }],
+ actions: [{ label: "Work and education", scroll: "#experience" }],
  },
  {
  id:"education",
@@ -361,7 +361,7 @@
  reply:"Nadav is completing a B.A. in Communication and Marketing at Reichman University, expected 2026, while working full time at Bites.",
  more:"He uses the program to strengthen strategic communication and consumer behavior frameworks, then applies those concepts directly to customer and product work.",
  suggest: ["Experience at Bites", "Professional summary", "About Nadav"],
- actions: [{ label: "Education section", scroll: "#education" }],
+ actions: [{ label: "Work and education", scroll: "#experience" }],
  },
  {
  id:"github",
@@ -376,7 +376,7 @@
  id:"ai",
  label:"AI workflow",
  keys: { strong: ["ai","claude","chatgpt","prompt","llm","gpt","artificial","ai workflow","how does he use ai"], weak: ["machine learning","automation","model"] },
- reply:"Nadav uses AI throughout his workflow: for research, writing, design exploration, prototyping, and implementation. Tools such as Claude and ChatGPT help him move from question to draft to working output with less friction between stages.",
+ reply:"Nadav uses AI throughout his workflow: research, writing, design exploration, prototyping, and implementation. Claude Code and Cursor are how he ships working software. Notion and Figma keep the thinking and flows in one place; Twilio showed up in the WhatsApp fallback work at Bites.",
  more:"His value is not simply using AI tools. It is knowing how to chain them into a repeatable process that turns insight into shipped work.",
  suggest: ["This website", "What impact did his projects have?", "Skills"],
  actions: [{ label: "View projects", scroll: "#projects" }],
@@ -385,7 +385,7 @@
  id:"design",
  label:"design approach",
  keys: { strong: ["design","figma","midjourney","ui","ux","design approach"], weak: ["visual","prototype","mockup","interface"] },
- reply:"Nadav uses design as a thinking tool. He works in Figma for interface flows, Midjourney for visual exploration, and rapid prototyping to test ideas before committing to build.",
+ reply:"Nadav uses design as a thinking tool. He maps user flows and prototypes interfaces in Figma before committing to a build, so ideas get tested while they are still cheap to change.",
  more:"His aesthetic preference is clean and minimal, which is reflected in this portfolio. Design, for him, supports clarity and decision-making rather than decoration alone.",
  suggest: ["This website", "What impact did his projects have?", "How does he use AI?"],
  actions: [{ label: "View projects", scroll: "#projects" }],
@@ -415,16 +415,52 @@
  more:"He is accustomed to working with international enterprise customers and teams.",
  },
  {
+ id:"languages",
+ label:"languages",
+ keys: { strong: ["language","languages","hebrew","english","speak","fluent","bilingual"], weak: ["ivrit"] },
+ reply:"Nadav works in Hebrew and English. He owns the Israel client portfolio and several US accounts, so customer conversations happen in both.",
+ more:"That mix is useful for AI product and GTM roles that sit between local operators and international teams.",
+ suggest: ["Experience at Bites", "How can I contact Nadav?", "Professional summary"],
+ actions: [{ label: "About Nadav", scroll: "#about" }],
+ },
+ {
+ id:"available",
+ label:"availability",
+ keys: { strong: ["available","open to work","looking for a job","looking for work","can i hire","is he hiring","job search","notice period"], weak: ["start date","when can he"] },
+ reply:"Nadav is open to AI product and AI engineer roles — AI product manager, AI engineer, go-to-market engineer, or similar. Email is the fastest start: nadavile415@gmail.com.",
+ more:"His resume is on this site if you want the one-pager before you write.",
+ suggest: ["What AI roles is he looking for?", "Professional summary", "How can I contact Nadav?"],
+ actions: [{ label: "Email Nadav", href: "mailto:nadavile415@gmail.com" }, { label: "Download resume", href: "/resume.pdf" }],
+ },
+ {
+ id:"clients",
+ label:"clients",
+ keys: { strong: ["unilever","amazon","enterprise client","which clients","who are his clients","what companies"], weak: ["accounts"] },
+ reply:"At Bites he owns 25+ accounts — small businesses through large enterprises — including companies such as Unilever and Amazon. He manages the full Israel portfolio and several US accounts.",
+ more:"The through-line is the same at every size: onboarding, adoption, renewal, and turning recurring friction into something the product team can ship.",
+ suggest: ["Experience at Bites", "What impact did his projects have?", "Professional summary"],
+ actions: [{ label: "Work and education", scroll: "#experience" }],
+ },
+ {
+ id:"whyhim",
+ label:"why Nadav",
+ keys: { strong: ["why hire","why him","stand out","what makes him","why should we","why nadav","what is unique"], weak: ["strength","strengths","advantage","differentiator"] },
+ reply:"What distinguishes him is that he already runs the full loop: talk to customers, spot the pattern, prototype, and ship. He leads company support, built AI agents for triage, shipped a WhatsApp fallback that hit 98% deliverability and saved $10,000+ a year, and built Bites Forms in-house instead of paying a third-party publisher.\n\nHe has also operated enterprise relationships with companies such as Unilever and Amazon while finishing a Communication and Marketing degree at Reichman.",
+ more:"That combination — customer depth plus shipped product — is the case for AI product and GTM roles.",
+ suggest: ["What impact did his projects have?", "Professional summary", "How can I contact Nadav?"],
+ actions: [{ label: "View projects", scroll: "#projects" }],
+ },
+ {
  id:"greeting",
  label:"hello",
  keys: { strong: ["hello","hi","hey","shalom","howdy"], weak: ["yo","sup","morning","evening"] },
- reply:"Hello. I can help you understand Nadav's experience, project impact, leadership background, and the direction of his career. Choose one of the topics below or ask a question in your own words.",
+ reply:"Hello. Ask anything about Nadav in your own words — his work at Bites, school, projects, leadership, or how to reach him. You can also pick a topic below.",
  suggest: ["Professional summary", "What impact did his projects have?", "What AI roles is he looking for?", "How can I contact Nadav?"],
  },
  {
  id:"about",
  label:"about Nadav",
- keys: { strong: ["who is","about nadav","tell me about","introduce","bio"], weak: ["who","nadav","yourself","summary"] },
+ keys: { strong: ["who is","about nadav","tell me about","introduce","bio","who is he","tell me about him"], weak: ["who","nadav","yourself","summary"] },
  reply:"Nadav Levy is a Customer Success Manager at Bites who operates at the intersection of customer insight, product thinking, design, and AI-assisted execution. He has shipped tools that reduced cost and improved customer workflows, while managing enterprise relationships and pursuing AI product and go-to-market engineering roles.\n\nHis background includes military leadership in the IDF, youth instruction in the Hebrew Scouts, and ongoing study in Communication and Marketing at Reichman University.",
  more:"If you would like, I can go deeper on his projects, his path to product, his leadership experience, or the best way to contact him.",
  suggest: ["Professional summary", "What impact did his projects have?", "Leadership background"],
@@ -488,6 +524,16 @@
  return score;
  };
 
+ /* Extra facts for free-form questions that are not a dedicated topic.
+    Add a line here when Nadav shares more about himself. */
+ const PROFILE = [
+ { keys: ["hobby","hobbies","free time","fun","personal life","outside work"], fact:"This assistant is built from his professional story — work, school, and shipped projects. For a more personal conversation, email him at nadavile415@gmail.com." },
+ { keys: ["age","old","born","birthday","years old"], fact:"His age is not listed on the site. You can ask him directly at nadavile415@gmail.com." },
+ { keys: ["salary","compensation","pay","rate","how much"], fact:"Compensation is not listed here. Email nadavile415@gmail.com if you want to talk about a role." },
+ { keys: ["visa","relocate","relocation","move","remote","hybrid"], fact:"Nadav is based in Israel and already works with US accounts. For location or remote setup, email him at nadavile415@gmail.com." },
+ { keys: ["name","pronounce","levy"], fact:"His name is Nadav Levy. He is a Customer Success Manager at Bites, based in Israel." },
+ ];
+
  const FOLLOWUPS = ["more","tell me more","go on","expand","elaborate","why","how come","really","interesting","and"];
 
  const findIntent = (id) => KB.find((i) => i.id === id);
@@ -540,12 +586,27 @@
  };
  }
 
+ const profileHits = PROFILE
+ .map((p) => ({ p, s: p.keys.reduce((n, k) => n + keyHit(t, words, k), 0) }))
+ .filter((r) => r.s > 0)
+ .sort((a, b) => b.s - a.s);
+ if (profileHits.length) {
  lastIntent = null;
  pendingOffer = null;
  return {
- text: "I may not have a precise answer to that yet. You could ask about his project impact, professional summary, his fit for AI product roles, leadership background, or how to contact him.",
+ text: profileHits.slice(0, 2).map((r) => r.p.fact).join("\n\n"),
  suggest: ["Professional summary", "What impact did his projects have?", "How can I contact Nadav?"],
  actions: [{ label: "Contact section", scroll: "#contact" }],
+ };
+ }
+
+ const overview = findIntent("recruiter") || findIntent("about");
+ lastIntent = overview ? overview.id : null;
+ pendingOffer = null;
+ return {
+ text: (overview ? overview.reply + "\n\n" : "") + "Ask anything else in your own words — projects, school, leadership, tools, or how to reach him.",
+ suggest: ["What impact did his projects have?", "What AI roles is he looking for?", "How can I contact Nadav?"],
+ actions: overview && overview.actions ? overview.actions : [{ label: "About Nadav", scroll: "#about" }],
  };
  };
 
@@ -639,8 +700,8 @@
  const wrap = document.createElement("div");
  wrap.className = "chat-welcome";
  wrap.innerHTML = `
- <p class="chat-welcome__title">Welcome. I can help you review Nadav's background.</p>
- <p class="chat-welcome__sub">Choose a topic below to begin, or type your own question about his experience, projects, or career direction.</p>
+ <p class="chat-welcome__title">Ask anything about Nadav.</p>
+ <p class="chat-welcome__sub">Type a question in your own words — work, school, projects, or how to reach him — or start with a topic below.</p>
  <div class="chat-welcome__grid">
  ${CHAT_STARTERS.map((s) => `<button type="button" class="chat-starter" data-q="${s.q.replace(/"/g, "&quot;")}"><span>${s.label}</span></button>`).join("")}
  </div>`;
