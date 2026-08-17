@@ -218,6 +218,7 @@
  let greeted = false;
  let lastIntent = null;
  let pendingOffer = null;
+ let lastLang = "en";
 
  const CHAT_STARTERS = [
  { label: "Professional summary", q: "Give me a professional summary for a recruiter" },
@@ -231,6 +232,20 @@
  { label: "AI role fit", q: "What AI roles is he looking for?" },
  { label: "Contact", q: "How can I contact Nadav?" },
  { label: "Resume", q: "Where can I find his resume?" },
+ ];
+
+ const CHAT_STARTERS_HE = [
+ { label: "סיכום מקצועי", q: "תן לי סיכום מקצועי למגייס" },
+ { label: "השפעת הפרויקטים", q: "מה ההשפעה של הפרויקטים שלו?" },
+ { label: "תפקידי AI", q: "לאיזה תפקידי AI הוא מחפש?" },
+ { label: "רקע מנהיגות", q: "ספר על הרקע הניהולי שלו" },
+ ];
+
+ const DEFAULT_SUGGEST_HE = [
+ { label: "פרויקט WhatsApp", q: "מה הייתה ההשפעה של פרויקט הוואטסאפ?" },
+ { label: "תפקיד AI", q: "לאיזה תפקידי AI הוא מחפש?" },
+ { label: "יצירת קשר", q: "איך אפשר ליצור איתו קשר?" },
+ { label: "קורות חיים", q: "איפה קורות החיים?" },
  ];
 
  const norm = (s) => s.toLowerCase().replace(/[^a-z0-9֐-׿\s]/g, "").replace(/\s+/g, " ").trim();
@@ -597,48 +612,345 @@
  return fuzzy;
  };
 
+ const isHebrew = (s) => /[\u0590-\u05FF]/.test(s);
+
+ const keyHitHe = (text, words, key) => {
+ if (key.includes(" ")) return text.includes(key) ? 1 : 0;
+ return words.includes(key) ? 1 : 0;
+ };
+
+ const hePack = (intent) => (typeof HE !== "undefined" && HE[intent.id]) || {};
+
  const scoreIntent = (intent, text, words) => {
  let score = 0;
  intent.keys.strong.forEach((k) => { score += 3 * keyHit(text, words, k); });
  intent.keys.weak.forEach((k) => { score += 1 * keyHit(text, words, k); });
+ const heKeys = intent.keys.he || hePack(intent).keys || [];
+ heKeys.forEach((k) => { score += 3 * keyHitHe(text, words, k); });
  return score;
  };
 
  /* Extra facts for questions that are not a dedicated topic. */
  const PROFILE = [
- { keys: ["salary","compensation","pay","rate","how much"], fact:"Compensation is not listed here. Email nadavile415@gmail.com if you want to talk about a role." },
- { keys: ["visa","work permit","authorization"], fact:"Nadav lives in Tel Aviv and already works with US accounts. For work-authorization details, email nadavile415@gmail.com." },
- { keys: ["name","pronounce","levy"], fact:"His name is Nadav Levy. He is 26, lives in Tel Aviv, and is a Customer Success Manager at Bites." },
+ { keys: ["salary","compensation","pay","rate","how much"], fact:"Compensation is not listed here. Email nadavile415@gmail.com if you want to talk about a role.", factHe:"שכר לא מופיע כאן. אפשר לכתוב ל־nadavile415@gmail.com אם רוצים לדבר על תפקיד." },
+ { keys: ["visa","work permit","authorization"], fact:"Nadav lives in Tel Aviv and already works with US accounts. For work-authorization details, email nadavile415@gmail.com.", factHe:"נדב גר בתל אביב וכבר עובד מול לקוחות בארה״ב. לפרטי אשרת עבודה — nadavile415@gmail.com." },
+ { keys: ["name","pronounce","levy"], fact:"His name is Nadav Levy. He is 26, lives in Tel Aviv, and is a Customer Success Manager at Bites.", factHe:"קוראים לו נדב לוי. הוא בן 26, גר בתל אביב, ו־Customer Success Manager ב־Bites." },
+ { keysHe: ["משכורת","שכר","כמה הוא מרוויח"], fact:"Compensation is not listed here. Email nadavile415@gmail.com if you want to talk about a role.", factHe:"שכר לא מופיע כאן. אפשר לכתוב ל־nadavile415@gmail.com אם רוצים לדבר על תפקיד." },
+ { keysHe: ["ויזה","אשרה","אשרת עבודה"], fact:"Nadav lives in Tel Aviv and already works with US accounts. For work-authorization details, email nadavile415@gmail.com.", factHe:"נדב גר בתל אביב וכבר עובד מול לקוחות בארה״ב. לפרטי אשרת עבודה — nadavile415@gmail.com." },
+ { keysHe: ["איך קוראים לו","מה השם","השם שלו"], fact:"His name is Nadav Levy. He is 26, lives in Tel Aviv, and is a Customer Success Manager at Bites.", factHe:"קוראים לו נדב לוי. הוא בן 26, גר בתל אביב, ו־Customer Success Manager ב־Bites." },
  ];
 
+ const HE = {
+ recruiter: {
+ keys: ["סיכום","סיכום מקצועי","מגייס","ראיון","למה לקחת אותו","תקציר"],
+ reply:"נדב לוי הוא Customer Success Manager ב־Bites. הוא הופך צרכים של לקוחות למוצר שיוצא לדרך: מוביל את כל התמיכה בחברה, בנה סוכני AI לטריאז' ולפתרונות, בנה נפילה חכמה בוואטסאפ שהגיעה ל־98% מסירה וחסכה יותר מ־10,000 דולר בשנה, ובנה את Bites Forms בפנים אחרי שלקוחות ביקשו להטמיע גוגל פורמס — כולל חתימה בסגנון DocuSign.\n\nלפני Bites הוא היה רב־סמל בחיל התותחנים ורכז בתנועת הצופים. הוא מסיים תואר ראשון בתקשורת ושיווק ברייכמן ומכוון לתפקידי מוצר AI — ניהול מוצר, GTM, ופתרונות ללקוחות — במקום שבו הבנת משתמשים ובנייה עם AI שווים.",
+ more:"מה שמייחד אותו: הוא כבר רץ על דיסקברי, פרוטוטייפ ומסירה, במקביל לניהול לקוחות כמו יוניליוור ואמזון.",
+ suggest: ["מה ההשפעה של הפרויקטים שלו?","לאיזה תפקידי AI הוא מחפש?","איך אפשר ליצור איתו קשר?"],
+ },
+ whypm: {
+ keys: ["תפקיד ai","תפקידי ai","מנהל מוצר","למה מוצר","איזה תפקיד","מה הוא מחפש"],
+ reply:"נדב מכוון לתפקידי מוצר AI — ניהול מוצר, הנדסת GTM, ופתרונות ללקוחות — כי הוא כבר עובד על כל הלולאה עם AI במרכז. ב־CS הוא מדבר עם משתמשים כל יום, מזהה חיכוך, משרטט בפיגמה, ומוציא כלים עם פיתוח בסיוע AI.",
+ more:"הסוכנים, הוואטסאפ, הטפסים והפורטפוליו כבר מראים את הבעלות הזאת.",
+ suggest: ["מה ההשפעה של הפרויקטים שלו?","סיכום מקצועי"],
+ },
+ skills: {
+ keys: ["כלים","סטאק","במה הוא עובד","אקסל","sql","האבספוט"],
+ reply:"ביום־יום: Claude Code, ChatGPT, Cursor, Figma, HubSpot, Twilio ו־Vercel. בדרך הוא גם הרים אקסל ו־SQL ברמה שעובדת — למשוך מספרים, לנקות גיליון, ולבדוק מה באמת במסד. האתר הזה על Vercel; טוויליו נכנס בנפילת הוואטסאפ ב־Bites.",
+ more:"החוזק הוא לא כלי אחד. זה לחבר תובנת לקוח, עיצוב ומסירה.",
+ suggest: ["איך הוא משתמש ב־AI?","מה ההשפעה של הפרויקטים שלו?"],
+ },
+ projects: {
+ keys: ["פרויקטים","מה הוא בנה","עבודות","תיק עבודות"],
+ reply:"ארבעה דברים עם השפעה: סוכני AI לתמיכה; וואטסאפ בקנה מידה — נפילה מ־marketing ל־utility ואז SMS, 98% מסירה ויותר מ־10,000 דולר חיסכון בשנה; Bites Forms בפנים במקום גוגל פורמס, עם חתימה; והפורטפוליו הזה, שנבנה מקצה לקצה עם AI.",
+ more:"אותו דפוס: בעיה שחוזרת, פתרון פרקטי, משלוח, מדידה.",
+ suggest: ["מה הייתה ההשפעה של פרויקט הוואטסאפ?","ספר על Bites Forms"],
+ },
+ whatsapp: {
+ keys: ["וואטסאפ","ווטסאפ","whatsapp","פרויקט הוואטסאפ","פרויקט הווטסאפ","מסירה","98","חיסכון"],
+ reply:"וואטסאפ זה איך Bites מגיעים לעובדי קו בארץ, במזרח התיכון ובאירופה. מטא חסמה הודעות שיווק ו־Bites עדיין שילמו. נדב בנה נפילה: חסימה → הודעת utility → SMS. 98% מסירה, יותר מ־10,000 דולר חיסכון בשנה, כי utility זול יותר מלשלוח שיווק שוב.",
+ more:"חשיבת מוצר מתוך CS: להבין איך הפלטפורמה מחליטה מה עובר, ולבנות סביב זה.",
+ suggest: ["ספר על Bites Forms","סיכום מקצועי"],
+ },
+ supportagents: {
+ keys: ["סוכני ai","תמיכה","טריאז","helpdesk"],
+ reply:"ב־Bites נדב מוביל את כל התמיכה — טריאז', פתרון, וטיפול בפניות. הוא בנה סוכני AI שמסווגים ומעבירים או פותרים פניות נפוצות לפני שהן מגיעות לטיפול ידני.",
+ more:"צוואר בקבוק אמיתי, תהליך עם AI, ומסירה בתוך תמיכה חיה.",
+ suggest: ["איך הוא משתמש ב־AI?","ניסיון ב־Bites"],
+ },
+ bitesforms: {
+ keys: ["טפסים","ביטס פורמס","בייטס פורמס","גוגל פורמס","חתימה","docusign","bites forms"],
+ reply:"לקוחות ביקשו להטמיע גוגל פורמס. במקום לשלם על פאבלישר חיצוני, נדב בנה טפסים בפנים. אחר כך הוסיף חתימה בסגנון DocuSign לקליטת עובדים — שניים באחד. עותקים במייל, הכל במסד של Bites.",
+ more:"לקוח מבקש הטמעה, הוא שואל אם החברה צריכה להחזיק את התהליך, מוציא גרסה, וסוגר את הפער הבא.",
+ suggest: ["פרויקט הוואטסאפ","סיכום מקצועי"],
+ },
+ thissite: {
+ keys: ["האתר","הפורטפוליו","האתר הזה"],
+ reply:"הפורטפוליו עצמו הוא פרויקט. נדב עיצב ובנה אותו מקצה לקצה עם פיתוח בסיוע AI, בלי פריימוורק כבד. יש כאן את העוזר הזה. זה גם מצגת וגם הוכחה שהוא מוציא מוצר עובד.",
+ more:"איכות ביצוע, תשומת לב, ונוחות עם כלי AI.",
+ suggest: ["איך הוא למד לבנות?","הוא יודע לקודד?"],
+ },
+ contact: {
+ keys: ["צור קשר","מייל","אימייל","ליצור קשר","איך אפשר ליצור איתו קשר","איך ליצור קשר","איך מגיעים אליו"],
+ reply:"הכי ישיר: nadavile415@gmail.com. אפשר גם את הטופס באתר, לינקדאין, או גיטהאב @nadavl-dev.",
+ more:"לגיוס — הקורות חיים להורדה בהירו ובקונטקט. מייל בדרך כלל הכי מהיר.",
+ suggest: ["סיכום מקצועי","איפה קורות החיים?"],
+ },
+ gerem: {
+ keys: ["גרם","פטלינה","פטלינה","מנהל משמרת","כניסה"],
+ reply:"לפני ובמקביל ל־Bites נדב עבד בהכנסת אורחים בתל אביב. בפטלינה הוא היה מנהל משמרת (דצמבר 2021–יולי 2025). בגרם 22 ביפו הוא היה מנהל קבלה (אוגוסט–נובמבר 2022).",
+ more:"תפקיד תפעול מוקדם — הרצפה והאורח — שחוזר אחר כך בניהול לקוחות.",
+ suggest: ["ניסיון ב־Bites","רקע מנהיגות"],
+ },
+ experience: {
+ keys: ["ביטס","ניסיון","קריירה","הצלחת לקוחות","מה הוא עושה בביטס","מה הוא עושה בעבודה"],
+ reply:"נדב הוא CSM ב־Bites, פלטפורמה להכשרת עובדי קו. הוא מחזיק 25+ חשבונות מקצה לקצה, מוביל את התמיכה, ובנה סוכני AI לטריאז'. מעבר לחשבון: הוא הופך חיכוך לכיוון מוצר ומוציא פתרונות פנימיים.",
+ more:"בעלות על הקשר וביצוע מוצר — זה הכיוון לתפקיד המוצר.",
+ suggest: ["מה ההשפעה של הפרויקטים שלו?","סיכום מקצועי"],
+ },
+ army: {
+ keys: ["צבא","צהל","תותחנים","קצונה","שירות","רב סמל"],
+ reply:"נדב שירת בצה״ל מ־2019 עד 2021 כרב־סמל בחיל התותחנים. מפקד לוחם, וגם ראש הצוות הרפואי ביחידה.",
+ more:"אחריות תחת לחץ, החלטות עם מידע חסר, ואנשים על הראש.",
+ suggest: ["צופים","ניסיון ב־Bites"],
+ },
+ scouts: {
+ keys: ["צופים","מדריך","נוער","תנועת הצופים"],
+ reply:"מ־2015 עד 2018 בתנועת הצופים, שנתיים כרכז. בנה תוכניות והוביל קבוצות של 20–30.",
+ more:"בסיס מוקדם בהנחיה, תכנון ומנהיגות קבוצה.",
+ suggest: ["רקע בצה״ל","סיכום מקצועי"],
+ },
+ education: {
+ keys: ["לימודים","תואר","רייכמן","מתי הוא מסיים","מתי מסיים","סיום לימודים","אוגוסט 2026","בוגר"],
+ reply:"נדב מסיים באוגוסט 2026 תואר ראשון בתקשורת ושיווק באוניברסיטת רייכמן. במקביל הוא עובד מלא ב־Bites.",
+ more:"הוא לוקח משם תקשורת והתנהגות צרכן, ומוריד ישר לעבודה מול לקוחות ומוצר.",
+ suggest: ["ניסיון ב־Bites","בן כמה הוא?"],
+ },
+ github: {
+ keys: ["גיטהאב","גיט","קוד פתוח"],
+ reply:"העבודה שלו בגיטהאב תחת @nadavl-dev.",
+ more:"רוב העבודה הטכנית בסיוע AI, ממוקדת בהוצאת רעיון למוצר עובד.",
+ suggest: ["האתר הזה","איך הוא משתמש ב־AI?"],
+ },
+ ai: {
+ keys: ["בינה מלאכותית","איך הוא משתמש בai","קלוד","chatgpt"],
+ reply:"AI רץ אצלו על מחקר, כתיבה, עיצוב, פרוטוטייפ ומסירה. Claude Code ו־Cursor הם איך הוא מוציא תוכנה. HubSpot ופיגמה מחזיקים את העבודה מול לקוחות; טוויליו נכנס בוואטסאפ.",
+ more:"הערך הוא לא הכלי. זה לשרשר אותם לתהליך שחוזר על עצמו.",
+ suggest: ["הוא יודע לקודד?","מה ההשפעה של הפרויקטים שלו?"],
+ },
+ design: {
+ keys: ["עיצוב","פיגמה","יו איקס","ui","ux"],
+ reply:"עיצוב אצלו הוא כלי חשיבה. הוא ממפה פלואוז ומשרטט בפיגמה לפני בנייה, כשהשינוי עוד זול.",
+ more:"נקי ומינימלי — כמו האתר. בהירות, לא קישוט.",
+ suggest: ["מה מעניין אותו?","האתר הזה"],
+ },
+ product: {
+ keys: ["חשיבת מוצר","מוצר","פריוריטי"],
+ reply:"גישת מוצר: להגדיר את הבעיה האמיתית, לדרג, לשרטט מהר, ולהוציא משהו מדיד. ה־CS משאיר אותו צמוד לפידבק חי.",
+ more:"הקרבה לכאב של הלקוח היא יתרון.",
+ suggest: ["לאיזה תפקידי AI הוא מחפש?","סיכום מקצועי"],
+ },
+ resume: {
+ keys: ["קורות חיים","קוח","cv","resume"],
+ reply:"קורות החיים להורדה מההירו ומהקונטקט באתר.",
+ more:"יש שם Bites, שירות, לימודים, והמוצרים שהוא הוציא מתוך תפקיד מול לקוחות.",
+ suggest: ["סיכום מקצועי","איך אפשר ליצור איתו קשר?"],
+ },
+ location: {
+ keys: ["איפה הוא גר","איפה אתה גר","איפה נדב גר","תל אביב","מגורים","מאיפה הוא"],
+ reply:"נדב גר בתל אביב. הוא לומד באוניברסיטת רייכמן בהרצליה ועובד ב־Bites.",
+ more:"הוא כבר עובד מול לקוחות בארה״ב מישראל.",
+ suggest: ["הוא פתוח לעבודה מרחוק?","איך אפשר ליצור איתו קשר?"],
+ },
+ age: {
+ keys: ["בן כמה","בן כמה הוא","בן כמה אתה","מה הגיל","גיל"],
+ reply:"נדב בן 26.",
+ more:"הוא מסיים את התואר באוגוסט 2026 ועובד מלא ב־Bites.",
+ suggest: ["איפה הוא גר?","מתי הוא מסיים?"],
+ },
+ interests: {
+ keys: ["מה מעניין אותו","מה דוחף אותו","תחומי עניין","ui ux","עיצוב חוויה"],
+ reply:"הוא מאוד מתעניין ב־AI ובטכנולוגיה — יותר בצד העסקי ובמוצר, ובאיזון ביניהם. הוא גם מאוד מתעניין ב־UI/UX.",
+ more:"לכן הוא מכוון לתפקידי מוצר ומהנדס AI: להבין את המשתמש, ואז לבנות עם AI.",
+ suggest: ["לאיזה תפקידי AI הוא מחפש?","מה הוא עושה בזמן הפנוי?"],
+ },
+ hobbies: {
+ keys: ["תחביבים","זמן פנוי","בזמן הפנוי","מה הוא עושה בזמן הפנוי","ספורט","כדורגל","כדורסל","אופנה","ספרים","קריאה"],
+ reply:"בזמן הפנוי הוא עושה ספורט — כדורגל, כדורסל, בעצם כל ספורט. התחביבים: ספורט, קריאת ספרים ואופנה. הוא אוהב אופנה.",
+ more:"לסיפור העבודה — Bites, הוואטסאפ או הטפסים.",
+ suggest: ["מה מעניין אותו?","מה ההשפעה של הפרויקטים שלו?"],
+ },
+ languages: {
+ keys: ["שפות","עברית","אנגלית","דו לשוני"],
+ reply:"נדב עובד בעברית ובאנגלית. הוא מחזיק את תיק ישראל וכמה חשבונות בארה״ב.",
+ more:"שימושי לתפקידי מוצר ו־GTM בין שטח מקומי לצוותים בחו״ל.",
+ suggest: ["ניסיון ב־Bites","איך אפשר ליצור איתו קשר?"],
+ },
+ available: {
+ keys: ["זמין","מחפש עבודה","אפשר לגייס","מתי הוא יכול"],
+ reply:"הוא פתוח לתפקידי מוצר AI ומהנדס AI. המייל הכי מהיר: nadavile415@gmail.com.",
+ more:"הקורות חיים באתר אם רוצים דף אחד לפני שכותבים.",
+ suggest: ["לאיזה תפקידי AI הוא מחפש?","איך אפשר ליצור איתו קשר?"],
+ },
+ clients: {
+ keys: ["לקוחות","יוניליוור","אמזון","איזה חברות"],
+ reply:"ב־Bites הוא מחזיק 25+ חשבונות — מעסקים קטנים עד ארגונים, כולל יוניליוור ואמזון. תיק ישראל מלא וכמה חשבונות בארה״ב.",
+ more:"אותו קו בכל גודל: אונבורדינג, אימוץ, חידוש, והפיכת חיכוך למוצר.",
+ suggest: ["ניסיון ב־Bites","מה ההשפעה של הפרויקטים שלו?"],
+ },
+ whyhim: {
+ keys: ["למה הוא","למה לקחת","מה מייחד","ייחודי"],
+ reply:"הוא כבר רץ על כל הלולאה: לדבר עם לקוחות, לראות דפוס, לשרטט, להוציא. מוביל תמיכה, בנה סוכנים, הוציא נפילת וואטסאפ ב־98% וחיסכון של 10,000+ דולר, ובנה טפסים בפנים. במקביל לקוחות כמו יוניליוור ואמזון, ותואר ברייכמן.",
+ more:"עומק לקוח ומוצר שיוצא — זה הטיעון לתפקידי מוצר ו־GTM.",
+ suggest: ["מה ההשפעה של הפרויקטים שלו?","סיכום מקצועי"],
+ },
+ cancode: {
+ keys: ["הוא יודע לקודד","הוא יודע לתכנת","הוא מתכנת","וייב קוד","וייב־קוד","הוא מפתח"],
+ reply:"הוא יודע לעשות וייב־קוד. הוא לא מתכנת קלאסי ואין לו תואר במדעי המחשב או פייתון. Claude Code ו־Cursor הם איך הוא מוציא — האתר הזה ההוכחה.",
+ more:"הנקודה היא לא ליטקוד. לקחת בעיית לקוח אמיתית ולהוציא מוצר עובד.",
+ suggest: ["איך הוא למד לבנות?","האתר הזה"],
+ },
+ peoplelead: {
+ keys: ["ניהל אנשים","הוא ניהל אנשים","ניהול צוות","הוא ניהל","מנהל אנשים"],
+ reply:"כן. מנהל משמרת בפטלינה, מנהל קבלה בגרם 22, מפקד בחיל התותחנים, ורכז בצופים.",
+ more:"תפעול ואנשים תחת לחץ — לא אורגצ׳ארט של הנדסה.",
+ suggest: ["רקע בצה״ל","ניסיון ב־Bites"],
+ },
+ typicalday: {
+ keys: ["יום טיפוסי","יום יום","איך נראה יום","יום עבודה","איך נראה יום עבודה"],
+ reply:"יום טיפוסי: שיחות עם לקוחות, טריאז' של תמיכה, והפיכת חיכוך שחוזר למוצר ולעבודת AI.",
+ more:"ככה נולדו גם הוואטסאפ והטפסים — דפוס בתור, ואז משהו שיוצא.",
+ suggest: ["ניסיון ב־Bites","איך הוא משתמש ב־AI?"],
+ },
+ remote: {
+ keys: ["רימוט","עבודה מהבית","משרד","מעדיף משרד","היברידי","מרחוק","עבודה מהמשרד"],
+ reply:"הוא בתל אביב. התפקיד יכול להיות מרחוק או לא — הוא יכול גם וגם. הוא מעדיף משרד.",
+ more:"הוא כבר עובד מול ארה״ב מישראל. לסידור ספציפי: nadavile415@gmail.com.",
+ suggest: ["איפה הוא גר?","איך אפשר ליצור איתו קשר?"],
+ },
+ favoritework: {
+ keys: ["הכי גאה","הפרויקט הכי","העבודה הכי גדולה","הכי חשוב"],
+ reply:"שניהם: נפילת הוואטסאפ — 98% מסירה ויותר מ־10,000 דולר חיסכון — ו־Bites Forms, שנבנה בפנים אחרי שביקשו גוגל פורמס, עם חתימה.",
+ more:"אותו דפוס: בעיית לקוח שאי אפשר להתעלם ממנה, ואז משלוח.",
+ suggest: ["מה הייתה ההשפעה של פרויקט הוואטסאפ?","ספר על Bites Forms"],
+ },
+ learned: {
+ keys: ["איך הוא למד","למד לבד","יוטיוב","למד מיוטיוב","איך למד לקודד"],
+ reply:"למד לבד — הרבה יוטיוב, ואז הוציא בעיות לקוח אמיתיות עם כלי AI. בלי תואר במדעי המחשב.",
+ more:"Claude Code ו־Cursor הם הסטאק עכשיו. הפורטפוליו יצא משם.",
+ suggest: ["הוא יודע לקודד?","האתר הזה"],
+ },
+ greeting: {
+ keys: ["שלום","היי","הי","אהלן","בוקר טוב","ערב טוב"],
+ reply:"שלום. אפשר לשאול בעברית — עבודה, לימודים, מה מעניין אותו, או סתם מי הוא. אפשר גם לבחור נושא למטה.",
+ suggest: ["סיכום מקצועי","מה ההשפעה של הפרויקטים שלו?","לאיזה תפקידי AI הוא מחפש?","איך אפשר ליצור איתו קשר?"],
+ },
+ about: {
+ keys: ["מי זה נדב","מי הוא","ספר עליו","ביו"],
+ reply:"נדב לוי הוא CSM ב־Bites, בצומת של תובנת לקוח, חשיבת מוצר, עיצוב וביצוע עם AI. הוא הוציא כלים שחסכו כסף ושיפרו תהליכים, מנהל לקוחות ארגוניים, ומכוון לתפקידי מוצר ו־GTM.\n\nברקע: צה״ל, צופים, ותואר בתקשורת ושיווק ברייכמן.",
+ more:"אפשר להעמיק בפרויקטים, בדרך למוצר, במנהיגות, או באיך ליצור קשר.",
+ suggest: ["סיכום מקצועי","מה ההשפעה של הפרויקטים שלו?"],
+ },
+ thanks: {
+ keys: ["תודה","תודה רבה"],
+ reply:"בשמחה. אם יש עוד משהו על הרקע של נדב — אפשר לשאול.",
+ suggest: ["סיכום מקצועי","איך אפשר ליצור איתו קשר?"],
+ },
+ no: {
+ keys: ["לא","לא עכשיו"],
+ reply:"בסדר. אפשר נושא אחר או אחת ההצעות למטה.",
+ suggest: ["מה ההשפעה של הפרויקטים שלו?","סיכום מקצועי"],
+ },
+ };
+
+ const HE_LABELS = {
+ recruiter: "הסיכום המקצועי",
+ whypm: "תפקידי ה-AI שהוא מחפש",
+ skills: "הכלים",
+ projects: "הפרויקטים",
+ whatsapp: "פרויקט הוואטסאפ",
+ supportagents: "סוכני ה-AI לתמיכה",
+ bitesforms: "Bites Forms",
+ thissite: "האתר הזה",
+ contact: "יצירת קשר",
+ gerem: "פטלינה וגרם 22",
+ experience: "הניסיון ב-Bites",
+ army: "השירות בצה״ל",
+ scouts: "הצופים",
+ education: "הלימודים",
+ github: "גיטהאב",
+ ai: "איך הוא משתמש ב-AI",
+ design: "הגישה לעיצוב",
+ product: "חשיבת המוצר",
+ resume: "קורות החיים",
+ location: "איפה הוא גר",
+ age: "הגיל",
+ interests: "מה מעניין אותו",
+ hobbies: "התחביבים",
+ languages: "השפות",
+ available: "הזמינות",
+ clients: "הלקוחות",
+ whyhim: "למה הוא",
+ cancode: "וייב-קוד",
+ peoplelead: "ניהול אנשים",
+ typicalday: "יום טיפוסי",
+ remote: "משרד או רימוט",
+ favoritework: "העבודה הכי גדולה",
+ learned: "איך הוא למד לבנות",
+ greeting: "שלום",
+ about: "מי הוא",
+ thanks: "תודה",
+ no: "נושא אחר",
+ };
+
  const FOLLOWUPS = ["more","tell me more","go on","expand","elaborate","why","how come","really","interesting","and"];
+ const FOLLOWUPS_HE = ["עוד","ספר עוד","תמשיך","למה","באמת","ותוסיף"];
+ const YES_HE = ["כן","בטח","סבבה","יאללה","בסדר"];
+ const YES_EN = ["yes","yeah","yep","sure","ok","okay","please","yup"];
 
  const findIntent = (id) => KB.find((i) => i.id === id);
+
+ const pickReply = (intent, hebrew, more) => {
+ const pack = hePack(intent);
+ if (hebrew) {
+ if (more) return pack.more || intent.moreHe || intent.more || pack.reply || intent.reply;
+ return pack.reply || intent.replyHe || intent.reply;
+ }
+ if (more) return intent.more;
+ return intent.reply;
+ };
+
+ const pickSuggest = (intent, hebrew) => {
+ const pack = intent ? hePack(intent) : {};
+ if (hebrew) return pack.suggest || DEFAULT_SUGGEST_HE.map((s) => s.q);
+ return (intent && intent.suggest) || DEFAULT_SUGGEST.map((s) => s.q);
+ };
 
  const getReply = (text) => {
  const t = norm(text);
  const words = t.split(" ");
+ const hebrew = isHebrew(text);
+ lastLang = hebrew ? "he" : "en";
 
- if (pendingOffer && ["yes","yeah","yep","sure","ok","okay","please","yup"].some((w) => t === w || t.startsWith(w + " "))) {
+ const saidYes = hebrew
+ ? YES_HE.some((w) => t === w || t.startsWith(w + " "))
+ : YES_EN.some((w) => t === w || t.startsWith(w + " "));
+
+ if (pendingOffer && saidYes) {
  const offered = findIntent(pendingOffer);
  pendingOffer = null;
  if (offered) {
  lastIntent = offered.id;
- return { text: offered.reply, intent: offered, suggest: offered.suggest, actions: offered.actions };
+ return { text: pickReply(offered, hebrew, false), intent: offered, suggest: pickSuggest(offered, hebrew), actions: offered.actions, hebrew };
  }
  }
 
- if (lastIntent && words.length <= 4 && FOLLOWUPS.some((f) => t === f || t.startsWith(f + " ") || t.endsWith(" " + f))) {
+ const followList = hebrew ? FOLLOWUPS_HE : FOLLOWUPS;
+ if (lastIntent && words.length <= 4 && followList.some((f) => t === f || t.startsWith(f + " ") || t.endsWith(" " + f))) {
  const intent = findIntent(lastIntent);
- if (intent && intent.more) {
+ if (intent && (intent.more || hePack(intent).more)) {
  lastIntent = null;
- return { text: intent.more, intent, suggest: intent.suggest, actions: intent.actions };
+ return { text: pickReply(intent, hebrew, true), intent, suggest: pickSuggest(intent, hebrew), actions: intent.actions, hebrew };
  }
- }
-
- if (t === "yes" || t === "yeah" || t === "sure") {
- const yesIntent = findIntent("yes");
- if (yesIntent) { /* handled above via pendingOffer */ }
  }
 
  const ranked = KB.map((i) => ({ i, s: scoreIntent(i, t, words) }))
@@ -648,42 +960,54 @@
  if (ranked.length) {
  const best = ranked[0];
  lastIntent = best.i.id;
- let replyText = best.i.reply;
+ let replyText = pickReply(best.i, hebrew, false);
  pendingOffer = null;
  const second = ranked[1];
  if (second && second.s >= 3 && second.i.id !== best.i.id && !["greeting","thanks","no"].includes(second.i.id)) {
- replyText += `\n\nI can also share more on ${second.i.label} if that would be helpful.`;
+ replyText += hebrew
+ ? `\n\nאפשר גם לספר עוד על ${hePack(second.i).label || HE_LABELS[second.i.id] || second.i.label}.`
+ : `\n\nI can also share more on ${second.i.label} if that would be helpful.`;
  pendingOffer = second.i.id;
  }
  return {
  text: replyText,
  intent: best.i,
- suggest: best.i.suggest || DEFAULT_SUGGEST.map((s) => s.q),
+ suggest: pickSuggest(best.i, hebrew),
  actions: best.i.actions,
+ hebrew,
  };
  }
 
  const profileHits = PROFILE
- .map((p) => ({ p, s: p.keys.reduce((n, k) => n + keyHit(t, words, k), 0) }))
+ .map((p) => {
+ const en = (p.keys || []).reduce((n, k) => n + keyHit(t, words, k), 0);
+ const he = (p.keysHe || []).reduce((n, k) => n + keyHitHe(t, words, k), 0);
+ return { p, s: en + he };
+ })
  .filter((r) => r.s > 0)
  .sort((a, b) => b.s - a.s);
  if (profileHits.length) {
  lastIntent = null;
  pendingOffer = null;
  return {
- text: profileHits.slice(0, 2).map((r) => r.p.fact).join("\n\n"),
- suggest: ["Professional summary", "What impact did his projects have?", "How can I contact Nadav?"],
- actions: [{ label: "Contact section", scroll: "#contact" }],
+ text: profileHits.slice(0, 2).map((r) => (hebrew && r.p.factHe) ? r.p.factHe : r.p.fact).join("\n\n"),
+ suggest: pickSuggest(null, hebrew),
+ actions: [{ label: hebrew ? "צור קשר" : "Contact section", scroll: "#contact" }],
+ hebrew,
  };
  }
 
  const overview = findIntent("recruiter") || findIntent("about");
  lastIntent = overview ? overview.id : null;
  pendingOffer = null;
+ const extra = hebrew
+ ? "אפשר לשאול עוד בעברית — פרויקטים, לימודים, מנהיגות, כלים, או איך ליצור קשר."
+ : "Ask anything else in your own words — projects, school, leadership, tools, or how to reach him.";
  return {
- text: (overview ? overview.reply + "\n\n" : "") + "Ask anything else in your own words — projects, school, leadership, tools, or how to reach him.",
- suggest: ["What impact did his projects have?", "What AI roles is he looking for?", "How can I contact Nadav?"],
+ text: (overview ? pickReply(overview, hebrew, false) + "\n\n" : "") + extra,
+ suggest: pickSuggest(overview, hebrew),
  actions: overview && overview.actions ? overview.actions : [{ label: "About Nadav", scroll: "#about" }],
+ hebrew,
  };
  };
 
@@ -711,7 +1035,8 @@
 
  const setSuggestions = (items) => {
  if (!suggest) return;
- const list = (items || DEFAULT_SUGGEST).slice(0, 4);
+ const fallback = lastLang === "he" ? DEFAULT_SUGGEST_HE : DEFAULT_SUGGEST;
+ const list = (items || fallback).slice(0, 4);
  suggest.innerHTML = list.map((item) => {
  const label = typeof item === "string" ? item : item.label;
  const q = typeof item === "string" ? item : item.q;
@@ -723,6 +1048,7 @@
  if (who === "user") {
  const el = document.createElement("div");
  el.className = "msg msg--user";
+ if (isHebrew(text)) el.setAttribute("dir", "auto");
  el.innerHTML = fmt(text);
  log.appendChild(el);
  log.scrollTop = log.scrollHeight;
@@ -730,7 +1056,7 @@
  }
  const row = document.createElement("div");
  row.className = "msg-row";
- row.innerHTML = `${avatarHTML}<div class="msg msg--bot">${fmt(text)}</div>`;
+ row.innerHTML = `${avatarHTML}<div class="msg msg--bot"${isHebrew(text) ? ' dir="auto"' : ""}>${fmt(text)}</div>`;
  log.appendChild(row);
  log.scrollTop = log.scrollHeight;
  return row;
@@ -748,7 +1074,7 @@
  return "";
  }).join("")}</div>`;
  }
- row.innerHTML = `${avatarHTML}<div class="msg msg--bot">${fmt(payload.text)}${actionsHTML}</div>`;
+ row.innerHTML = `${avatarHTML}<div class="msg msg--bot"${payload.hebrew ? ' dir="auto"' : ""}>${fmt(payload.text)}${actionsHTML}</div>`;
  log.appendChild(row);
  log.scrollTop = log.scrollHeight;
  if (payload.suggest) {
@@ -774,16 +1100,24 @@
  };
 
  const showWelcome = () => {
+ const he = lastLang === "he";
+ const starters = he ? CHAT_STARTERS_HE : CHAT_STARTERS;
  const wrap = document.createElement("div");
  wrap.className = "chat-welcome";
- wrap.innerHTML = `
+ if (he) wrap.setAttribute("dir", "auto");
+ wrap.innerHTML = he ? `
+ <p class="chat-welcome__title">אפשר לשאול בעברית.</p>
+ <p class="chat-welcome__sub">שאלה חופשית — עבודה, לימודים, מה מעניין אותו, או סתם מי הוא — או לבחור נושא למטה.</p>
+ <div class="chat-welcome__grid">
+ ${starters.map((s) => `<button type="button" class="chat-starter" data-q="${s.q.replace(/"/g, "&quot;")}"><span>${s.label}</span></button>`).join("")}
+ </div>` : `
  <p class="chat-welcome__title">Ask anything about Nadav.</p>
  <p class="chat-welcome__sub">Type a question in your own words — work, school, what drives him, or just the person — or start with a topic below.</p>
  <div class="chat-welcome__grid">
- ${CHAT_STARTERS.map((s) => `<button type="button" class="chat-starter" data-q="${s.q.replace(/"/g, "&quot;")}"><span>${s.label}</span></button>`).join("")}
+ ${starters.map((s) => `<button type="button" class="chat-starter" data-q="${s.q.replace(/"/g, "&quot;")}"><span>${s.label}</span></button>`).join("")}
  </div>`;
  log.appendChild(wrap);
- setSuggestions(DEFAULT_SUGGEST);
+ setSuggestions(he ? DEFAULT_SUGGEST_HE : DEFAULT_SUGGEST);
  setBackVisible(false);
  };
 
