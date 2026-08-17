@@ -1121,6 +1121,7 @@ a.work-card__more { text-decoration: none; display: inline-block; }
   flex: 0 0 auto;
   background: #fff;
 }
+.service__logo--dark { background: #0a0a0a; }
 .service__card strong {
   display: block;
   font-size: 1rem;
