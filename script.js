@@ -259,7 +259,7 @@
  id:"skills",
  label:"skills",
  keys: { strong: ["skill","stack","tooling","tech stack","good at","capabilities","excel","sql","hubspot"], weak: ["tool","tech","work with","expert","know"] },
- reply:"Day to day Nadav works in Claude Code, ChatGPT, Cursor, Figma, HubSpot, and Twilio.\n\nAlong the way he also picked up Excel and a working amount of SQL — enough to pull numbers, clean a sheet, and check what is actually in the database. Claude Code and Cursor are how he ships; Twilio showed up in the WhatsApp fallback at Bites.",
+ reply:"Day to day Nadav works in Claude Code, ChatGPT, Cursor, Figma, HubSpot, Twilio, and Vercel.\n\nAlong the way he also picked up Excel and a working amount of SQL — enough to pull numbers, clean a sheet, and check what is actually in the database. Claude Code and Cursor are how he ships; this site is on Vercel; Twilio showed up in the WhatsApp fallback at Bites.",
  more:"His strength is not depth in one isolated tool. It is the ability to connect customer insight, design exploration, and delivery into one continuous workflow.",
  suggest: ["What impact did his projects have?", "How does he use AI?", "View stack"],
  actions: [{ label: "Stack section", scroll: "#stack" }],
