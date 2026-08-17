@@ -745,7 +745,7 @@ button { font-family: inherit; cursor: pointer; }
 .stack__items {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 1.1rem;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -753,17 +753,19 @@ button { font-family: inherit; cursor: pointer; }
 .stack__item {
   display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.85rem 1.35rem;
-  border: 1px solid var(--border);
+  gap: 0.9rem;
+  padding: 1.15rem 1.7rem;
+  border: 1.5px solid var(--border-strong);
   border-radius: 999px;
   background: var(--card);
-  font-size: 0.95rem;
-  font-weight: 500;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  box-shadow: var(--shadow-sm);
   transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
 }
 .stack__item:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
-.stack__item img { width: 28px; height: 28px; object-fit: contain; }
+.stack__item img { width: 36px; height: 36px; object-fit: contain; }
 
 /* ============================================================
    CAPABILITIES — 3-column list grid (Kane)
@@ -1119,9 +1121,18 @@ a.work-card__more { text-decoration: none; display: inline-block; }
   object-fit: contain;
   border-radius: 0.65rem;
   flex: 0 0 auto;
-  background: #fff;
+  background: transparent;
 }
-.service__logo--dark { background: #0a0a0a; }
+.service__logo--wide {
+  width: 8.25rem;
+  height: auto;
+  aspect-ratio: auto;
+  border-radius: 0;
+}
+.service__logo--mark {
+  width: 4.75rem;
+  height: 4.75rem;
+}
 .service__card strong {
   display: block;
   font-size: 1rem;
