@@ -830,6 +830,7 @@ button { font-family: inherit; cursor: pointer; }
 /* tinted blocks — Kane uses solid colour cards; ours stay in the blush family */
 .work-card--tint-a { background: #f7e2dd; }
 .work-card--tint-b { background: #efe4de; }
+.work-card--tint-c { background: #e8ddd6; }
 .work-card--dark {
   background: #171110;
   border-color: #171110;
