@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 40" role="img">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 48" role="img">
  <title>Zapier</title>
- <rect x="2" y="26" width="22" height="7" rx="1.4" fill="#FF4F00"/>
- <text x="30" y="32" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" fill="#111111" letter-spacing="-0.04em">zapier</text>
+ <rect x="2" y="32" width="28" height="9.5" rx="2" fill="#FF4F00"/>
+ <text x="38" y="40" font-family="Inter, Arial, Helvetica, sans-serif" font-size="32" font-weight="700" fill="#14100E" letter-spacing="-0.03em">zapier</text>
 </svg>

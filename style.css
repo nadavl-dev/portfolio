@@ -766,7 +766,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 .stack__item:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
 .stack__item img { width: 36px; height: 36px; object-fit: contain; }
-.stack__item img.stack__logo--wide { width: 118px; height: 28px; }
+.stack__item img.stack__logo--wide { width: 122px; height: 30px; }
 
 /* ============================================================
    CAPABILITIES — 3-column list grid (Kane)
