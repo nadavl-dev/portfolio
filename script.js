@@ -355,7 +355,7 @@
  id:"experience",
  label:"experience at Bites",
  keys: { strong: ["experience","bites","career","customer success","csm","what does he do","day to day","daily work"], weak: ["job","company","role","cs","success","current"] },
- reply:"Nadav is a Customer Success Manager at Bites, where he supports enterprise customers using a platform built for frontline team training and enablement. He owns the relationship from onboarding through adoption, renewal, and growth across 25+ accounts.\n\nHe also leads all company support — triage, resolution, and issue handling — and built smart AI agents to automate triage and solution delivery. His work goes beyond account management: he regularly translates customer friction into product direction and ships internal solutions when gaps become clear.",
+ reply:"Nadav is a Customer Success Manager at Bites. He owns 25+ client accounts across Israel, Europe, and the US — from small businesses to large enterprises — managing onboarding, adoption, renewal, and growth end to end.\n\nHe leads all company support, built AI agents for triage and quick solution delivery, and turns recurring client issues into product feedback and feature specs with the product team. He also runs demos, onboarding, new-feature intros for clients, and feature kickoffs for R&D.",
  more:"That combination of relationship ownership and product execution is central to how he operates today and to the product role he is working toward.",
  suggest: ["What impact did his projects have?", "Professional summary", "Leadership background"],
  actions: [{ label: "Work history", scroll: "#experience" }],
@@ -718,7 +718,7 @@
  },
  experience: {
  keys: ["ביטס","ניסיון","קריירה","הצלחת לקוחות","מה הוא עושה בביטס","מה הוא עושה בעבודה"],
- reply:"נדב הוא CSM ב־Bites, פלטפורמה להכשרת עובדי קו. הוא מחזיק 25+ חשבונות מקצה לקצה, מוביל את התמיכה, ובנה סוכני AI לטריאז'. מעבר לחשבון: הוא הופך חיכוך לכיוון מוצר ומוציא פתרונות פנימיים.",
+ reply:"נדב הוא CSM ב־Bites. הוא מחזיק 25+ חשבונות בישראל, באירופה ובארה״ב — מעסקים קטנים עד ארגונים — מקצה לקצה: אונבורדינג, אימוץ, חידוש וצמיחה. מוביל את כל התמיכה, בנה סוכני AI לטריאז', והופך בעיות שחוזרות לפידבק מוצר. גם דמואים, אונבורדינג, והשקות פיצ'ר מול לקוחות ו־R&D.",
  more:"בעלות על הקשר וביצוע מוצר — זה הכיוון לתפקיד המוצר.",
  suggest: ["מה ההשפעה של הפרויקטים שלו?","סיכום מקצועי"],
  },

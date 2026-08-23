@@ -1050,6 +1050,7 @@ a.work-card__more { text-decoration: none; display: inline-block; }
   color: var(--text-secondary);
 }
 .exp__meta strong { color: var(--text); font-weight: 600; }
+.exp__meta + .exp__meta { margin-top: -0.8rem; }
 .exp__dot {
   width: 4px;
   height: 4px;

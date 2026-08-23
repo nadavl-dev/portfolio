@@ -17,7 +17,7 @@
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
- <link rel="stylesheet" href="style.css?v=53" />
+ <link rel="stylesheet" href="style.css?v=54" />
 </head>
 <body class="is-ready">
 
@@ -45,7 +45,7 @@
     <div class="case-hero__row">
      <div class="case-hero__copy">
       <h1 class="case-hero__title">Training certificates<br>with Zapier</h1>
-      <p class="case-hero__summary">Clients needed a legal training certificate they can pass forward — the kind they used to issue on paper — and Bites does not support that in the product. I connected our app with an API key, caught the completion on a Zapier webhook, and emailed the client a PDF certificate with the employee's name, the training, and every field they asked for.</p>
+      <p class="case-hero__summary">Clients needed a legal training certificate they can pass forward — the kind they used to issue on paper. Our product does not support any type of certificate, so we went the outside route: a Zapier flow that emails the finished PDF the moment training is done.</p>
       <div class="case-hero__meta">
        <span class="work-card__tag">Bites</span>
        <span class="work-card__tag">Zapier</span>
@@ -64,7 +64,6 @@
     <span class="case-section__label">The problem</span>
     <div class="case-section__body">
      <p>After an employee finishes a course, clients need a <strong>legal certificate</strong> they can pass forward — the same document they used to issue physically. It is <strong>mandatory</strong> for them: they have to show it to the authorities and for insurance reasons.</p>
-     <p>We do not support certificates in the platform. Waiting on a product build would have left the client without a document they are required to present. The other way around was an automation.</p>
     </div>
    </div>
   </section>
@@ -74,14 +73,13 @@
    <div class="container case-section__grid">
     <span class="case-section__label">What I built</span>
     <div class="case-section__body">
-     <p>I set up a Zapier flow so a completed training becomes a certificate in the client's inbox — without adding a new feature to Bites:</p>
+     <p>I set up a Zapier flow so a completed training becomes a certificate in the client's inbox. It is a workaround — an outside feature — instead of adding a new feature to the Bites product:</p>
      <ul>
       <li><strong>API key on our app</strong> — so Zapier can talk to Bites when a training is done.</li>
       <li><strong>Webhook catch</strong> — the completion event lands in Zapier instead of dying in the product.</li>
       <li><strong>PDF with placeholders</strong> — employee name, training name, and the other details the client asked for get mapped into the certificate template.</li>
       <li><strong>Email to the client</strong> — the finished PDF goes out automatically. They get a real certificate, not a screenshot from the LMS.</li>
      </ul>
-     <p>Same pattern as the rest of my work: a customer ask the product does not cover yet, then a practical path that ships.</p>
 
      <figure class="case-shot">
       <img src="zapier-cert-en.jpg?v=2" alt="Certificate of Completion from the flow — employee name, ID, and company blurred">
@@ -101,22 +99,7 @@
    <div class="container case-section__grid">
     <span class="case-section__label">The impact</span>
     <div class="case-section__body">
-     <p>Clients get the document they asked for the moment training is done. We did not have to wait for certificates to land in the product:</p>
-     <div class="case-impact">
-      <div class="case-impact__item">
-       <span class="case-impact__num">No product wait</span>
-       <span class="case-impact__label">certificates were not on the platform — the automation closed the gap</span>
-      </div>
-      <div class="case-impact__item">
-       <span class="case-impact__num">Their fields</span>
-       <span class="case-impact__label">name, training, and the other placeholders each client wanted on the PDF</span>
-      </div>
-      <div class="case-impact__item">
-       <span class="case-impact__num">Inbox</span>
-       <span class="case-impact__label">the finished certificate emails to the client — branded, ready to file</span>
-      </div>
-     </div>
-     <p style="margin-top:1.5rem">This is how I work: if the product cannot do it yet and the client still needs it, I wire the path — API, webhook, document, email — and ship.</p>
+     <p>Clients get the document they asked for the moment training is done. They also have the guarantee their employee actually finished the training.</p>
     </div>
    </div>
   </section>
