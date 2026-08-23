@@ -2622,6 +2622,14 @@ body.is-ready .reveal-on-load {
   padding: 0.75rem 1rem;
   border-top: 1px solid var(--border);
 }
+.case-impact-line {
+  font-size: 1.35rem !important;
+  line-height: 1.55 !important;
+  font-weight: 500;
+  color: var(--text) !important;
+  max-width: 40rem;
+}
+.case-impact-line strong { font-weight: 700; }
 .case-next {
   display: flex;
   align-items: center;
