@@ -875,6 +875,7 @@ button { font-family: inherit; cursor: pointer; }
   padding: 0 0.7rem;
 }
 .work-card__mark--wide img { width: 96px; height: 24px; }
+.work-card__mark--end { align-self: flex-end; }
 .work-card__tags {
   display: flex;
   flex-wrap: wrap;
@@ -2500,6 +2501,20 @@ body.is-ready .reveal-on-load {
   transition: color 0.2s var(--ease);
 }
 .case-hero__back:hover { color: var(--text); }
+.case-hero__row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+}
+.case-hero__copy { min-width: 0; flex: 1; }
+.case-hero__logo {
+  display: block;
+  width: min(220px, 32vw);
+  height: auto;
+  flex-shrink: 0;
+  margin-top: 0.35rem;
+}
 .case-hero__title {
   font-size: clamp(2.4rem, 5.6vw, 3.75rem);
   font-weight: 600;
@@ -2627,6 +2642,7 @@ body.is-ready .reveal-on-load {
 .case-next__link:hover { gap: 1rem; opacity: 0.75; }
 @media (max-width: 767px) {
   .case-section__grid { grid-template-columns: 1fr; gap: 1rem; }
+  .case-hero__logo { width: 140px; }
 }
 
 /* ============================================================
