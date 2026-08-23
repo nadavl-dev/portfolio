@@ -256,7 +256,7 @@
  id:"recruiter",
  label:"professional summary",
  keys: { strong: ["recruiter brief","professional summary","30 second","30 sec","should we hire","hiring manager","interview him","pitch me","summary for a recruiter"], weak: ["recruiter","interview","candidate","hire"] },
- reply:"Nadav Levy is a Customer Success Manager at Bites who consistently translates customer needs into shipped product improvements. He leads all company support and built smart AI agents for triage and solution delivery. He also led a WhatsApp fallback that reached 98% deliverability, blocked marketing messages retry as utility, then SMS, and cut more than $10,000 a year in spend, and built Bites Forms in house after clients asked to embed Google Forms, then added DocuSign style signing, email copies, and database storage so nothing gets lost.\n\nBefore Bites, he served as a Sergeant Major in the IDF Artillery Corps and spent several years as a Head Instructor in the Hebrew Scouts Movement. He is completing a B.A. in Communication and Marketing at Reichman University and is pursuing AI product roles, AI product management, go to market engineering, and AI driven customer solutions, where customer insight and hands on building are equally valued.",
+ reply:"Nadav Levy is a Customer Success Manager at Bites with end to end ownership of 25+ client accounts across Israel, Europe, and the US. He translates client challenges into working solutions: AI agents for support triage, a WhatsApp fallback that reached 98% deliverability, Bites Forms built in house with DocuSign style signing, and Zapier automations that email legal training certificates the platform does not support.\n\nBefore Bites, he served as a Sergeant Major in the IDF Artillery Corps and spent several years as a Head Instructor in the Hebrew Scouts Movement. He is completing a B.A. in Communication and Marketing at Reichman University and is pursuing AI product roles, AI product management, go to market engineering, and AI driven customer solutions, where customer insight and hands on building are equally valued.",
  more:"What distinguishes him from many applicants is that he has already operated across discovery, prototyping, and delivery while managing enterprise relationships with companies such as Unilever and Amazon. His customer success background provides depth; his shipped work provides evidence.",
  suggest: ["What impact did his projects have?", "What AI roles is he looking for?", "How can I contact Nadav?"],
  actions: [{ label: "View projects", scroll: "#projects" }, { label: "Email Nadav", href: "mailto:nadavile415@gmail.com" }],
@@ -376,6 +376,15 @@
  reply:"From 2015 to 2018, Nadav was active in the Hebrew Scouts Movement, including two years as a Head Instructor. He designed educational programs and led groups of 20 to 30 participants.",
  more:"This was an early foundation in facilitation, planning, and group leadership, skills that later translated into customer facing and team facing work.",
  suggest: ["Leadership in the IDF", "Professional summary", "About Nadav"],
+ actions: [{ label: "Work and education", scroll: "#experience" }],
+ },
+ {
+ id:"volunteering",
+ label:"volunteering at F1RST",
+ keys: { strong: ["f1rst","first finance","financial mentor","volunteering","budget mentor","scholarship students"], weak: ["budget", "finance", "mentoring"] },
+ reply:"Nadav volunteers as a Financial Mentor at F1RST, Finance for Reichman's Students. He guides first year scholarship students in building and managing a personal budget through one on one sessions, and teaches practical money habits, saving, and working with banks based on the program's structured curriculum.",
+ more:"It is the same muscle as his customer work: sit with a person, understand the real situation, and leave them with something practical.",
+ suggest: ["Scouts background", "Professional summary", "About Nadav"],
  actions: [{ label: "Work and education", scroll: "#experience" }],
  },
  {
@@ -652,7 +661,7 @@
  const HE = {
  recruiter: {
  keys: ["סיכום","סיכום מקצועי","מגייס","ראיון","למה לקחת אותו","תקציר"],
- reply:"נדב לוי הוא Customer Success Manager ב־Bites. הוא הופך צרכים של לקוחות למוצר שיוצא לדרך: מוביל את כל התמיכה בחברה, בנה סוכני AI לטריאז' ולפתרונות, בנה נפילה חכמה בוואטסאפ שהגיעה ל־98% מסירה וחסכה יותר מ־10,000 דולר בשנה, ובנה את Bites Forms בפנים אחרי שלקוחות ביקשו להטמיע גוגל פורמס, כולל חתימה בסגנון DocuSign.\n\nלפני Bites הוא היה רב־סמל בחיל התותחנים ורכז בתנועת הצופים. הוא מסיים תואר ראשון בתקשורת ושיווק ברייכמן ומכוון לתפקידי מוצר AI, ניהול מוצר, GTM, ופתרונות ללקוחות, במקום שבו הבנת משתמשים ובנייה עם AI שווים.",
+ reply:"נדב לוי הוא Customer Success Manager ב־Bites עם בעלות מקצה לקצה על 25+ חשבונות בישראל, באירופה ובארה״ב. הוא הופך צרכים של לקוחות לפתרונות עובדים: סוכני AI לטריאז', נפילה חכמה בוואטסאפ שהגיעה ל־98% מסירה, Bites Forms שנבנה בפנים עם חתימה בסגנון DocuSign, ואוטומציות Zapier ששולחות תעודות הדרכה חוקיות שהפלטפורמה לא תומכת בהן.\n\nלפני Bites הוא היה רב־סמל בחיל התותחנים ורכז בתנועת הצופים. הוא מסיים תואר ראשון בתקשורת ושיווק ברייכמן ומכוון לתפקידי מוצר AI, ניהול מוצר, GTM, ופתרונות ללקוחות, במקום שבו הבנת משתמשים ובנייה עם AI שווים.",
  more:"מה שמייחד אותו: הוא כבר רץ על דיסקברי, פרוטוטייפ ומסירה, במקביל לניהול לקוחות כמו יוניליוור ואמזון.",
  suggest: ["מה ההשפעה של הפרויקטים שלו?","לאיזה תפקידי AI הוא מחפש?","איך אפשר ליצור איתו קשר?"],
  },
@@ -727,6 +736,12 @@
  reply:"נדב שירת בצה״ל מ־2019 עד 2021 כרב־סמל בחיל התותחנים. מפקד לוחם, וגם ראש הצוות הרפואי ביחידה.",
  more:"אחריות תחת לחץ, החלטות עם מידע חסר, ואנשים על הראש.",
  suggest: ["צופים","ניסיון ב־Bites"],
+ },
+ volunteering: {
+ keys: ["התנדבות","מנטור","מנטור פיננסי","תקציב","מלגה","סטודנטים"],
+ reply:"נדב מתנדב כמנטור פיננסי ב־F1RST, תוכנית פיננסית לסטודנטים ברייכמן. הוא מלווה סטודנטים שנה א' במלגה בבניית תקציב אישי בפגישות אחד על אחד, ומלמד הרגלי כסף, חיסכון ועבודה מול בנקים לפי תוכנית מסודרת.",
+ more:"אותו שריר כמו העבודה מול לקוחות: לשבת עם בן אדם, להבין את המצב, ולהשאיר אותו עם משהו פרקטי.",
+ suggest: ["צופים","סיכום מקצועי"],
  },
  scouts: {
  keys: ["צופים","מדריך","נוער","תנועת הצופים"],
@@ -892,6 +907,7 @@
  experience: "הניסיון ב-Bites",
  army: "השירות בצה״ל",
  scouts: "הצופים",
+ volunteering: "ההתנדבות ב-F1RST",
  education: "הלימודים",
  github: "גיטהאב",
  ai: "איך הוא משתמש ב-AI",
@@ -933,6 +949,13 @@
  }
  if (more) return intent.more;
  return intent.reply;
+ };
+
+ /* Short question, short answer: trim to the first sentences of the first paragraph. */
+ const shorten = (text) => {
+ const first = text.split("\n\n")[0];
+ const sentences = first.match(/[^.!?]+[.!?]+/g) || [first];
+ return sentences.slice(0, 2).join(" ").trim();
  };
 
  const pickSuggest = (intent, hebrew) => {
@@ -977,6 +1000,8 @@
  const best = ranked[0];
  lastIntent = best.i.id;
  let replyText = pickReply(best.i, hebrew, false);
+ const shortQuestion = words.length <= 3 && !["greeting","thanks","no","about","recruiter"].includes(best.i.id);
+ if (shortQuestion) replyText = shorten(replyText);
  pendingOffer = null;
  const second = ranked[1];
  if (second && second.s >= 3 && second.i.id !== best.i.id && !["greeting","thanks","no"].includes(second.i.id)) {
