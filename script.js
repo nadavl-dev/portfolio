@@ -1,5 +1,5 @@
 /* ============================================================
- Nadav Levy — Portfolio v1
+ Nadav Levy, Portfolio v1
  ============================================================ */
 (function () {
 "use strict";
@@ -174,7 +174,7 @@
  // Fallback if no endpoint configured yet: open the user's mail client.
  if (/REPLACE_WITH/.test(FORMSPREE_ENDPOINT)) {
  const subject = encodeURIComponent(`Portfolio message from ${name}`);
- const body = encodeURIComponent(`${message}\n\n— ${name} (${email})`);
+ const body = encodeURIComponent(`${message}\n\n,  ${name} (${email})`);
  window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
  setNote(`> opening your email app to reach ${CONTACT_EMAIL}…`, false);
  return;
@@ -196,7 +196,7 @@
  setNote(`> thanks, ${name.split(" ")[0]}! your message is on its way. I'll get back to you soon.`, false);
  form.reset();
  } catch (err) {
- setNote(`> something went wrong — email me directly at ${CONTACT_EMAIL}.`, true);
+ setNote(`> something went wrong, email me directly at ${CONTACT_EMAIL}.`, true);
  } finally {
  submitBtn.disabled = false;
  submitBtn.textContent = original;
@@ -256,7 +256,7 @@
  id:"recruiter",
  label:"professional summary",
  keys: { strong: ["recruiter brief","professional summary","30 second","30 sec","should we hire","hiring manager","interview him","pitch me","summary for a recruiter"], weak: ["recruiter","interview","candidate","hire"] },
- reply:"Nadav Levy is a Customer Success Manager at Bites who consistently translates customer needs into shipped product improvements. He leads all company support and built smart AI agents for triage and solution delivery. He also led a WhatsApp fallback that reached 98% deliverability — blocked marketing messages retry as utility, then SMS — and cut more than $10,000 a year in spend, and built Bites Forms in-house after clients asked to embed Google Forms — then added DocuSign-style signing, email copies, and database storage so nothing gets lost.\n\nBefore Bites, he served as a Sergeant Major in the IDF Artillery Corps and spent several years as a Head Instructor in the Hebrew Scouts Movement. He is completing a B.A. in Communication and Marketing at Reichman University and is pursuing AI product roles — AI product management, go-to-market engineering, and AI-driven customer solutions — where customer insight and hands-on building are equally valued.",
+ reply:"Nadav Levy is a Customer Success Manager at Bites who consistently translates customer needs into shipped product improvements. He leads all company support and built smart AI agents for triage and solution delivery. He also led a WhatsApp fallback that reached 98% deliverability, blocked marketing messages retry as utility, then SMS, and cut more than $10,000 a year in spend, and built Bites Forms in-house after clients asked to embed Google Forms, then added DocuSign-style signing, email copies, and database storage so nothing gets lost.\n\nBefore Bites, he served as a Sergeant Major in the IDF Artillery Corps and spent several years as a Head Instructor in the Hebrew Scouts Movement. He is completing a B.A. in Communication and Marketing at Reichman University and is pursuing AI product roles, AI product management, go-to-market engineering, and AI-driven customer solutions, where customer insight and hands-on building are equally valued.",
  more:"What distinguishes him from many applicants is that he has already operated across discovery, prototyping, and delivery while managing enterprise relationships with companies such as Unilever and Amazon. His customer success background provides depth; his shipped work provides evidence.",
  suggest: ["What impact did his projects have?", "What AI roles is he looking for?", "How can I contact Nadav?"],
  actions: [{ label: "View projects", scroll: "#projects" }, { label: "Email Nadav", href: "mailto:nadavile415@gmail.com" }],
@@ -265,7 +265,7 @@
  id:"whypm",
  label:"path to AI product roles",
  keys: { strong: ["why pm","why product","cs to pm","csm to pm","why product manager","moving to pm","path to product","ai product manager","ai pm","gtm engineer","go to market engineer","ai roles","what role is he looking for","what is he looking for"], weak: ["pm role","product role","career goal","aspiring","next role"] },
- reply:"Nadav is focused on AI product roles — AI product management, go-to-market engineering, and AI-driven customer solutions — because he already works across the full product loop with AI at the center.\n\nIn customer success, he speaks with users daily, identifies recurring friction, prototypes solutions in Figma, and uses AI-assisted development to ship tools that solve real operational problems. His goal is a role where research, prioritization, design, and AI-powered delivery are the core responsibility rather than a side initiative.",
+ reply:"Nadav is focused on AI product roles, AI product management, go-to-market engineering, and AI-driven customer solutions, because he already works across the full product loop with AI at the center.\n\nIn customer success, he speaks with users daily, identifies recurring friction, prototypes solutions in Figma, and uses AI-assisted development to ship tools that solve real operational problems. His goal is a role where research, prioritization, design, and AI-powered delivery are the core responsibility rather than a side initiative.",
  more:"In practice, he has already demonstrated this ownership through support AI agents, WhatsApp Messaging at Scale, Bites Forms, and this AI-built portfolio. AI product work is the natural next step in a career built on user empathy and hands-on execution.",
  suggest: ["What impact did his projects have?", "Professional summary", "View projects"],
  actions: [{ label: "About Nadav", scroll: "#about" }],
@@ -274,7 +274,7 @@
  id:"skills",
  label:"skills",
  keys: { strong: ["skill","stack","tooling","tech stack","good at","capabilities","excel","sql","hubspot","zapier"], weak: ["tool","tech","work with","expert","know"] },
- reply:"Day to day Nadav works in Claude Code, Cursor, Figma, HubSpot, Zapier, Twilio, and Vercel.\n\nAlong the way he also picked up Excel and a working amount of SQL — enough to pull numbers, clean a sheet, and check what is actually in the database. Claude Code and Cursor are how he ships; this site is on Vercel; Twilio showed up in the WhatsApp fallback at Bites; Zapier is how he emails training certificates when the product does not cover it.",
+ reply:"Day to day Nadav works in Claude Code, Cursor, Figma, HubSpot, Zapier, Twilio, and Vercel.\n\nAlong the way he also picked up Excel and a working amount of SQL, enough to pull numbers, clean a sheet, and check what is actually in the database. Claude Code and Cursor are how he ships; this site is on Vercel; Twilio showed up in the WhatsApp fallback at Bites; Zapier is how he emails training certificates when the product does not cover it.",
  more:"His strength is not depth in one isolated tool. It is the ability to connect customer insight, design exploration, and delivery into one continuous workflow.",
  suggest: ["What impact did his projects have?", "How does he use AI?", "View stack"],
  actions: [{ label: "Stack section", scroll: "#stack" }],
@@ -283,7 +283,7 @@
  id:"projects",
  label:"projects",
  keys: { strong: ["project","portfolio","built","shipped","showcase","what has he built","what did he build","best project","project impact","impact did his projects"], weak: ["work","build","made","creation"] },
- reply:"Nadav's most meaningful work includes a few areas with clear business or product impact:\n\nSupport AI Agents — He leads all company support at Bites and built smart AI agents for triage and automated solution delivery, reducing manual load and improving response quality.\n\nWhatsApp Messaging at Scale — WhatsApp is how Bites reaches frontline employees in Israel, the Middle East, and Europe. Meta kept blocking marketing messages while Bites still paid for them. He built a fallback: blocked send → utility message → SMS. That reached 98% deliverability and saved more than $10,000 a year, because utility messages are much cheaper than resending marketing.\n\nBites Forms — Clients asked Bites to embed Google Forms. Instead of iframing a paid third-party publisher, he built Forms in-house, then added DocuSign-style signing so clients could onboard employees end to end. Email copies go out; everything is stored in the Bites database.\n\nTraining certificates with Zapier — Clients must show a legal training certificate to the authorities and for insurance, and the product does not support that. He connected the app with an API key, caught the completion on a Zapier webhook, filled a PDF with the name, the training, and the other fields they asked for, and emailed it to the client.\n\nThis portfolio — He designed and built the site end to end with AI-assisted development, including this assistant, as a working example of AI-assisted product delivery.",
+ reply:"Nadav's most meaningful work includes a few areas with clear business or product impact:\n\nSupport AI Agents, He leads all company support at Bites and built smart AI agents for triage and automated solution delivery, reducing manual load and improving response quality.\n\nWhatsApp Messaging at Scale, WhatsApp is how Bites reaches frontline employees in Israel, the Middle East, and Europe. Meta kept blocking marketing messages while Bites still paid for them. He built a fallback: blocked send → utility message → SMS. That reached 98% deliverability and saved more than $10,000 a year, because utility messages are much cheaper than resending marketing.\n\nBites Forms, Clients asked Bites to embed Google Forms. Instead of iframing a paid third-party publisher, he built Forms in-house, then added DocuSign-style signing so clients could onboard employees end to end. Email copies go out; everything is stored in the Bites database.\n\nTraining certificates with Zapier, Clients must show a legal training certificate to the authorities and for insurance, and the product does not support that. He connected the app with an API key, caught the completion on a Zapier webhook, filled a PDF with the name, the training, and the other fields they asked for, and emailed it to the client.\n\nThis portfolio, He designed and built the site end to end with AI-assisted development, including this assistant, as a working example of AI-assisted product delivery.",
  more:"Across these projects, the pattern is consistent: identify a recurring customer or business problem, scope a practical solution, ship it, and measure the outcome. That is the through-line in his work.",
  suggest: ["What was the impact of the WhatsApp project?", "Tell me about the Zapier certificates", "What AI roles is he looking for?"],
  actions: [{ label: "Open projects", scroll: "#projects" }],
@@ -292,7 +292,7 @@
  id:"whatsapp",
  label:"WhatsApp messaging",
  keys: { strong: ["whatsapp","messaging","fallback","utility","marketing message","blocked by meta","meta block","sms fallback","98%","deliverability","thousands","save money","saved money","cost saving","delivery rate","receiving rate","whatsapp impact","whatsapp savings","impact of the whatsapp"], weak: ["message","template","templates","scale","cost","costs","sms"] },
- reply:"WhatsApp is how Bites reaches frontline employees — primarily in Israel, the Middle East, and Europe.\n\nThe problem: Meta kept blocking marketing messages, and Bites was still paying for every blocked send — then paying again to resend the same marketing message.\n\nMeta splits traffic into marketing messages, which get blocked, and utility messages, which cannot be blocked the same way because they are important for the user to see — and they cost much less.\n\nNadav built a fallback: when a WhatsApp send is blocked, the same employee gets a utility message. If WhatsApp still does not arrive, it falls back to SMS. That reached 98% deliverability. Employees get the content, clients are happy, and the company saved more than $10,000 a year by not paying to fire blocked marketing messages again and again.",
+ reply:"WhatsApp is how Bites reaches frontline employees, primarily in Israel, the Middle East, and Europe.\n\nThe problem: Meta kept blocking marketing messages, and Bites was still paying for every blocked send, then paying again to resend the same marketing message.\n\nMeta splits traffic into marketing messages, which get blocked, and utility messages, which cannot be blocked the same way because they are important for the user to see, and they cost much less.\n\nNadav built a fallback: when a WhatsApp send is blocked, the same employee gets a utility message. If WhatsApp still does not arrive, it falls back to SMS. That reached 98% deliverability. Employees get the content, clients are happy, and the company saved more than $10,000 a year by not paying to fire blocked marketing messages again and again.",
  more:"The project is a strong example of product thinking inside a customer success role: he learned how the platform actually decides what gets through, designed a fallback around that rule, and shipped it.",
  suggest: ["What impact did his projects have?", "Tell me about Bites Forms", "Professional summary"],
  actions: [{ label: "See case study", scroll: "#projects" }],
@@ -301,7 +301,7 @@
  id:"supportagents",
  label:"support AI agents",
  keys: { strong: ["support agent","smart agent","ai agent","support triage","triage","helpdesk","customer support","support lead","in charge of support","company support","support automation"], weak: ["ticket","help","support team","cs support"] },
- reply:"At Bites, Nadav leads all company support — owning triage, resolution, and customer issue handling across the business.\n\nHe built and deployed smart AI agents for support triage and automated solution delivery. The agents handle initial classification and route or resolve common issues before they reach manual handling, improving response speed and reducing repetitive load on the team.",
+ reply:"At Bites, Nadav leads all company support, owning triage, resolution, and customer issue handling across the business.\n\nHe built and deployed smart AI agents for support triage and automated solution delivery. The agents handle initial classification and route or resolve common issues before they reach manual handling, improving response speed and reducing repetitive load on the team.",
  more:"This is one of his strongest signals for AI product and GTM roles: he identified a real operational bottleneck, designed an AI-powered workflow, and shipped it inside a live customer support function.",
  suggest: ["What impact did his projects have?", "How does he use AI?", "Experience at Bites"],
  actions: [{ label: "Work history", scroll: "#experience" }],
@@ -310,7 +310,7 @@
  id:"bitesforms",
  label:"Bites Forms",
  keys: { strong: ["bites forms","forms","docusign","google forms","google form","iframe","embed forms","signature","e-sign","esign"], weak: ["form","sign","document","contract","onboard"] },
- reply:"Bites Forms started because clients kept asking Bites to embed Google Forms and similar tools. The alternative was to iframe a third-party form publisher and pay for it as a company.\n\nNadav built Forms in-house instead. Then clients needed DocuSign-style signing so they could onboard employees from top to bottom — collect information, sign documents, and keep the trail in one place. He made it two in one.\n\nIt is used by clients today. Submissions send email copies, and everything is stored in the Bites database so nothing gets lost.",
+ reply:"Bites Forms started because clients kept asking Bites to embed Google Forms and similar tools. The alternative was to iframe a third-party form publisher and pay for it as a company.\n\nNadav built Forms in-house instead. Then clients needed DocuSign-style signing so they could onboard employees from top to bottom, collect information, sign documents, and keep the trail in one place. He made it two in one.\n\nIt is used by clients today. Submissions send email copies, and everything is stored in the Bites database so nothing gets lost.",
  more:"The project shows how he works: a client asks for an embed, he asks whether the company should own the workflow, ships the first version, then adds the next gap they actually need.",
  suggest: ["What impact did his projects have?", "WhatsApp project", "Professional summary"],
  actions: [{ label: "View projects", scroll: "#projects" }],
@@ -319,7 +319,7 @@
  id:"zapiercerts",
  label:"Zapier certificates",
  keys: { strong: ["zapier","certificate","certificates","training certificate","webhook","pdf certificate"], weak: ["automation","automations","pdf"] },
- reply:"Clients needed a legal training certificate they can pass forward — like the physical ones they used to issue. It is mandatory for them to show it to the authorities and for insurance reasons, and Bites does not support that in the product.\n\nNadav connected the app with an API key, caught the completion on a Zapier webhook, filled a PDF with the employee's name, the training name, and the other details the client asked for, and emailed the finished certificate to them.",
+ reply:"Clients needed a legal training certificate they can pass forward, like the physical ones they used to issue. It is mandatory for them to show it to the authorities and for insurance reasons, and Bites does not support that in the product.\n\nNadav connected the app with an API key, caught the completion on a Zapier webhook, filled a PDF with the employee's name, the training name, and the other details the client asked for, and emailed the finished certificate to them.",
  more:"It is the same move as Bites Forms: a customer ask the product does not cover yet, then a practical path that ships.",
  suggest: ["What impact did his projects have?", "Tell me about Bites Forms", "What tools does he use?"],
  actions: [{ label: "Read the case study", href: "zapier.html" }],
@@ -346,8 +346,8 @@
  id:"gerem",
  label:"Gerem 22",
  keys: { strong: ["gerem","garam","garam 22","gerem 22","front of house","front house","foh","patelina","petelina","shift manager"], weak: ["hospitality","jaffa","hotel"] },
- reply:"Before and alongside Bites, Nadav worked hospitality operations in Tel Aviv.\n\nAt Petelina he was Shift Manager (December 2021 to July 2025), running daily floor operations, staffing, and guest issues in a busy neighborhood bistro.\n\nAt Gerem 22 in Jaffa he was Front of House Manager (August to November 2022) — client meetings, guest experience, and day-to-day property upkeep in a small hospitality house.",
- more:"It is an earlier operations role — owning the floor and the guest, which later shows up in how he runs customer relationships.",
+ reply:"Before and alongside Bites, Nadav worked hospitality operations in Tel Aviv.\n\nAt Petelina he was Shift Manager (December 2021 to July 2025), running daily floor operations, staffing, and guest issues in a busy neighborhood bistro.\n\nAt Gerem 22 in Jaffa he was Front of House Manager (August to November 2022), client meetings, guest experience, and day-to-day property upkeep in a small hospitality house.",
+ more:"It is an earlier operations role, owning the floor and the guest, which later shows up in how he runs customer relationships.",
  suggest: ["Experience at Bites", "Leadership background", "Professional summary"],
  actions: [{ label: "Work history", scroll: "#experience" }],
  },
@@ -355,7 +355,7 @@
  id:"experience",
  label:"experience at Bites",
  keys: { strong: ["experience","bites","career","customer success","csm","what does he do","day to day","daily work"], weak: ["job","company","role","cs","success","current"] },
- reply:"Nadav is a Customer Success Manager at Bites. He owns 25+ client accounts across Israel, Europe, and the US — from small businesses to large enterprises — managing onboarding, adoption, renewal, and growth end to end.\n\nHe leads all company support, built AI agents for triage and quick solution delivery, and turns recurring client issues into product feedback and feature specs with the product team. He also runs demos, onboarding, new-feature intros for clients, and feature kickoffs for R&D.",
+ reply:"Nadav is a Customer Success Manager at Bites. He owns 25+ client accounts across Israel, Europe, and the US, from small businesses to large enterprises, managing onboarding, adoption, renewal, and growth end to end.\n\nHe leads all company support, built AI agents for triage and quick solution delivery, and turns recurring client issues into product feedback and feature specs with the product team. He also runs demos, onboarding, new-feature intros for clients, and feature kickoffs for R&D.",
  more:"That combination of relationship ownership and product execution is central to how he operates today and to the product role he is working toward.",
  suggest: ["What impact did his projects have?", "Professional summary", "Leadership background"],
  actions: [{ label: "Work history", scroll: "#experience" }],
@@ -374,7 +374,7 @@
  label:"Scouts background",
  keys: { strong: ["scout","volunteer","tzofim","youth","instructor","scouts background"], weak: ["movement","mentor","teach","guide"] },
  reply:"From 2015 to 2018, Nadav was active in the Hebrew Scouts Movement, including two years as a Head Instructor. He designed educational programs and led groups of 20 to 30 participants.",
- more:"This was an early foundation in facilitation, planning, and group leadership — skills that later translated into customer-facing and team-facing work.",
+ more:"This was an early foundation in facilitation, planning, and group leadership, skills that later translated into customer-facing and team-facing work.",
  suggest: ["Leadership in the IDF", "Professional summary", "About Nadav"],
  actions: [{ label: "Work and education", scroll: "#experience" }],
  },
@@ -451,7 +451,7 @@
  id:"interests",
  label:"what drives him",
  keys: { strong: ["what drives","interested in","interests","passion","what does he care","what is he interested","ui ux","ui/ux"], weak: ["care about","curious","excited"] },
- reply:"Nadav is very interested in AI and technology — more on the business side and on product, and in finding the balance between both. He is also very interested in UI and UX.",
+ reply:"Nadav is very interested in AI and technology, more on the business side and on product, and in finding the balance between both. He is also very interested in UI and UX.",
  more:"That is why he is aiming at AI product and AI engineer roles: understand the user, then build with AI.",
  suggest: ["What AI roles is he looking for?", "How does he use AI?", "What does he do in his free time?"],
  actions: [{ label: "About Nadav", scroll: "#about" }],
@@ -460,7 +460,7 @@
  id:"hobbies",
  label:"hobbies",
  keys: { strong: ["hobby","hobbies","free time","spare time","outside work","sports","football","soccer","basketball","fashion","reading","books"], weak: ["fun","personal life","weekend"] },
- reply:"In his free time Nadav plays sports — football, basketball, basically any sport. His hobbies are sports, reading books, and fashion. He loves fashion as well.",
+ reply:"In his free time Nadav plays sports, football, basketball, basically any sport. His hobbies are sports, reading books, and fashion. He loves fashion as well.",
  more:"If you want the work story, ask about Bites, the WhatsApp project, or Bites Forms.",
  suggest: ["What drives him?", "What impact did his projects have?", "How can I contact Nadav?"],
  },
@@ -477,7 +477,7 @@
  id:"available",
  label:"availability",
  keys: { strong: ["available","open to work","looking for a job","looking for work","can i hire","is he hiring","job search","notice period"], weak: ["start date","when can he"] },
- reply:"Nadav is open to AI product and AI engineer roles — AI product manager, AI engineer, go-to-market engineer, or similar. Email is the fastest start: nadavile415@gmail.com.",
+ reply:"Nadav is open to AI product and AI engineer roles, AI product manager, AI engineer, go-to-market engineer, or similar. Email is the fastest start: nadavile415@gmail.com.",
  more:"His resume is on this site if you want the one-pager before you write.",
  suggest: ["What AI roles is he looking for?", "Professional summary", "How can I contact Nadav?"],
  actions: [{ label: "Email Nadav", href: "mailto:nadavile415@gmail.com" }, { label: "Download resume", href: "/resume.pdf" }],
@@ -486,7 +486,7 @@
  id:"clients",
  label:"clients",
  keys: { strong: ["unilever","amazon","enterprise client","which clients","who are his clients","what companies"], weak: ["accounts"] },
- reply:"At Bites he owns 25+ accounts — small businesses through large enterprises — including companies such as Unilever and Amazon. He manages the full Israel portfolio and several US accounts.",
+ reply:"At Bites he owns 25+ accounts, small businesses through large enterprises, including companies such as Unilever and Amazon. He manages the full Israel portfolio and several US accounts.",
  more:"The through-line is the same at every size: onboarding, adoption, renewal, and turning recurring friction into something the product team can ship.",
  suggest: ["Experience at Bites", "What impact did his projects have?", "Professional summary"],
  actions: [{ label: "Work and education", scroll: "#experience" }],
@@ -496,7 +496,7 @@
  label:"why Nadav",
  keys: { strong: ["why hire","why him","stand out","what makes him","why should we","why nadav","what is unique"], weak: ["strength","strengths","advantage","differentiator"] },
  reply:"What distinguishes him is that he already runs the full loop: talk to customers, spot the pattern, prototype, and ship. He leads company support, built AI agents for triage, shipped a WhatsApp fallback that hit 98% deliverability and saved $10,000+ a year, and built Bites Forms in-house instead of paying a third-party publisher.\n\nHe has also operated enterprise relationships with companies such as Unilever and Amazon while finishing a Communication and Marketing degree at Reichman.",
- more:"That combination — customer depth plus shipped product — is the case for AI product and GTM roles.",
+ more:"That combination, customer depth plus shipped product, is the case for AI product and GTM roles.",
  suggest: ["What impact did his projects have?", "Professional summary", "How can I contact Nadav?"],
  actions: [{ label: "View projects", scroll: "#projects" }],
  },
@@ -504,7 +504,7 @@
  id:"cancode",
  label:"can he code",
  keys: { strong: ["can he code","does he code","vibe code","vibe coding","is he a developer","is he a programmer","is he an engineer"], weak: ["coder","python","javascript"] },
- reply:"He can vibe-code. He is not a traditional coder and does not have a CS or Python-style major. Claude Code and Cursor are how he ships — this site is the proof.",
+ reply:"He can vibe-code. He is not a traditional coder and does not have a CS or Python-style major. Claude Code and Cursor are how he ships, this site is the proof.",
  more:"The point is not leetcode. It is taking a real customer problem and getting a working product out.",
  suggest: ["How did he learn to build?", "This website", "What impact did his projects have?"],
  actions: [{ label: "View projects", scroll: "#projects" }],
@@ -514,7 +514,7 @@
  label:"managed people",
  keys: { strong: ["managed people","manage people","people manager","has he managed","did he manage","manage a team","managed a team"], weak: ["direct reports","ran a team"] },
  reply:"Yes. He ran the floor as Shift Manager at Petelina, was Front of House Manager at Gerem 22, served as a combat commander in the IDF Artillery Corps, and was a Head Instructor in the Hebrew Scouts.",
- more:"That is operations and people under pressure — staffing, guests, soldiers, and youth groups — not a software-engineering org chart.",
+ more:"That is operations and people under pressure, staffing, guests, soldiers, and youth groups, not a software-engineering org chart.",
  suggest: ["Leadership in the IDF", "Experience at Bites", "Professional summary"],
  actions: [{ label: "Work and education", scroll: "#experience" }],
  },
@@ -523,7 +523,7 @@
  label:"typical day",
  keys: { strong: ["typical day","day to day","day-to-day","what does a day","everyday work","daily work"], weak: ["routine","schedule"] },
  reply:"A typical day is customer conversations, support triage, and turning recurring friction into product and AI work.",
- more:"That is also how WhatsApp fallback and Bites Forms started — a pattern in the queue, then something shipped.",
+ more:"That is also how WhatsApp fallback and Bites Forms started, a pattern in the queue, then something shipped.",
  suggest: ["Experience at Bites", "What impact did his projects have?", "How does he use AI?"],
  actions: [{ label: "Work and education", scroll: "#experience" }],
  },
@@ -531,7 +531,7 @@
  id:"remote",
  label:"remote or office",
  keys: { strong: ["remote","hybrid","office","on site","onsite","wfh","work from home","in person"], weak: ["relocate","relocation"] },
- reply:"He is based in Tel Aviv. The role can be remote or not — he can do either. He prefers office.",
+ reply:"He is based in Tel Aviv. The role can be remote or not, he can do either. He prefers office.",
  more:"He already works with US accounts from Israel. For a specific setup, email nadavile415@gmail.com.",
  suggest: ["Where does he live?", "What AI roles is he looking for?", "How can I contact Nadav?"],
  actions: [{ label: "Email Nadav", href: "mailto:nadavile415@gmail.com" }],
@@ -540,7 +540,7 @@
  id:"favoritework",
  label:"biggest work",
  keys: { strong: ["favorite project","favourite project","biggest project","proudest","best work","favorite work","biggest work"], weak: ["most proud","highlight"] },
- reply:"The two that matter most are both of them: the WhatsApp fallback — 98% deliverability and $10,000+ saved a year — and Bites Forms, built in-house after clients asked to embed Google Forms, then given DocuSign-style signing.",
+ reply:"The two that matter most are both of them: the WhatsApp fallback, 98% deliverability and $10,000+ saved a year, and Bites Forms, built in-house after clients asked to embed Google Forms, then given DocuSign-style signing.",
  more:"Same pattern in both: a customer problem he could not ignore, then ship it.",
  suggest: ["What was the impact of the WhatsApp project?", "Tell me about Bites Forms", "How did he learn to build?"],
  actions: [{ label: "View projects", scroll: "#projects" }],
@@ -549,7 +549,7 @@
  id:"learned",
  label:"how he learned to build",
  keys: { strong: ["how did he learn","how he learned","self taught","self-taught","learn to build","learn to code","youtube"], weak: ["taught himself","picked up"] },
- reply:"He learned by himself — a lot of YouTube, then shipping real customer problems with AI-assisted tools. No CS major.",
+ reply:"He learned by himself, a lot of YouTube, then shipping real customer problems with AI-assisted tools. No CS major.",
  more:"Claude Code and Cursor are the current stack. The portfolio is one of the things that came out of that.",
  suggest: ["Can he code?", "This website", "What impact did his projects have?"],
  actions: [{ label: "View projects", scroll: "#projects" }],
@@ -558,7 +558,7 @@
  id:"greeting",
  label:"hello",
  keys: { strong: ["hello","hi","hey","shalom","howdy"], weak: ["yo","sup","morning","evening"] },
- reply:"Hello. Ask anything about Nadav in your own words — work, school, what drives him, or just the person. You can also pick a topic below.",
+ reply:"Hello. Ask anything about Nadav in your own words, work, school, what drives him, or just the person. You can also pick a topic below.",
  suggest: ["Professional summary", "What impact did his projects have?", "What AI roles is he looking for?", "How can I contact Nadav?"],
  },
  {
@@ -642,35 +642,35 @@
  /* Extra facts for questions that are not a dedicated topic. */
  const PROFILE = [
  { keys: ["salary","compensation","pay","rate","how much"], fact:"Compensation is not listed here. Email nadavile415@gmail.com if you want to talk about a role.", factHe:"שכר לא מופיע כאן. אפשר לכתוב ל־nadavile415@gmail.com אם רוצים לדבר על תפקיד." },
- { keys: ["visa","work permit","authorization"], fact:"Nadav lives in Tel Aviv and already works with US accounts. For work-authorization details, email nadavile415@gmail.com.", factHe:"נדב גר בתל אביב וכבר עובד מול לקוחות בארה״ב. לפרטי אשרת עבודה — nadavile415@gmail.com." },
+ { keys: ["visa","work permit","authorization"], fact:"Nadav lives in Tel Aviv and already works with US accounts. For work-authorization details, email nadavile415@gmail.com.", factHe:"נדב גר בתל אביב וכבר עובד מול לקוחות בארה״ב. לפרטי אשרת עבודה, nadavile415@gmail.com." },
  { keys: ["name","pronounce","levy"], fact:"His name is Nadav Levy. He is 26, lives in Tel Aviv, and is a Customer Success Manager at Bites.", factHe:"קוראים לו נדב לוי. הוא בן 26, גר בתל אביב, ו־Customer Success Manager ב־Bites." },
  { keysHe: ["משכורת","שכר","כמה הוא מרוויח"], fact:"Compensation is not listed here. Email nadavile415@gmail.com if you want to talk about a role.", factHe:"שכר לא מופיע כאן. אפשר לכתוב ל־nadavile415@gmail.com אם רוצים לדבר על תפקיד." },
- { keysHe: ["ויזה","אשרה","אשרת עבודה"], fact:"Nadav lives in Tel Aviv and already works with US accounts. For work-authorization details, email nadavile415@gmail.com.", factHe:"נדב גר בתל אביב וכבר עובד מול לקוחות בארה״ב. לפרטי אשרת עבודה — nadavile415@gmail.com." },
+ { keysHe: ["ויזה","אשרה","אשרת עבודה"], fact:"Nadav lives in Tel Aviv and already works with US accounts. For work-authorization details, email nadavile415@gmail.com.", factHe:"נדב גר בתל אביב וכבר עובד מול לקוחות בארה״ב. לפרטי אשרת עבודה, nadavile415@gmail.com." },
  { keysHe: ["איך קוראים לו","מה השם","השם שלו"], fact:"His name is Nadav Levy. He is 26, lives in Tel Aviv, and is a Customer Success Manager at Bites.", factHe:"קוראים לו נדב לוי. הוא בן 26, גר בתל אביב, ו־Customer Success Manager ב־Bites." },
  ];
 
  const HE = {
  recruiter: {
  keys: ["סיכום","סיכום מקצועי","מגייס","ראיון","למה לקחת אותו","תקציר"],
- reply:"נדב לוי הוא Customer Success Manager ב־Bites. הוא הופך צרכים של לקוחות למוצר שיוצא לדרך: מוביל את כל התמיכה בחברה, בנה סוכני AI לטריאז' ולפתרונות, בנה נפילה חכמה בוואטסאפ שהגיעה ל־98% מסירה וחסכה יותר מ־10,000 דולר בשנה, ובנה את Bites Forms בפנים אחרי שלקוחות ביקשו להטמיע גוגל פורמס — כולל חתימה בסגנון DocuSign.\n\nלפני Bites הוא היה רב־סמל בחיל התותחנים ורכז בתנועת הצופים. הוא מסיים תואר ראשון בתקשורת ושיווק ברייכמן ומכוון לתפקידי מוצר AI — ניהול מוצר, GTM, ופתרונות ללקוחות — במקום שבו הבנת משתמשים ובנייה עם AI שווים.",
+ reply:"נדב לוי הוא Customer Success Manager ב־Bites. הוא הופך צרכים של לקוחות למוצר שיוצא לדרך: מוביל את כל התמיכה בחברה, בנה סוכני AI לטריאז' ולפתרונות, בנה נפילה חכמה בוואטסאפ שהגיעה ל־98% מסירה וחסכה יותר מ־10,000 דולר בשנה, ובנה את Bites Forms בפנים אחרי שלקוחות ביקשו להטמיע גוגל פורמס, כולל חתימה בסגנון DocuSign.\n\nלפני Bites הוא היה רב־סמל בחיל התותחנים ורכז בתנועת הצופים. הוא מסיים תואר ראשון בתקשורת ושיווק ברייכמן ומכוון לתפקידי מוצר AI, ניהול מוצר, GTM, ופתרונות ללקוחות, במקום שבו הבנת משתמשים ובנייה עם AI שווים.",
  more:"מה שמייחד אותו: הוא כבר רץ על דיסקברי, פרוטוטייפ ומסירה, במקביל לניהול לקוחות כמו יוניליוור ואמזון.",
  suggest: ["מה ההשפעה של הפרויקטים שלו?","לאיזה תפקידי AI הוא מחפש?","איך אפשר ליצור איתו קשר?"],
  },
  whypm: {
  keys: ["תפקיד ai","תפקידי ai","מנהל מוצר","למה מוצר","איזה תפקיד","מה הוא מחפש"],
- reply:"נדב מכוון לתפקידי מוצר AI — ניהול מוצר, הנדסת GTM, ופתרונות ללקוחות — כי הוא כבר עובד על כל הלולאה עם AI במרכז. ב־CS הוא מדבר עם משתמשים כל יום, מזהה חיכוך, משרטט בפיגמה, ומוציא כלים עם פיתוח בסיוע AI.",
+ reply:"נדב מכוון לתפקידי מוצר AI, ניהול מוצר, הנדסת GTM, ופתרונות ללקוחות, כי הוא כבר עובד על כל הלולאה עם AI במרכז. ב־CS הוא מדבר עם משתמשים כל יום, מזהה חיכוך, משרטט בפיגמה, ומוציא כלים עם פיתוח בסיוע AI.",
  more:"הסוכנים, הוואטסאפ, הטפסים והפורטפוליו כבר מראים את הבעלות הזאת.",
  suggest: ["מה ההשפעה של הפרויקטים שלו?","סיכום מקצועי"],
  },
  skills: {
  keys: ["כלים","סטאק","במה הוא עובד","אקסל","sql","האבספוט","זאפייר"],
- reply:"ביום־יום: Claude Code, Cursor, Figma, HubSpot, Zapier, Twilio ו־Vercel. בדרך הוא גם הרים אקסל ו־SQL ברמה שעובדת — למשוך מספרים, לנקות גיליון, ולבדוק מה באמת במסד. האתר הזה על Vercel; טוויליו נכנס בנפילת הוואטסאפ ב־Bites; Zapier שולח תעודות הדרכה כשהמוצר לא מכסה את זה.",
+ reply:"ביום־יום: Claude Code, Cursor, Figma, HubSpot, Zapier, Twilio ו־Vercel. בדרך הוא גם הרים אקסל ו־SQL ברמה שעובדת, למשוך מספרים, לנקות גיליון, ולבדוק מה באמת במסד. האתר הזה על Vercel; טוויליו נכנס בנפילת הוואטסאפ ב־Bites; Zapier שולח תעודות הדרכה כשהמוצר לא מכסה את זה.",
  more:"החוזק הוא לא כלי אחד. זה לחבר תובנת לקוח, עיצוב ומסירה.",
  suggest: ["איך הוא משתמש ב־AI?","מה ההשפעה של הפרויקטים שלו?"],
  },
  projects: {
  keys: ["פרויקטים","מה הוא בנה","עבודות","תיק עבודות"],
- reply:"כמה דברים עם השפעה: סוכני AI לתמיכה; וואטסאפ בקנה מידה — נפילה מ־marketing ל־utility ואז SMS, 98% מסירה ויותר מ־10,000 דולר חיסכון בשנה; Bites Forms בפנים במקום גוגל פורמס, עם חתימה; תעודות הדרכה ב־Zapier — וובהוק, PDF במייל ללקוח; והפורטפוליו הזה, שנבנה מקצה לקצה עם AI.",
+ reply:"כמה דברים עם השפעה: סוכני AI לתמיכה; וואטסאפ בקנה מידה, נפילה מ־marketing ל־utility ואז SMS, 98% מסירה ויותר מ־10,000 דולר חיסכון בשנה; Bites Forms בפנים במקום גוגל פורמס, עם חתימה; תעודות הדרכה ב־Zapier, וובהוק, PDF במייל ללקוח; והפורטפוליו הזה, שנבנה מקצה לקצה עם AI.",
  more:"אותו דפוס: בעיה שחוזרת, פתרון פרקטי, משלוח, מדידה.",
  suggest: ["מה הייתה ההשפעה של פרויקט הוואטסאפ?","ספר על התעודות ב־Zapier"],
  },
@@ -682,19 +682,19 @@
  },
  supportagents: {
  keys: ["סוכני ai","תמיכה","טריאז","helpdesk"],
- reply:"ב־Bites נדב מוביל את כל התמיכה — טריאז', פתרון, וטיפול בפניות. הוא בנה סוכני AI שמסווגים ומעבירים או פותרים פניות נפוצות לפני שהן מגיעות לטיפול ידני.",
+ reply:"ב־Bites נדב מוביל את כל התמיכה, טריאז', פתרון, וטיפול בפניות. הוא בנה סוכני AI שמסווגים ומעבירים או פותרים פניות נפוצות לפני שהן מגיעות לטיפול ידני.",
  more:"צוואר בקבוק אמיתי, תהליך עם AI, ומסירה בתוך תמיכה חיה.",
  suggest: ["איך הוא משתמש ב־AI?","ניסיון ב־Bites"],
  },
  bitesforms: {
  keys: ["טפסים","ביטס פורמס","בייטס פורמס","גוגל פורמס","חתימה","docusign","bites forms"],
- reply:"לקוחות ביקשו להטמיע גוגל פורמס. במקום לשלם על פאבלישר חיצוני, נדב בנה טפסים בפנים. אחר כך הוסיף חתימה בסגנון DocuSign לקליטת עובדים — שניים באחד. עותקים במייל, הכל במסד של Bites.",
+ reply:"לקוחות ביקשו להטמיע גוגל פורמס. במקום לשלם על פאבלישר חיצוני, נדב בנה טפסים בפנים. אחר כך הוסיף חתימה בסגנון DocuSign לקליטת עובדים, שניים באחד. עותקים במייל, הכל במסד של Bites.",
  more:"לקוח מבקש הטמעה, הוא שואל אם החברה צריכה להחזיק את התהליך, מוציא גרסה, וסוגר את הפער הבא.",
  suggest: ["פרויקט הוואטסאפ","סיכום מקצועי"],
  },
  zapiercerts: {
  keys: ["זאפייר","zapier","תעודה","תעודות","תעודת הדרכה","וובהוק"],
- reply:"לקוחות צריכים תעודה חוקית שאפשר להעביר הלאה — כמו שהנפיקו פעם בנייר. חובה להציג אותה לרשויות ולביטוח, ובמוצר של Bites זה לא קיים. נדב חיבר את האפליקציה עם מפתח API, תפס את הסיום ב־webhook של Zapier, מילא PDF עם שם העובד, שם ההדרכה ושאר השדות שהלקוח ביקש, ושלח במייל.",
+ reply:"לקוחות צריכים תעודה חוקית שאפשר להעביר הלאה, כמו שהנפיקו פעם בנייר. חובה להציג אותה לרשויות ולביטוח, ובמוצר של Bites זה לא קיים. נדב חיבר את האפליקציה עם מפתח API, תפס את הסיום ב־webhook של Zapier, מילא PDF עם שם העובד, שם ההדרכה ושאר השדות שהלקוח ביקש, ושלח במייל.",
  more:"אותו מהלך כמו הטפסים: בקשת לקוח שהמוצר עוד לא מכסה, ואז נתיב פרקטי שיוצא.",
  suggest: ["מה ההשפעה של הפרויקטים שלו?","ספר על Bites Forms"],
  },
@@ -707,19 +707,19 @@
  contact: {
  keys: ["צור קשר","מייל","אימייל","ליצור קשר","איך אפשר ליצור איתו קשר","איך ליצור קשר","איך מגיעים אליו"],
  reply:"הכי ישיר: nadavile415@gmail.com. אפשר גם את הטופס באתר, לינקדאין, או גיטהאב @nadavl-dev.",
- more:"לגיוס — הקורות חיים להורדה בהירו ובקונטקט. מייל בדרך כלל הכי מהיר.",
+ more:"לגיוס, הקורות חיים להורדה בהירו ובקונטקט. מייל בדרך כלל הכי מהיר.",
  suggest: ["סיכום מקצועי","איפה קורות החיים?"],
  },
  gerem: {
  keys: ["גרם","פטלינה","פטלינה","מנהל משמרת","כניסה"],
- reply:"לפני ובמקביל ל־Bites נדב עבד בהכנסת אורחים בתל אביב. בפטלינה הוא היה מנהל משמרת (דצמבר 2021–יולי 2025). בגרם 22 ביפו הוא היה מנהל קבלה (אוגוסט–נובמבר 2022).",
- more:"תפקיד תפעול מוקדם — הרצפה והאורח — שחוזר אחר כך בניהול לקוחות.",
+ reply:"לפני ובמקביל ל־Bites נדב עבד בהכנסת אורחים בתל אביב. בפטלינה הוא היה מנהל משמרת (דצמבר 2021 to יולי 2025). בגרם 22 ביפו הוא היה מנהל קבלה (אוגוסט to נובמבר 2022).",
+ more:"תפקיד תפעול מוקדם, הרצפה והאורח, שחוזר אחר כך בניהול לקוחות.",
  suggest: ["ניסיון ב־Bites","רקע מנהיגות"],
  },
  experience: {
  keys: ["ביטס","ניסיון","קריירה","הצלחת לקוחות","מה הוא עושה בביטס","מה הוא עושה בעבודה"],
- reply:"נדב הוא CSM ב־Bites. הוא מחזיק 25+ חשבונות בישראל, באירופה ובארה״ב — מעסקים קטנים עד ארגונים — מקצה לקצה: אונבורדינג, אימוץ, חידוש וצמיחה. מוביל את כל התמיכה, בנה סוכני AI לטריאז', והופך בעיות שחוזרות לפידבק מוצר. גם דמואים, אונבורדינג, והשקות פיצ'ר מול לקוחות ו־R&D.",
- more:"בעלות על הקשר וביצוע מוצר — זה הכיוון לתפקיד המוצר.",
+ reply:"נדב הוא CSM ב־Bites. הוא מחזיק 25+ חשבונות בישראל, באירופה ובארה״ב, מעסקים קטנים עד ארגונים, מקצה לקצה: אונבורדינג, אימוץ, חידוש וצמיחה. מוביל את כל התמיכה, בנה סוכני AI לטריאז', והופך בעיות שחוזרות לפידבק מוצר. גם דמואים, אונבורדינג, והשקות פיצ'ר מול לקוחות ו־R&D.",
+ more:"בעלות על הקשר וביצוע מוצר, זה הכיוון לתפקיד המוצר.",
  suggest: ["מה ההשפעה של הפרויקטים שלו?","סיכום מקצועי"],
  },
  army: {
@@ -730,7 +730,7 @@
  },
  scouts: {
  keys: ["צופים","מדריך","נוער","תנועת הצופים"],
- reply:"מ־2015 עד 2018 בתנועת הצופים, שנתיים כרכז. בנה תוכניות והוביל קבוצות של 20–30.",
+ reply:"מ־2015 עד 2018 בתנועת הצופים, שנתיים כרכז. בנה תוכניות והוביל קבוצות של 20 to 30.",
  more:"בסיס מוקדם בהנחיה, תכנון ומנהיגות קבוצה.",
  suggest: ["רקע בצה״ל","סיכום מקצועי"],
  },
@@ -755,7 +755,7 @@
  design: {
  keys: ["עיצוב","פיגמה","יו איקס","ui","ux"],
  reply:"עיצוב אצלו הוא כלי חשיבה. הוא ממפה פלואוז ומשרטט בפיגמה לפני בנייה, כשהשינוי עוד זול.",
- more:"נקי ומינימלי — כמו האתר. בהירות, לא קישוט.",
+ more:"נקי ומינימלי, כמו האתר. בהירות, לא קישוט.",
  suggest: ["מה מעניין אותו?","האתר הזה"],
  },
  product: {
@@ -784,14 +784,14 @@
  },
  interests: {
  keys: ["מה מעניין אותו","מה דוחף אותו","תחומי עניין","ui ux","עיצוב חוויה"],
- reply:"הוא מאוד מתעניין ב־AI ובטכנולוגיה — יותר בצד העסקי ובמוצר, ובאיזון ביניהם. הוא גם מאוד מתעניין ב־UI/UX.",
+ reply:"הוא מאוד מתעניין ב־AI ובטכנולוגיה, יותר בצד העסקי ובמוצר, ובאיזון ביניהם. הוא גם מאוד מתעניין ב־UI/UX.",
  more:"לכן הוא מכוון לתפקידי מוצר ומהנדס AI: להבין את המשתמש, ואז לבנות עם AI.",
  suggest: ["לאיזה תפקידי AI הוא מחפש?","מה הוא עושה בזמן הפנוי?"],
  },
  hobbies: {
  keys: ["תחביבים","זמן פנוי","בזמן הפנוי","מה הוא עושה בזמן הפנוי","ספורט","כדורגל","כדורסל","אופנה","ספרים","קריאה"],
- reply:"בזמן הפנוי הוא עושה ספורט — כדורגל, כדורסל, בעצם כל ספורט. התחביבים: ספורט, קריאת ספרים ואופנה. הוא אוהב אופנה.",
- more:"לסיפור העבודה — Bites, הוואטסאפ או הטפסים.",
+ reply:"בזמן הפנוי הוא עושה ספורט, כדורגל, כדורסל, בעצם כל ספורט. התחביבים: ספורט, קריאת ספרים ואופנה. הוא אוהב אופנה.",
+ more:"לסיפור העבודה, Bites, הוואטסאפ או הטפסים.",
  suggest: ["מה מעניין אותו?","מה ההשפעה של הפרויקטים שלו?"],
  },
  languages: {
@@ -808,55 +808,55 @@
  },
  clients: {
  keys: ["לקוחות","יוניליוור","אמזון","איזה חברות"],
- reply:"ב־Bites הוא מחזיק 25+ חשבונות — מעסקים קטנים עד ארגונים, כולל יוניליוור ואמזון. תיק ישראל מלא וכמה חשבונות בארה״ב.",
+ reply:"ב־Bites הוא מחזיק 25+ חשבונות, מעסקים קטנים עד ארגונים, כולל יוניליוור ואמזון. תיק ישראל מלא וכמה חשבונות בארה״ב.",
  more:"אותו קו בכל גודל: אונבורדינג, אימוץ, חידוש, והפיכת חיכוך למוצר.",
  suggest: ["ניסיון ב־Bites","מה ההשפעה של הפרויקטים שלו?"],
  },
  whyhim: {
  keys: ["למה הוא","למה לקחת","מה מייחד","ייחודי"],
  reply:"הוא כבר רץ על כל הלולאה: לדבר עם לקוחות, לראות דפוס, לשרטט, להוציא. מוביל תמיכה, בנה סוכנים, הוציא נפילת וואטסאפ ב־98% וחיסכון של 10,000+ דולר, ובנה טפסים בפנים. במקביל לקוחות כמו יוניליוור ואמזון, ותואר ברייכמן.",
- more:"עומק לקוח ומוצר שיוצא — זה הטיעון לתפקידי מוצר ו־GTM.",
+ more:"עומק לקוח ומוצר שיוצא, זה הטיעון לתפקידי מוצר ו־GTM.",
  suggest: ["מה ההשפעה של הפרויקטים שלו?","סיכום מקצועי"],
  },
  cancode: {
  keys: ["הוא יודע לקודד","הוא יודע לתכנת","הוא מתכנת","וייב קוד","וייב־קוד","הוא מפתח"],
- reply:"הוא יודע לעשות וייב־קוד. הוא לא מתכנת קלאסי ואין לו תואר במדעי המחשב או פייתון. Claude Code ו־Cursor הם איך הוא מוציא — האתר הזה ההוכחה.",
+ reply:"הוא יודע לעשות וייב־קוד. הוא לא מתכנת קלאסי ואין לו תואר במדעי המחשב או פייתון. Claude Code ו־Cursor הם איך הוא מוציא, האתר הזה ההוכחה.",
  more:"הנקודה היא לא ליטקוד. לקחת בעיית לקוח אמיתית ולהוציא מוצר עובד.",
  suggest: ["איך הוא למד לבנות?","האתר הזה"],
  },
  peoplelead: {
  keys: ["ניהל אנשים","הוא ניהל אנשים","ניהול צוות","הוא ניהל","מנהל אנשים"],
  reply:"כן. מנהל משמרת בפטלינה, מנהל קבלה בגרם 22, מפקד בחיל התותחנים, ורכז בצופים.",
- more:"תפעול ואנשים תחת לחץ — לא אורגצ׳ארט של הנדסה.",
+ more:"תפעול ואנשים תחת לחץ, לא אורגצ׳ארט של הנדסה.",
  suggest: ["רקע בצה״ל","ניסיון ב־Bites"],
  },
  typicalday: {
  keys: ["יום טיפוסי","יום יום","איך נראה יום","יום עבודה","איך נראה יום עבודה"],
  reply:"יום טיפוסי: שיחות עם לקוחות, טריאז' של תמיכה, והפיכת חיכוך שחוזר למוצר ולעבודת AI.",
- more:"ככה נולדו גם הוואטסאפ והטפסים — דפוס בתור, ואז משהו שיוצא.",
+ more:"ככה נולדו גם הוואטסאפ והטפסים, דפוס בתור, ואז משהו שיוצא.",
  suggest: ["ניסיון ב־Bites","איך הוא משתמש ב־AI?"],
  },
  remote: {
  keys: ["רימוט","עבודה מהבית","משרד","מעדיף משרד","היברידי","מרחוק","עבודה מהמשרד"],
- reply:"הוא בתל אביב. התפקיד יכול להיות מרחוק או לא — הוא יכול גם וגם. הוא מעדיף משרד.",
+ reply:"הוא בתל אביב. התפקיד יכול להיות מרחוק או לא, הוא יכול גם וגם. הוא מעדיף משרד.",
  more:"הוא כבר עובד מול ארה״ב מישראל. לסידור ספציפי: nadavile415@gmail.com.",
  suggest: ["איפה הוא גר?","איך אפשר ליצור איתו קשר?"],
  },
  favoritework: {
  keys: ["הכי גאה","הפרויקט הכי","העבודה הכי גדולה","הכי חשוב"],
- reply:"שניהם: נפילת הוואטסאפ — 98% מסירה ויותר מ־10,000 דולר חיסכון — ו־Bites Forms, שנבנה בפנים אחרי שביקשו גוגל פורמס, עם חתימה.",
+ reply:"שניהם: נפילת הוואטסאפ, 98% מסירה ויותר מ־10,000 דולר חיסכון, ו־Bites Forms, שנבנה בפנים אחרי שביקשו גוגל פורמס, עם חתימה.",
  more:"אותו דפוס: בעיית לקוח שאי אפשר להתעלם ממנה, ואז משלוח.",
  suggest: ["מה הייתה ההשפעה של פרויקט הוואטסאפ?","ספר על Bites Forms"],
  },
  learned: {
  keys: ["איך הוא למד","למד לבד","יוטיוב","למד מיוטיוב","איך למד לקודד"],
- reply:"למד לבד — הרבה יוטיוב, ואז הוציא בעיות לקוח אמיתיות עם כלי AI. בלי תואר במדעי המחשב.",
+ reply:"למד לבד, הרבה יוטיוב, ואז הוציא בעיות לקוח אמיתיות עם כלי AI. בלי תואר במדעי המחשב.",
  more:"Claude Code ו־Cursor הם הסטאק עכשיו. הפורטפוליו יצא משם.",
  suggest: ["הוא יודע לקודד?","האתר הזה"],
  },
  greeting: {
  keys: ["שלום","היי","הי","אהלן","בוקר טוב","ערב טוב"],
- reply:"שלום. אפשר לשאול בעברית — עבודה, לימודים, מה מעניין אותו, או סתם מי הוא. אפשר גם לבחור נושא למטה.",
+ reply:"שלום. אפשר לשאול בעברית, עבודה, לימודים, מה מעניין אותו, או סתם מי הוא. אפשר גם לבחור נושא למטה.",
  suggest: ["סיכום מקצועי","מה ההשפעה של הפרויקטים שלו?","לאיזה תפקידי AI הוא מחפש?","איך אפשר ליצור איתו קשר?"],
  },
  about: {
@@ -867,7 +867,7 @@
  },
  thanks: {
  keys: ["תודה","תודה רבה"],
- reply:"בשמחה. אם יש עוד משהו על הרקע של נדב — אפשר לשאול.",
+ reply:"בשמחה. אם יש עוד משהו על הרקע של נדב, אפשר לשאול.",
  suggest: ["סיכום מקצועי","איך אפשר ליצור איתו קשר?"],
  },
  no: {
@@ -1017,8 +1017,8 @@
  lastIntent = overview ? overview.id : null;
  pendingOffer = null;
  const extra = hebrew
- ? "אפשר לשאול עוד בעברית — פרויקטים, לימודים, מנהיגות, כלים, או איך ליצור קשר."
- : "Ask anything else in your own words — projects, school, leadership, tools, or how to reach him.";
+ ? "אפשר לשאול עוד בעברית, פרויקטים, לימודים, מנהיגות, כלים, או איך ליצור קשר."
+ : "Ask anything else in your own words, projects, school, leadership, tools, or how to reach him.";
  return {
  text: (overview ? pickReply(overview, hebrew, false) + "\n\n" : "") + extra,
  suggest: pickSuggest(overview, hebrew),
@@ -1123,12 +1123,12 @@
  if (he) wrap.setAttribute("dir", "auto");
  wrap.innerHTML = he ? `
  <p class="chat-welcome__title">אפשר לשאול בעברית.</p>
- <p class="chat-welcome__sub">שאלה חופשית — עבודה, לימודים, מה מעניין אותו, או סתם מי הוא — או לבחור נושא למטה.</p>
+ <p class="chat-welcome__sub">שאלה חופשית, עבודה, לימודים, מה מעניין אותו, או סתם מי הוא, או לבחור נושא למטה.</p>
  <div class="chat-welcome__grid">
  ${starters.map((s) => `<button type="button" class="chat-starter" data-q="${s.q.replace(/"/g, "&quot;")}"><span>${s.label}</span></button>`).join("")}
  </div>` : `
  <p class="chat-welcome__title">Ask anything about Nadav.</p>
- <p class="chat-welcome__sub">Type a question in your own words — work, school, what drives him, or just the person — or start with a topic below.</p>
+ <p class="chat-welcome__sub">Type a question in your own words, work, school, what drives him, or just the person, or start with a topic below.</p>
  <div class="chat-welcome__grid">
  ${starters.map((s) => `<button type="button" class="chat-starter" data-q="${s.q.replace(/"/g, "&quot;")}"><span>${s.label}</span></button>`).join("")}
  </div>`;
@@ -1406,7 +1406,7 @@
  }
  } catch (err) {
  ghMsg.hidden = false;
- ghMsg.textContent = "Couldn't load live GitHub data — showing cached snapshot.";
+ ghMsg.textContent = "Couldn't load live GitHub data, showing cached snapshot.";
  loadFake(year);
  }
  };
