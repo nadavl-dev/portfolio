@@ -766,6 +766,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 .stack__item:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
 .stack__item img { width: 36px; height: 36px; object-fit: contain; }
+.stack__item img.stack__logo--wide { width: 118px; height: 28px; }
 
 /* ============================================================
    CAPABILITIES — 3-column list grid (Kane)
@@ -868,6 +869,12 @@ button { font-family: inherit; cursor: pointer; }
 }
 .work-card__mark svg { width: 30px; height: 30px; }
 .work-card__mark img { width: 32px; height: 32px; object-fit: contain; }
+.work-card__mark--wide {
+  width: auto;
+  min-width: 48px;
+  padding: 0 0.7rem;
+}
+.work-card__mark--wide img { width: 96px; height: 24px; }
 .work-card__tags {
   display: flex;
   flex-wrap: wrap;
