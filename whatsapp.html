@@ -141,13 +141,13 @@
  <!-- ============ FOOTER ============ -->
  <footer class="footer">
   <div class="container footer__inner">
-   <span>&copy; <span id="year"></span> Nadav Levy</span>
+   <span>Nadav Levy</span>
    <span>Built with AI, designed &amp; shipped by me</span>
   </div>
  </footer>
 
  <script>
-  document.getElementById("year").textContent = new Date().getFullYear();
+  var y = document.getElementById("year"); if (y) y.textContent = new Date().getFullYear();
  </script>
 </body>
 </html>
