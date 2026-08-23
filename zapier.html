@@ -4,8 +4,8 @@
  <meta charset="UTF-8" />
  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
- <title>Training certificates with Zapier — Nadav Levy</title>
- <meta name="description" content="Case study: how Nadav Levy used Zapier to email legal training certificates clients must show authorities and insurers — API key, webhook, PDF placeholders — when the product did not support certificates." />
+ <title>Training certificates with Zapier: Nadav Levy</title>
+ <meta name="description" content="Case study: how Nadav Levy used Zapier to email legal training certificates clients must show authorities and insurers, API key, webhook, PDF placeholders, when the Bites platform did not support certificates." />
  <meta name="author" content="Nadav Levy" />
  <meta name="theme-color" content="#fdf6f4" />
 
@@ -17,7 +17,7 @@
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
- <link rel="stylesheet" href="style.css?v=51" />
+ <link rel="stylesheet" href="style.css?v=55" />
 </head>
 <body class="is-ready">
 
@@ -42,13 +42,18 @@
   <section class="case-hero">
    <div class="container">
     <a class="case-hero__back" href="index.html#projects">&larr; Back to My Works</a>
-    <h1 class="case-hero__title">Training certificates<br>with Zapier</h1>
-    <p class="case-hero__summary">Clients needed a legal training certificate they can pass forward — the kind they used to issue on paper — and Bites does not support that in the product. I connected our app with an API key, caught the completion on a Zapier webhook, and emailed the client a PDF certificate with the employee's name, the training, and every field they asked for.</p>
-    <div class="case-hero__meta">
-     <span class="work-card__tag">Bites</span>
-     <span class="work-card__tag">Zapier</span>
-     <span class="work-card__tag">Webhook + PDF</span>
-     <span class="work-card__tag">Emailed to the client</span>
+    <div class="case-hero__row">
+     <div class="case-hero__copy">
+      <h1 class="case-hero__title">Training certificates<br>with Zapier</h1>
+      <p class="case-hero__summary">Clients needed a legal training certificate they can pass forward, the kind they used to issue on paper. The Bites platform does not support any type of certificate, so we went the outside route: I took an API key from our app, connected it to Zapier, and the finished PDF emails out the moment training is done.</p>
+      <div class="case-hero__meta">
+       <span class="work-card__tag">Bites</span>
+       <span class="work-card__tag">Zapier</span>
+       <span class="work-card__tag">Webhook + PDF</span>
+       <span class="work-card__tag">Emailed to the client</span>
+      </div>
+     </div>
+     <img class="case-hero__logo" src="logos/zapier.svg?v=3" alt="Zapier">
     </div>
    </div>
   </section>
@@ -58,8 +63,7 @@
    <div class="container case-section__grid">
     <span class="case-section__label">The problem</span>
     <div class="case-section__body">
-     <p>After an employee finishes a course, clients need a <strong>legal certificate</strong> they can pass forward — the same document they used to issue physically. It is <strong>mandatory</strong> for them: they have to show it to the authorities and for insurance reasons.</p>
-     <p>We do not support certificates in the platform. Waiting on a product build would have left the client without a document they are required to present. The other way around was an automation.</p>
+     <p>After an employee finishes a course, clients need a <strong>legal certificate</strong> they can pass forward, the same document they used to issue physically. It is <strong>mandatory</strong> for them: they have to show it to the authorities and for insurance reasons.</p>
     </div>
    </div>
   </section>
@@ -69,18 +73,22 @@
    <div class="container case-section__grid">
     <span class="case-section__label">What I built</span>
     <div class="case-section__body">
-     <p>I set up a Zapier flow so a completed training becomes a certificate in the client's inbox — without adding a new feature to Bites:</p>
+     <p>A completed training becomes a certificate in the client's inbox. It is a workaround, an outside feature, instead of adding a new feature to the Bites platform. The flow is: I took an API key from our app and connected it to Zapier, then built the rest around it:</p>
      <ul>
-      <li><strong>API key on our app</strong> — so Zapier can talk to Bites when a training is done.</li>
-      <li><strong>Webhook catch</strong> — the completion event lands in Zapier instead of dying in the product.</li>
-      <li><strong>PDF with placeholders</strong> — employee name, training name, and the other details the client asked for get mapped into the certificate template.</li>
-      <li><strong>Email to the client</strong> — the finished PDF goes out automatically. They get a real certificate, not a screenshot from the LMS.</li>
+      <li><strong>API key on our app</strong>: so Zapier can talk to Bites when a training is done.</li>
+      <li><strong>Webhook catch</strong>: the completion event lands in Zapier instead of dying in the product.</li>
+      <li><strong>PDF with placeholders</strong>: employee name, training name, and the other details the client asked for get mapped into the certificate template.</li>
+      <li><strong>Email to the client</strong>: the finished PDF goes out automatically. They get a real certificate, not a screenshot from the LMS.</li>
      </ul>
-     <p>Same pattern as the rest of my work: a customer ask the product does not cover yet, then a practical path that ships.</p>
 
      <figure class="case-shot">
-      <img src="zapier-certificate.jpg" alt="Sample certificate with names, logo, dates, and signature blurred">
-      <figcaption>A real certificate from the flow — names, logo, dates, and signature blurred.</figcaption>
+      <img src="zapier-cert-en.jpg?v=2" alt="Certificate of Completion from the flow, employee name, ID, and company blurred">
+      <figcaption>A real certificate from the flow, employee name, ID, and company name blurred.</figcaption>
+     </figure>
+
+     <figure class="case-shot">
+      <img src="zapier-cert-he.jpg?v=2" alt="Hebrew completion certificate from the flow, employee name, ID, and company blurred" loading="lazy">
+      <figcaption>The Hebrew version for another client, same automation, personal and company fields blurred.</figcaption>
      </figure>
     </div>
    </div>
@@ -91,48 +99,22 @@
    <div class="container case-section__grid">
     <span class="case-section__label">The impact</span>
     <div class="case-section__body">
-     <p>Clients get the document they asked for the moment training is done. We did not have to wait for certificates to land in the product:</p>
-     <div class="case-impact">
-      <div class="case-impact__item">
-       <span class="case-impact__num">No product wait</span>
-       <span class="case-impact__label">certificates were not on the platform — the automation closed the gap</span>
-      </div>
-      <div class="case-impact__item">
-       <span class="case-impact__num">Their fields</span>
-       <span class="case-impact__label">name, training, and the other placeholders each client wanted on the PDF</span>
-      </div>
-      <div class="case-impact__item">
-       <span class="case-impact__num">Inbox</span>
-       <span class="case-impact__label">the finished certificate emails to the client — branded, ready to file</span>
-      </div>
-     </div>
-     <p style="margin-top:1.5rem">This is how I work: if the product cannot do it yet and the client still needs it, I wire the path — API, webhook, document, email — and ship.</p>
+     <p class="case-impact-line">Clients get the document they asked for <strong>the moment training is done</strong>. They also have <strong>the guarantee their employee actually finished the training</strong>.</p>
     </div>
    </div>
   </section>
 
-  <!-- ============ NEXT ============ -->
-  <div class="container">
-   <div class="case-next">
-    <div>
-     <span class="case-next__label">Next case study</span>
-     <a class="case-next__link" href="whatsapp.html">WhatsApp Messaging at Scale &rarr;</a>
-    </div>
-    <a class="hero__cta" href="index.html#contact">Let's talk &rarr;</a>
-   </div>
-  </div>
  </main>
 
  <!-- ============ FOOTER ============ -->
  <footer class="footer">
   <div class="container footer__inner">
-   <span>&copy; <span id="year"></span> Nadav Levy</span>
-   <span>Built with AI — designed &amp; shipped by me</span>
+   <span>Nadav Levy</span>
   </div>
  </footer>
 
  <script>
-  document.getElementById("year").textContent = new Date().getFullYear();
+  var y = document.getElementById("year"); if (y) y.textContent = new Date().getFullYear();
  </script>
 </body>
 </html>
