@@ -319,7 +319,7 @@
  id:"zapiercerts",
  label:"Zapier certificates",
  keys: { strong: ["zapier","certificate","certificates","training certificate","webhook","pdf certificate"], weak: ["automation","automations","pdf"] },
- reply:"Clients needed a legal training certificate they can pass forward, like the physical ones they used to issue. It is mandatory for them to show it to the authorities and for insurance reasons, and Bites does not support that in the product.\n\nNadav connected the app with an API key, caught the completion on a Zapier webhook, filled a PDF with the employee's name, the training name, and the other details the client asked for, and emailed the finished certificate to them.",
+ reply:"Clients needed a legal training certificate they can pass forward, like the physical ones they used to issue. It is mandatory for them to show it to the authorities and for insurance reasons, and the Bites platform does not support certificates.\n\nNadav took an API key from the app and connected it to Zapier, caught the completion on a webhook, filled a PDF with the employee's name, the training name, and the other details the client asked for, and emailed the finished certificate to them.",
  more:"It is the same move as Bites Forms: a customer ask the product does not cover yet, then a practical path that ships.",
  suggest: ["What impact did his projects have?", "Tell me about Bites Forms", "What tools does he use?"],
  actions: [{ label: "Read the case study", href: "zapier.html" }],
@@ -694,7 +694,7 @@
  },
  zapiercerts: {
  keys: ["זאפייר","zapier","תעודה","תעודות","תעודת הדרכה","וובהוק"],
- reply:"לקוחות צריכים תעודה חוקית שאפשר להעביר הלאה, כמו שהנפיקו פעם בנייר. חובה להציג אותה לרשויות ולביטוח, ובמוצר של Bites זה לא קיים. נדב חיבר את האפליקציה עם מפתח API, תפס את הסיום ב־webhook של Zapier, מילא PDF עם שם העובד, שם ההדרכה ושאר השדות שהלקוח ביקש, ושלח במייל.",
+ reply:"לקוחות צריכים תעודה חוקית שאפשר להעביר הלאה, כמו שהנפיקו פעם בנייר. חובה להציג אותה לרשויות ולביטוח, והפלטפורמה של Bites לא תומכת בתעודות. נדב לקח מפתח API מהאפליקציה וחיבר אותו ל־Zapier, תפס את הסיום ב־webhook, מילא PDF עם שם העובד, שם ההדרכה ושאר השדות שהלקוח ביקש, ושלח במייל.",
  more:"אותו מהלך כמו הטפסים: בקשת לקוח שהמוצר עוד לא מכסה, ואז נתיב פרקטי שיוצא.",
  suggest: ["מה ההשפעה של הפרויקטים שלו?","ספר על Bites Forms"],
  },
